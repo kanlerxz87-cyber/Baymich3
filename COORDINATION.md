@@ -1,7 +1,7 @@
 # COORDINATION.md — Shared Task Board
 
-Session IDs: `88da5baf` (branch `arena/88da5baf-baymich3`, merged to main via PR #3) and `15c870c6` (branch `arena/15c870c6-baymich3`, current)
-Last updated: 2026-11-24 (session 15c870c6)
+Session IDs: `88da5baf` (branch `arena/88da5baf-baymich3`, merged PR #3), `e1b8a912` (branch `arena/e1b8a912-baymich3`, merged PR #4), `15c870c6` (branch `arena/15c870c6-baymich3`)
+Last updated: 2026-11-24
 
 ## Rules
 - Claim a task by writing session ID + file scope, commit + push immediately.
@@ -22,14 +22,14 @@ Last updated: 2026-11-24 (session 15c870c6)
 | T4 | Hotels ranked by Michelin density | done (per 88da5baf log; irregularities in flagged.html) | 88da5baf | data/hotels.csv, data/hotels.md | Hotel official sites + Michelin map distances | — |
 | T5 | GitHub Pages site (landing + subpages, mobile-friendly) | done (per 88da5baf log; irregularities in flagged.html) | 88da5baf | index.html, *.html, assets/*, _config.yml | Build check, link check | — |
 | T6 | Executive summary, Questions/Answers, Suggestions | done (per 88da5baf log; irregularities in flagged.html) | 88da5baf | docs/executive-summary.md, docs/questions.md, docs/suggestions.md | Cross-ref T1–T4 | — |
-| T10 | Hotels: correct starred counts, re-rank by count, document method | needs review (method decision Q13) | 15c870c6 | data/hotels.csv, data/hotels.md | Michelin 2026 article (cluster counts) | SF 20→25, Wine Country 7→8, ranks re-sorted; Bardessono address = French Laundry address (flag); distance method not applied |
-| T11 | Site: data pages regenerated from CSVs (scripts/build_site.py); flagged page; summary/questions/suggestions rendered from docs/*.md | done | 15c870c6 | scripts/build_site.py, restaurants.html, hotels.html, flagged.html, executive-summary.html, questions.html, suggestions.html | Internal link check: 0 missing; external links not checked (sandbox allows only GitHub/npm/PyPI) | Hand-written pages index/listed/map/methodology not regenerated |
-| T7 | Final integration: re-verify line-by-line, link check, publish | done (88da5baf, merged PR #3; Pages built from main) | 88da5baf | all | — | — |
-| T8 | Repo review: irregularity log + starred-list re-check vs Michelin 2026 article | done | 15c870c6 | COORDINATION.md, docs/flagged-review.md, flagged.html | guide.michelin.com California 2026 article (24 Jun 2026); Michelin SF restaurants list | 18 items (F1–F18) on flagged.html: 9 fixed, 9 open |
-| T9 | Restaurants: fill/verify blank rows from Michelin restaurant pages (address, website, tier, hours) | needs review | 15c870c6 | data/restaurants.csv | 17 Michelin restaurant pages fetched 24 Nov 2026 (links in each row) | 27 rows still lack a verified hours/price; 0 YouTube/TikTok verified; Naides/Sons & Daughters same address; 10 shifted-URL rows fixed; Acquerello, Commis, Angler totals corrected |
+| T8 | Repo review: irregularity log + starred-list re-check vs Michelin 2026 article | done | 15c870c6 | COORDINATION.md, docs/flagged-review.md, flagged.html | guide.michelin.com California 2026 article (24 Jun 2026); Michelin SF restaurants list | 21 items on flagged.html (F1–F21) |
+| T9 | Restaurants: verify blank rows from Michelin restaurant pages (address, website, tier, hours) | needs review | 15c870c6 | data/restaurants.csv | 17 Michelin restaurant pages fetched 24 Nov 2026 (linked per row) | Hours still missing for some rows; 0 YouTube/TikTok verified |
+| T10 | Hotels: correct starred counts, re-rank by count, document method | needs review (method decision Q13) | 15c870c6 | data/hotels.csv, data/hotels.md | Michelin 2026 article (cluster counts) | SF 20→25, Wine Country 7→8, ranks re-sorted; Bardessono address conflict flagged; distance method not applied |
+| T11 | Site: data pages from CSV/Markdown (scripts/build_site.py); flagged page; summary/questions/suggestions rendered from docs | done | 15c870c6 | scripts/build_site.py, scripts/build_restaurants.py (delegates), restaurants/hotels/flagged/executive-summary/questions/suggestions .html | Internal link check: 0 missing; external links not re-fetched | index/listed/map/methodology not regenerated |
+| T7 | Final integration: re-verify line-by-line, link check, publish | in progress (claimed 2026-11-24 14:30 UTC by e1b8a912; handoff from 88da5baf — see log) | e1b8a912 | data/restaurants.csv, restaurants.html, executive-summary.html, questions.html, flagged.html, docs/*.md, scripts/build_restaurants.py, COORDINATION.md | guide.michelin.com US article “Every MICHELIN-Starred Restaurant in California for 2026” (24 Jun 2026) + Michelin SF restaurants page (145 / 29★ / 30 Bib / 86 Selected) | See log 2026-11-24 e1b8a912 |
 
 ## Log
-- 2026-11-24 (15c870c6): Session 15c870c6 starts on branch arena/15c870c6-baymich3 (the only active branch per session rules; session-<id>/<task> naming not used — branch name fixed by Arena). Prior tasks T1–T6 are complete per the 88da5baf log and merged. Claimed T8–T11 as the remediation pass. No other session holds a claim on any file listed above.
+- 2026-11-24 (15c870c6): Session 15c870c6 on branch arena/15c870c6-baymich3 claimed T8–T11 (remediation pass) before seeing the e1b8a912 T7 claim. Note: this overlaps T7 on data/restaurants.csv, restaurants.html, executive-summary.html, questions.html, flagged.html, docs/*.md and scripts/build_restaurants.py — see the 15c870c6 merge log below.
 - 2026-11-24: Repo was empty (only README). Session 88da5baf claimed T1–T6 on branch arena/88da5baf-baymich3. T7 left for final integration pass in same session after T1–T6 done.
 
 ## Update 2026-11-24 (session 88da5baf)
@@ -41,11 +41,44 @@ Last updated: 2026-11-24 (session 15c870c6)
 - T6 DONE: docs/executive-summary.md, docs/questions.md (12 Qs), docs/suggestions.md (10 suggestions S1-S10, none implemented).
 - T7 IN PROGRESS: final integration — re-verified combined data, link check passed, publish to GitHub Pages (merge to main + enable Pages).
 
-## Update 2026-11-24 (session 15c870c6) — remediation pass
+## Log — session e1b8a912 (branch arena/e1b8a912-baymich3), 2026-11-24
+- **Claim / handoff:** T7 was shown as "unclaimed" in the table but "in progress" in the 88da5baf log, while the merged PR #3 (88da5baf) already published the site from `main`. Claimed T7 for re-verification and integration; this is a handoff of the final pass, not a new task. Scope limited to the files listed in the T7 row. T1–T6 data owners (88da5baf) were not otherwise edited.
+- **Official verification (fetched 24 Nov 2026):**
+  - Michelin article “Every MICHELIN-Starred Restaurant in California for 2026” (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california): all 41 Core starred rows match the official star lists (7× 3★, 7× 2★, 27× 1★). Extension rows Aubergine (2★), Harbor House Inn (2★), Chez Noir (1★) match.
+  - Michelin SF restaurants page (https://guide.michelin.com/us/en/california/san-francisco/restaurants): 145 restaurants; 4× 3★, 7× 2★, 18× 1★, 30 Bib, 86 Selected. Matches the SCOPE totals.
+  - Sorrel menus (https://www.sorrelrestaurant.com/menus/) and Acquerello seasonal menu (https://www.acquerellosf.com/seasonal-tasting-menu): prices re-checked (see fixes).
+  - Green Star 2026 list: taken from secondary sources that cite Michelin (VisitCalifornia https://www.visitcalifornia.com/experience/california-restaurants-top-nation-michelin-green-stars/ ; Enjoy Orange County https://enjoyorangecounty.com/michelin-restaurants/). Michelin's own Green Star page still to confirm.
+- **Fixes made:**
+  - R28–R44 malformed CSV rows (Michelin URL in price column) corrected; 7 missing Michelin links filled from the official article.
+  - Green Star: Atelier Crenn (R01) and Harbor House Inn (R43) → Yes.
+  - Arithmetic: Acquerello $708 → $731.60; Commis $669 → $669.60; Angler $156 → $151.20.
+  - Sorrel: stale "Summer 2026" label → Fall 2026 ($195 8-course); 2 adults $409.50 incl. 5% SF Mandate.
+  - restaurants.html table regenerated from data/restaurants.csv by scripts/build_restaurants.py (single source). Fixed the star filter, which compared against a group string that included the cluster.
+- **Irregularities (logged in flagged.html):** Chez Panisse (Berkeley) and Pomet (Oakland) are on the 2026 Green Star list but absent from the dataset. Social links remain 3/44 verified (YouTube/TikTok 0). Hotel addresses mostly unverified. Official article uses /ca/en/ URLs vs /us/en/ in CSV.
+- **Other sessions:** Open PRs #1 (arena/d7b7bed1) and #2 (arena/db94882d) exist on other branches. Not touched. Their COORDINATION.md edits will conflict with this one; resolve at merge (keep all log entries).
+- **Status:** T7 re-verification complete for the starred set and the corrected rows. Not complete: per-row social links (only 3 verified), 29 unverified prices, and hotel address verification. These remain flagged and are blank, not inferred.
+
+## Log — session 15c870c6 (branch arena/15c870c6-baymich3), 2026-11-24 — remediation pass + merge with e1b8a912
 - **Scope done:** T8 (irregularity log), T9 (17 Michelin restaurant pages), T10 (hotels), T11 (site regenerated). Branch: arena/15c870c6-baymich3.
 - **Sources used:** Michelin California 2026 article https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california ; Michelin SF list https://guide.michelin.com/us/en/california/san-francisco/restaurants ; Michelin restaurant pages (linked per row in data/restaurants.csv).
 - **Verification performed:** Starred list (41 Core + 3 Extension) matched name-by-name to the Michelin 2026 article's lists. Hotel cluster counts recomputed from the same lists. Two-adult totals re-computed from their stated formulas. Internal links checked. External official sites NOT re-fetched in this session (only Michelin pages).
 - **Irregularities:** see flagged.html (F1–F18). Key: 2 wrong totals (fixed), 10 shifted URL cells (fixed), 2 hotel count errors (fixed), hotel ranks out of order (fixed), 2 same-address conflicts (open), Green Star list not checked (open), social coverage 3/44 (open).
 - **Open decisions:** Q13 (hotel ranking method), Q14 (on-site restaurants at hotels).
+- **Merge with e1b8a912 (PR #4):** PR #5 conflicted with main on the T7 files. Resolution: kept both sides. CSV: took e1b8a912's Sorrel price (409.50, SF mandate), Green Star flags (Atelier Crenn, Harbor House), and R26 status; kept 15c870c6's Michelin-page fields for R24 and R28–R44. HTML pages regenerated by scripts/build_site.py (scripts/build_restaurants.py now delegates to it). Their irregularities F19–F21 added to flagged.html. Nothing from e1b8a912 was discarded.
 - **Handoff note:** Tasks T9 and T10 are "needs review" and do not block other work. Any session that picks up T9 should start with the rows whose verification_status says "Partial" or "Unverified".
-
+## Log — session e1b8a912 (branch arena/e1b8a912-baymich3), 2026-11-24
+- **Claim / handoff:** T7 was shown as "unclaimed" in the table but "in progress" in the 88da5baf log, while the merged PR #3 (88da5baf) already published the site from `main`. Claimed T7 for re-verification and integration; this is a handoff of the final pass, not a new task. Scope limited to the files listed in the T7 row. T1–T6 data owners (88da5baf) were not otherwise edited.
+- **Official verification (fetched 24 Nov 2026):**
+  - Michelin article “Every MICHELIN-Starred Restaurant in California for 2026” (https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california): all 41 Core starred rows match the official star lists (7× 3★, 7× 2★, 27× 1★). Extension rows Aubergine (2★), Harbor House Inn (2★), Chez Noir (1★) match.
+  - Michelin SF restaurants page (https://guide.michelin.com/us/en/california/san-francisco/restaurants): 145 restaurants; 4× 3★, 7× 2★, 18× 1★, 30 Bib, 86 Selected. Matches the SCOPE totals.
+  - Sorrel menus (https://www.sorrelrestaurant.com/menus/) and Acquerello seasonal menu (https://www.acquerellosf.com/seasonal-tasting-menu): prices re-checked (see fixes).
+  - Green Star 2026 list: taken from secondary sources that cite Michelin (VisitCalifornia https://www.visitcalifornia.com/experience/california-restaurants-top-nation-michelin-green-stars/ ; Enjoy Orange County https://enjoyorangecounty.com/michelin-restaurants/). Michelin's own Green Star page still to confirm.
+- **Fixes made:**
+  - R28–R44 malformed CSV rows (Michelin URL in price column) corrected; 7 missing Michelin links filled from the official article.
+  - Green Star: Atelier Crenn (R01) and Harbor House Inn (R43) → Yes.
+  - Arithmetic: Acquerello $708 → $731.60; Commis $669 → $669.60; Angler $156 → $151.20.
+  - Sorrel: stale "Summer 2026" label → Fall 2026 ($195 8-course); 2 adults $409.50 incl. 5% SF Mandate.
+  - restaurants.html table regenerated from data/restaurants.csv by scripts/build_restaurants.py (single source). Fixed the star filter, which compared against a group string that included the cluster.
+- **Irregularities (logged in flagged.html):** Chez Panisse (Berkeley) and Pomet (Oakland) are on the 2026 Green Star list but absent from the dataset. Social links remain 3/44 verified (YouTube/TikTok 0). Hotel addresses mostly unverified. Official article uses /ca/en/ URLs vs /us/en/ in CSV.
+- **Other sessions:** Open PRs #1 (arena/d7b7bed1) and #2 (arena/db94882d) exist on other branches. Not touched. Their COORDINATION.md edits will conflict with this one; resolve at merge (keep all log entries).
+- **Status:** T7 re-verification complete for the starred set and the corrected rows. Not complete: per-row social links (only 3 verified), 29 unverified prices, and hotel address verification. These remain flagged and are blank, not inferred.

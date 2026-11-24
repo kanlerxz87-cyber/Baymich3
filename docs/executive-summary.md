@@ -36,7 +36,8 @@
 
 ## 5. Cost snapshot (two adults, official price only)
 Price for 2 = per-person price × 2, plus the service charge stated on the official page. Tax and beverages are excluded.
-- **Verified totals (11 rows):** Benu $1,037; Acquerello $731.60 (corrected from $708); Birdsong $700; Commis $669.60; Kiln $756; Lazy Bear $640; Sons & Daughters $660; 7 Adams $254; Angler lunch $151.20 (corrected from $156); Sorrel $390; Madcap $360.
+- **Verified totals (11 rows):** Benu $1,037; Acquerello $731.60 (corrected from $708); Birdsong $700; Commis $669.60; Kiln $756; Lazy Bear $640; Sons & Daughters $660; 7 Adams $254; Angler lunch $151.20 (corrected from $156); Sorrel $409.50 (Fall 2026 $195 × 2 + 5% SF Mandate; from official menus page, merged from session e1b8a912); Madcap $360.
+- **Green Star:** Atelier Crenn and Harbor House Inn are marked Yes. Harbor House's Michelin page shows the green-star icon; Atelier Crenn's Green Star is from a secondary source and is still to be checked on Michelin.
 - **Michelin price tier** is now recorded for 17 rows. It is a $-symbol scale, not a dollar amount.
 - **Not verified (blank on purpose):** the other 27 Core rows. Booking-platform ranges are indicative only and are not used as totals.
 

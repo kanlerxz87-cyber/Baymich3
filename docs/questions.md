@@ -15,7 +15,7 @@ Each question states: **What we know (verified) / What we don't know / How to di
 - **Owner:** User. **Blocks:** Hotel ranking, itinerary.
 
 ## Q3. What will dinner for 2 actually cost?
-- **Know:** 11 rows have a verified two-adult total (Benu, Acquerello, Birdsong, Commis, Kiln, Lazy Bear, Sons & Daughters, 7 Adams, Angler lunch, Madcap, Sorrel). Formula shown per row. Totals for Acquerello (731.60), Commis (669.60) and Angler (151.20) corrected 24 Nov 2026.
+- **Know:** 11 rows have a verified two-adult total (Benu, Acquerello, Birdsong, Commis, Kiln, Lazy Bear, Sons & Daughters, 7 Adams, Angler lunch, Madcap, Sorrel $409.50 incl. 5% SF Mandate). Auberge (Tock) is Partial. Formula shown per row. Totals for Acquerello (731.60), Commis (669.60) and Angler (151.20) corrected 24 Nov 2026.
 - **Don't know:** 33 of 44 rows have no verified two-adult total. Service % missing on some rows. Tax, wine, supplements extra. Michelin pages show only a $-symbol tier, not dollar amounts.
 - **Discover:** Visit each official site's Reservations/Tock page (prices live there, not homepage); screenshot + date-stamp; update CSV. For Quince/Californios/SingleThread/French Laundry/Enclos/Saison, check Tock/OpenTable booking page (restaurant-controlled).
 - **Owner:** Research session. **Blocks:** Budgeting.
