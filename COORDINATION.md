@@ -35,3 +35,4 @@ Last updated: 2026-11-24
 - T5 DONE: GitHub Pages site (10 pages, mobile-friendly, search/filter). Link check: no missing internal links. Local preview on :8000 OK.
 - T6 DONE: docs/executive-summary.md, docs/questions.md (12 Qs), docs/suggestions.md (10 suggestions S1-S10, none implemented).
 - T7 IN PROGRESS: final integration — re-verified combined data, link check passed, publish to GitHub Pages (merge to main + enable Pages).
+- T7 DONE 2026-11-24: PR #3 merged to main (b047b5d). Pages building from main → https://kanlerxz87-cyber.github.io/Baymich3/. Link check passed (no missing internal links). Local preview verified on :8000.
