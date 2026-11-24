@@ -33,3 +33,10 @@ Status values: `unclaimed` · `in progress` · `done` · `needs review`
 ## Irregularities (flagged for review)
 
 See the Flagged for Review page: `docs/flagged.html`.
+
+## Publishing status (T5 / T6 hand-off)
+
+- GitHub Pages is already enabled for `kanlerxz87-cyber/Baymich3` with source **`main` `/`**. The session token cannot change the Pages source (HTTP 403 on create and update), so the live site still shows the base `README` until a maintainer either:
+  1. sets Pages source to branch `arena/26f06e9a-baymich3`, folder `/docs`, **or**
+  2. merges this branch into `main` in the integration step (T6).
+- Other `arena/*` branches exist on the remote. Their `COORDINATION.md` files, where present, show no task claims that overlap T1–T6 (read-only check, no checkout).
