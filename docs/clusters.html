@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clusters · SF Bay Area Michelin Dashboard</title>
+<style>
+:root{--ink:#1d1d1f;--mut:#5b5f66;--line:#e3e5e8;--bg:#f7f7f9;--acc:#b3121c;--ok:#1f7a3d;--warn:#8a5a00}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.wrap{max-width:1200px;margin:0 auto;padding:0 14px}
+.brand{padding:12px 0 6px;font-weight:700;font-size:17px}.brand span{color:var(--acc)}
+nav{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:10px}
+nav a{font-size:13px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px;background:#fff}
+nav a.on,nav a:hover{background:var(--ink);color:#fff}
+h1{font-size:22px;margin:18px 0 4px}h2{font-size:17px;margin:22px 0 8px}
+p.lead{color:var(--mut);margin:0 0 12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
+.card b{display:block;font-size:24px}.card small{color:var(--mut)}
+.tblwrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:10px;margin:8px 0 14px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--mut);position:sticky;top:0}
+td.name{font-weight:600;min-width:150px}
+.tag{display:inline-block;font-size:11.5px;border-radius:6px;padding:1px 7px;margin:1px 2px 1px 0;background:#eef0f3}
+.t3{background:#111;color:#fff}.t2{background:#444;color:#fff}.t1{background:#8a8f98;color:#fff}.bib{background:#e7f3ea;color:var(--ok)}
+.new{background:#fff3d6;color:var(--warn)}.unv{color:var(--warn);font-style:italic}
+.ok{color:var(--ok)}
+a{color:#0b57d0}
+ul.plain{padding-left:18px}ul.plain li{margin:4px 0}
+.note{background:#fff8e6;border:1px solid #f0dda0;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:13.5px}
+footer{color:var(--mut);font-size:12.5px;padding:24px 0 40px}
+.qa{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0}
+.qa b{display:block}
+@media (max-width:640px){body{font-size:14px}h1{font-size:19px}}
+</style></head><body>
+<header><div class="wrap"><div class="brand">SF Bay Area <span>Michelin</span> Dashboard</div><nav><a href="index.html" class="">Home</a><a href="stars.html" class="">Starred</a><a href="bib.html" class="">Bib Gourmand</a><a href="clusters.html" class="on">Clusters</a><a href="hotels.html" class="">Hotels</a><a href="questions.html" class="">Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="flagged.html" class="">Flagged</a><a href="sources.html" class="">Sources</a></nav></div></header>
+<main class="wrap"><h1>Restaurant clusters</h1>
+<p class="lead">Counts of Michelin-listed restaurants by city and by ZIP code. This is the input for the hotel ranking, which is not finished yet. ZIP codes come from the official addresses; ZIP-only grouping does not claim neighborhood boundaries.</p>
+<h2>By city</h2>
+<div class="tblwrap"><table style="min-width:420px"><tr><th>City</th><th>Starred (core)</th><th>Bib (core)</th></tr><tr><td class='name'>San Francisco</td><td>25</td><td>12</td></tr><tr><td class='name'>Oakland</td><td>2</td><td>10</td></tr><tr><td class='name'>Atherton</td><td>1</td><td>0</td></tr><tr><td class='name'>Palo Alto</td><td>1</td><td>0</td></tr><tr><td class='name'>San Anselmo</td><td>1</td><td>1</td></tr><tr><td class='name'>San Mateo</td><td>1</td><td>1</td></tr><tr><td class='name'>Saratoga</td><td>1</td><td>0</td></tr><tr><td class='name'>Woodside</td><td>1</td><td>0</td></tr><tr><td class='name'>Berkeley</td><td>0</td><td>3</td></tr><tr><td class='name'>Menlo Park</td><td>0</td><td>1</td></tr><tr><td class='name'>Hayward</td><td>0</td><td>1</td></tr><tr><td class='name'>San Jose</td><td>0</td><td>2</td></tr><tr><td class='name'>El Cerrito</td><td>0</td><td>1</td></tr><tr><td class='name'>Mill Valley</td><td>0</td><td>1</td></tr><tr><td class='name'>Alameda</td><td>0</td><td>1</td></tr><tr><td class='name'>San Leandro</td><td>0</td><td>1</td></tr><tr><td class='name'>Fairfax</td><td>0</td><td>1</td></tr></table></div>
+<h2>By ZIP code (rows with a full address)</h2>
+<div class="tblwrap"><table><tr><th>ZIP</th><th>Starred</th><th>Bib</th><th>Restaurants</th></tr><tr><td class='name'>94115</td><td>4</td><td>1</td><td>7 Adams, Bansang, Nari, Sorrel, State Bird Provisions</td></tr><tr><td class='name'>94103</td><td>2</td><td>2</td><td>Birdsong, Californios, Izakaya Rintaro, Okane</td></tr><tr><td class='name'>94133</td><td>2</td><td>2</td><td>Hilda and Jesse, Quince, Trestle, Z &amp; Y</td></tr><tr><td class='name'>94102</td><td>2</td><td>1</td><td>Dumpling Home, Kiln, Kin Khao</td></tr><tr><td class='name'>94105</td><td>2</td><td>1</td><td>Angler SF, Benu, Yank Sing</td></tr><tr><td class='name'>94110</td><td>2</td><td>1</td><td>Good Good Culture Club, Lazy Bear, Sons &amp; Daughters</td></tr><tr><td class='name'>94107</td><td>2</td><td>0</td><td>Saison, Wolfsbane</td></tr><tr><td class='name'>94109</td><td>2</td><td>0</td><td>Acquerello, Ssal</td></tr><tr><td class='name'>94123</td><td>1</td><td>1</td><td>A16, Atelier Crenn</td></tr><tr><td class='name'>94609</td><td>0</td><td>3</td><td>FOB Kitchen, Snail Bar, Tacos Oscar</td></tr><tr><td class='name'>94611</td><td>1</td><td>1</td><td>Commis, Teni East Kitchen</td></tr><tr><td class='name'>94704</td><td>0</td><td>3</td><td>Comal, Great China, Ippuku</td></tr><tr><td class='name'>94607</td><td>0</td><td>2</td><td>Horn Barbecue, Soba Ichi</td></tr><tr><td class='name'>94025</td><td>0</td><td>1</td><td>Eylan</td></tr><tr><td class='name'>94114</td><td>0</td><td>1</td><td>Anchor Oyster Bar</td></tr><tr><td class='name'>94118</td><td>0</td><td>1</td><td>Kitchen Istanbul</td></tr><tr><td class='name'>94122</td><td>0</td><td>1</td><td>Outerlands</td></tr><tr><td class='name'>94401</td><td>0</td><td>1</td><td>Pausa</td></tr><tr><td class='name'>94501</td><td>0</td><td>1</td><td>Spinning Bones</td></tr><tr><td class='name'>94530</td><td>0</td><td>1</td><td>New Dumpling</td></tr><tr><td class='name'>94544</td><td>0</td><td>1</td><td>Los Carnalitos</td></tr><tr><td class='name'>94577</td><td>0</td><td>1</td><td>Top Hatters Kitchen</td></tr><tr><td class='name'>94602</td><td>0</td><td>1</td><td>Bombera</td></tr><tr><td class='name'>94608</td><td>0</td><td>1</td><td>Joodooboo</td></tr><tr><td class='name'>94610</td><td>0</td><td>1</td><td>MAMA Oakland</td></tr><tr><td class='name'>94619</td><td>0</td><td>1</td><td>Jo&#x27;s Modern Thai</td></tr><tr><td class='name'>94930</td><td>0</td><td>1</td><td>Village Sake</td></tr><tr><td class='name'>94941</td><td>0</td><td>1</td><td>Playa</td></tr><tr><td class='name'>94960</td><td>0</td><td>1</td><td>Insalata&#x27;s</td></tr><tr><td class='name'>95113</td><td>0</td><td>1</td><td>Petiscos</td></tr><tr><td class='name'>95126</td><td>0</td><td>1</td><td>Luna Mexican Kitchen</td></tr></table></div>
+<div class="note">Not counted here because no official address was captured yet: Madcap, Mister Jiu&#x27;s, Naides, Niku Steakhouse, Nisei, Plumed Horse, Protégé, San Ho Won, Selby&#x27;s, Sun Moon Studio, The Progress, The Village Pub, Wakuriya.</div></main>
+<footer class="wrap">Data as of 2026-11-24. Star and Bib status: MICHELIN Guide California 2026 (official). Blank or “Unverified” means the value was not confirmed from an official source. Repo: <a href="https://github.com/kanlerxz87-cyber/Baymich3">Baymich3</a>.</footer>
+</body></html>
