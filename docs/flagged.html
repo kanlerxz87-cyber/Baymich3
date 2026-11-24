@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flagged · SF Bay Area Michelin Dashboard</title>
+<style>
+:root{--ink:#1d1d1f;--mut:#5b5f66;--line:#e3e5e8;--bg:#f7f7f9;--acc:#b3121c;--ok:#1f7a3d;--warn:#8a5a00}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--bg)}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.wrap{max-width:1200px;margin:0 auto;padding:0 14px}
+.brand{padding:12px 0 6px;font-weight:700;font-size:17px}.brand span{color:var(--acc)}
+nav{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:10px}
+nav a{font-size:13px;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 11px;background:#fff}
+nav a.on,nav a:hover{background:var(--ink);color:#fff}
+h1{font-size:22px;margin:18px 0 4px}h2{font-size:17px;margin:22px 0 8px}
+p.lead{color:var(--mut);margin:0 0 12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px}
+.card b{display:block;font-size:24px}.card small{color:var(--mut)}
+.tblwrap{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:10px;margin:8px 0 14px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#fafafa;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--mut);position:sticky;top:0}
+td.name{font-weight:600;min-width:150px}
+.tag{display:inline-block;font-size:11.5px;border-radius:6px;padding:1px 7px;margin:1px 2px 1px 0;background:#eef0f3}
+.t3{background:#111;color:#fff}.t2{background:#444;color:#fff}.t1{background:#8a8f98;color:#fff}.bib{background:#e7f3ea;color:var(--ok)}
+.new{background:#fff3d6;color:var(--warn)}.unv{color:var(--warn);font-style:italic}
+.ok{color:var(--ok)}
+a{color:#0b57d0}
+ul.plain{padding-left:18px}ul.plain li{margin:4px 0}
+.note{background:#fff8e6;border:1px solid #f0dda0;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:13.5px}
+footer{color:var(--mut);font-size:12.5px;padding:24px 0 40px}
+.qa{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0}
+.qa b{display:block}
+@media (max-width:640px){body{font-size:14px}h1{font-size:19px}}
+</style></head><body>
+<header><div class="wrap"><div class="brand">SF Bay Area <span>Michelin</span> Dashboard</div><nav><a href="index.html" class="">Home</a><a href="stars.html" class="">Starred</a><a href="bib.html" class="">Bib Gourmand</a><a href="clusters.html" class="">Clusters</a><a href="hotels.html" class="">Hotels</a><a href="questions.html" class="">Questions</a><a href="suggestions.html" class="">Suggestions</a><a href="flagged.html" class="on">Flagged</a><a href="sources.html" class="">Sources</a></nav></div></header>
+<main class="wrap"><h1>Flagged for review</h1>
+<p class="lead">Items to review by hand. Nothing here is marked verified unless it is linked to an official source.</p>
+<h2>Repo review</h2>
+<div class="tblwrap"><table><tr><th>Item</th><th>Finding</th><th>Flag</th><th>Source</th></tr><tr><td class="name">README.md</td><td>Contains only the heading &#x27;# Baymich3&#x27;. No project description, setup, or license.</td><td>Irregular / incomplete</td><td><a href="https://github.com/kanlerxz87-cyber/Baymich3/blob/main/README.md">link</a></td></tr><tr><td class="name">COORDINATION.md</td><td>Did not exist. Created as the shared task board.</td><td>Created in this session</td><td><a href="https://github.com/kanlerxz87-cyber/Baymich3/blob/arena/db94882d-baymich3/COORDINATION.md">link</a></td></tr><tr><td class="name">Branch naming</td><td>The shared instructions ask for session-&lt;id&gt;/&lt;task&gt; branches; the session&#x27;s assigned branch is arena/db94882d-baymich3. The assigned branch is used.</td><td>Irregular - needs review</td><td><a href="https://github.com/kanlerxz87-cyber/Baymich3/blob/arena/db94882d-baymich3/COORDINATION.md">link</a></td></tr><tr><td class="name">Repo contents</td><td>No site, data, build tooling, .gitignore, or license existed at the base commit fc288db.</td><td>Irregular - needs review</td><td><a href="https://github.com/kanlerxz87-cyber/Baymich3/commit/fc288dbe429ddecaba7f1d0b98971eac9df0ab65">link</a></td></tr></table></div>
+<h2>Data irregularities and conflicts</h2>
+<div class="tblwrap"><table><tr><th>Item</th><th>Conflict</th><th>Used</th><th>Source</th></tr><tr><td class="name">San Francisco three-star count</td><td>A third-party guide page says 3 three-star restaurants in San Francisco; Michelin&#x27;s official article lists 4 (Atelier Crenn, Benu, Californios, Quince).</td><td>Michelin official article (4)</td><td><a href="https://guide.michelin.com/en/article/michelin-guide-ceremony/guide-michelin-california">link</a></td></tr><tr><td class="name">Selby&#x27;s location</td><td>A third-party article lists Selby&#x27;s in Redwood City; Michelin lists Atherton.</td><td>Michelin official (Atherton)</td><td><a href="https://guide.michelin.com/ca/en/california/atherton/restaurant/selby-s">link</a></td></tr><tr><td class="name">Bib Gourmand lists</td><td>Third-party Bib lists (OpenTable, Patch) were used only as cross-checks. Not every entry was compared line-by-line. Michelin marks Adana (Glendale) as temporarily closed; that is outside the core Bay Area.</td><td>Michelin official press release list</td><td><a href="https://www.michelin.com/en/publications/products-and-services/the-michelin-guide-california-2026">link</a></td></tr><tr><td class="name">Restaurant hours</td><td>Hours come from the Michelin restaurant pages; not confirmed against each restaurant&#x27;s own website yet. Holiday hours not captured.</td><td>Michelin restaurant page (as listed)</td><td><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurant/benu">link</a></td></tr><tr><td class="name">Losses of stars</td><td>Le Comptoir at Bar Crenn, O&#x27; by Claude Le Tohic, The Shota (SF) and Kenzo (Napa) are reported as losing stars in a third-party article; Michelin&#x27;s losses list was not checked.</td><td>Not used in counts</td><td><a href="https://www.sfchronicle.com/food/restaurants/article/2026-michelin-stars-of-bay-area-22317064.php">link</a></td></tr></table></div>
+<h2>Starred rows verified only at list level (21)</h2>
+<p>Mister Jiu&#x27;s, Naides, Niku Steakhouse, Nisei, San Ho Won, The Progress, Sun Moon Studio, Protégé, Selby&#x27;s, Madcap, Wakuriya, The Village Pub, Plumed Horse, SingleThread, The French Laundry, Enclos, Troubadour, Auberge du Soleil, Auro, Cyrus, Press. Their address, hours, and price tier must be checked on the Michelin page.</p></main>
+<footer class="wrap">Data as of 2026-11-24. Star and Bib status: MICHELIN Guide California 2026 (official). Blank or “Unverified” means the value was not confirmed from an official source. Repo: <a href="https://github.com/kanlerxz87-cyber/Baymich3">Baymich3</a>.</footer>
+</body></html>

@@ -1,0 +1,207 @@
+{
+  "as_of": "2026-11-24",
+  "executive_summary": [
+    "The official MICHELIN Guide California 2026 selection (announced 24 June 2026) lists 83 starred restaurants statewide: 10 three-star, 13 two-star, 60 one-star (Michelin article).",
+    "San Francisco has 25 starred restaurants: 4 three-star (Atelier Crenn, Benu, Californios, Quince), 6 two-star, 15 one-star (Michelin article).",
+    "Core SF Bay Area (SF, East Bay, Peninsula, South Bay, Marin) has 33 starred restaurants and 36 Bib Gourmand restaurants in the official 2026 lists. Wine Country (Napa/Sonoma) adds 8 starred restaurants, tracked separately.",
+    "Bay Area 2026 changes: Californios promoted to 3 stars; Naides and Wolfsbane are new one-star restaurants; Joodooboo and Kitchen Istanbul are new Bib Gourmands. A third-party report also lists four Bay Area restaurants losing stars (Le Comptoir at Bar Crenn, O' by Claude Le Tohic, The Shota, plus Kenzo in Napa); Michelin's own losses list was not confirmed.",
+    "Verification status: 20 restaurants have full verification from their Michelin restaurant page (address, cuisine, price tier, official website, and most hours). The other 13 starred and 36 Bib rows are verified only at the level of the official Michelin list (star or Bib status, and address for Bib rows). Those rows are flagged.",
+    "Not yet done: exact 2-adult prices (no official menu prices collected), social media links, hotel ranking, and the rest of the restaurant detail pages. These fields are left blank on purpose rather than estimated.",
+    "Hotel ranking (task T3) is not started. Michelin's own hotel selection for California names SingleThread Inn (3 Keys, Healdsburg) and Bernardus Lodge & Spa (2 Keys, Carmel Valley); no Bay Area ranking has been produced."
+  ],
+  "questions": {
+    "answered": [
+      {
+        "q": "How many starred restaurants are in San Francisco in 2026?",
+        "a": "25: 4 three-star, 6 two-star, 15 one-star.",
+        "source": "https://guide.michelin.com/en/article/michelin-guide-ceremony/guide-michelin-california"
+      },
+      {
+        "q": "How many starred restaurants are in the core Bay Area (outside SF too)?",
+        "a": "33 total: 25 in SF plus Commis (Oakland, 2 stars), Sun Moon Studio (Oakland), Protégé (Palo Alto), Selby's (Atherton), Madcap (San Anselmo), Wakuriya (San Mateo), The Village Pub (Woodside), Plumed Horse (Saratoga) at one star each.",
+        "source": "https://guide.michelin.com/en/article/michelin-guide-ceremony/guide-michelin-california"
+      },
+      {
+        "q": "How many Bib Gourmand restaurants are in the core Bay Area?",
+        "a": "36 on Michelin's official 2026 Bib list (addresses confirmed; 2 are new: Joodooboo, Kitchen Istanbul).",
+        "source": "https://www.michelin.com/en/publications/products-and-services/the-michelin-guide-california-2026"
+      },
+      {
+        "q": "Which Bay Area restaurants are new in 2026?",
+        "a": "Californios (promoted to 3 stars), Naides (SF, new 1 star), Wolfsbane (SF, new 1 star), Joodooboo (Oakland, new Bib), Kitchen Istanbul (SF, new Bib).",
+        "source": "https://guide.michelin.com/en/article/michelin-guide-ceremony/guide-michelin-california"
+      },
+      {
+        "q": "Does Michelin's list include the price for two adults?",
+        "a": "No. Michelin shows a price symbol ($ to $$$$) per restaurant, not a dollar amount. Exact prices must come from each restaurant's official menu.",
+        "source": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/benu"
+      }
+    ],
+    "open": [
+      {
+        "q": "Exact price for 2 adults per restaurant (menu price, tax, service/tip, drinks)?",
+        "why": "Required by the brief. Needs official menu pages or booking pages for each restaurant. Not collected.",
+        "how_to_find": "Visit each restaurant's official website and booking page (links are on each row) and record the menu price, plus tax/tip assumptions."
+      },
+      {
+        "q": "Hours, days closed and holiday exceptions for every restaurant?",
+        "why": "Hours are verified for 20 restaurants only; Birdsong, Sons & Daughters, Atelier Crenn and some others are missing hours; holiday exceptions are not captured anywhere.",
+        "how_to_find": "Official restaurant websites; Google Business profile as a cross-check (not an official source)."
+      },
+      {
+        "q": "Instagram, TikTok or YouTube links per restaurant?",
+        "why": "Required by the brief. Not researched yet.",
+        "how_to_find": "Social links from each official website footer; confirm handles on the platform itself."
+      },
+      {
+        "q": "Which hotels to rank, and by what rule?",
+        "why": "Ranking needs a hotel list (official source) and coordinates for each hotel and restaurant. Not collected.",
+        "how_to_find": "Michelin hotel selection pages and official hotel sites; choose a radius (e.g., 1 mile / 1.6 km) and a weighting (3-star = 3 points, 2-star = 2, 1-star = 1, Bib = 0.5) — decision needed (see Suggestions)."
+      },
+      {
+        "q": "Should Michelin 'Recommended' restaurants (not starred, not Bib) be included?",
+        "why": "The brief says 'Michelin rated'. Statewide there are 323 Recommended entries; including them would greatly increase the table size and workload.",
+        "how_to_find": "Your decision. Options are listed in Suggestions."
+      },
+      {
+        "q": "What is the trip profile (dates, party size, budget, neighborhood preference, dietary needs)?",
+        "why": "Hotel ranking and any 'best value' ranking depend on it. The brief does not say.",
+        "how_to_find": "Your input."
+      },
+      {
+        "q": "Where should the live site be hosted and from which branch?",
+        "why": "Publishing to GitHub Pages from a feature branch vs. main changes what the public sees.",
+        "how_to_find": "Your decision."
+      },
+      {
+        "q": "Are the Michelin star counts consistent across all official sources?",
+        "why": "Third-party lists disagree in places (e.g., one site reports 3 three-star SF restaurants; Michelin lists 4). Michelin's own list was used, but the Michelin press PDF was not compared line-by-line with the article.",
+        "how_to_find": "Compare the official press PDF with the official article (already linked)."
+      }
+    ]
+  },
+  "suggestions": [
+    {
+      "id": "S1",
+      "title": "Add a verification date and status to every row",
+      "detail": "Show when each field was checked and against which official URL. Makes manual review faster.",
+      "effort": "Low",
+      "impact": "High",
+      "status": "Awaiting your decision"
+    },
+    {
+      "id": "S2",
+      "title": "Complete the detail pages for the 13 starred and 36 Bib rows that are not yet fully verified",
+      "detail": "Michelin restaurant pages give address, price tier, website and hours. About 60 more page fetches.",
+      "effort": "Medium",
+      "impact": "High",
+      "status": "Awaiting your decision"
+    },
+    {
+      "id": "S3",
+      "title": "Collect exact 2-adult prices from official menus",
+      "detail": "Record the menu price, tax and tip assumptions. Use the official website only; leave blank when not shown.",
+      "effort": "High",
+      "impact": "High",
+      "status": "Awaiting your decision"
+    },
+    {
+      "id": "S4",
+      "title": "Hotel ranking: define the rule before collecting data",
+      "detail": "Options: (a) count starred/Bib restaurants within a radius of each hotel, weighted by tier; (b) rank by walking distance to a chosen neighborhood. Needs your choice of radius and weights.",
+      "effort": "Medium",
+      "impact": "High",
+      "status": "Awaiting your decision"
+    },
+    {
+      "id": "S5",
+      "title": "Add a map view with pins for each verified restaurant",
+      "detail": "Coordinates should come from the Michelin page map or official address; no guessed coordinates.",
+      "effort": "Medium",
+      "impact": "Medium",
+      "status": "Awaiting your decision"
+    },
+    {
+      "id": "S6",
+      "title": "Add filters (tier, city, price tier, open today) on the site",
+      "detail": "Makes the dashboard usable on phones. Needs JavaScript; static tables work without it.",
+      "effort": "Low",
+      "impact": "Medium",
+      "status": "Awaiting your decision"
+    },
+    {
+      "id": "S7",
+      "title": "Scope decision: core Bay Area only, or include Wine Country and Michelin Recommended",
+      "detail": "Current build: core Bay Area in full; Wine Country starred listed separately; Recommended not included.",
+      "effort": "Low",
+      "impact": "High",
+      "status": "Awaiting your decision"
+    },
+    {
+      "id": "S8",
+      "title": "Automate a link checker and a data schema check before publishing",
+      "detail": "Confirms no broken links and that every row has a source URL.",
+      "effort": "Low",
+      "impact": "Medium",
+      "status": "Awaiting your decision"
+    }
+  ],
+  "repo_review": [
+    {
+      "item": "README.md",
+      "finding": "Contains only the heading '# Baymich3'. No project description, setup, or license.",
+      "flag": "Irregular / incomplete",
+      "source": "https://github.com/kanlerxz87-cyber/Baymich3/blob/main/README.md"
+    },
+    {
+      "item": "COORDINATION.md",
+      "finding": "Did not exist. Created as the shared task board.",
+      "flag": "Created in this session",
+      "source": "https://github.com/kanlerxz87-cyber/Baymich3/blob/arena/db94882d-baymich3/COORDINATION.md"
+    },
+    {
+      "item": "Branch naming",
+      "finding": "The shared instructions ask for session-<id>/<task> branches; the session's assigned branch is arena/db94882d-baymich3. The assigned branch is used.",
+      "flag": "Irregular - needs review",
+      "source": "https://github.com/kanlerxz87-cyber/Baymich3/blob/arena/db94882d-baymich3/COORDINATION.md"
+    },
+    {
+      "item": "Repo contents",
+      "finding": "No site, data, build tooling, .gitignore, or license existed at the base commit fc288db.",
+      "flag": "Irregular - needs review",
+      "source": "https://github.com/kanlerxz87-cyber/Baymich3/commit/fc288dbe429ddecaba7f1d0b98971eac9df0ab65"
+    }
+  ],
+  "data_irregularities": [
+    {
+      "item": "San Francisco three-star count",
+      "conflict": "A third-party guide page says 3 three-star restaurants in San Francisco; Michelin's official article lists 4 (Atelier Crenn, Benu, Californios, Quince).",
+      "used": "Michelin official article (4)",
+      "source": "https://guide.michelin.com/en/article/michelin-guide-ceremony/guide-michelin-california"
+    },
+    {
+      "item": "Selby's location",
+      "conflict": "A third-party article lists Selby's in Redwood City; Michelin lists Atherton.",
+      "used": "Michelin official (Atherton)",
+      "source": "https://guide.michelin.com/ca/en/california/atherton/restaurant/selby-s"
+    },
+    {
+      "item": "Bib Gourmand lists",
+      "conflict": "Third-party Bib lists (OpenTable, Patch) were used only as cross-checks. Not every entry was compared line-by-line. Michelin marks Adana (Glendale) as temporarily closed; that is outside the core Bay Area.",
+      "used": "Michelin official press release list",
+      "source": "https://www.michelin.com/en/publications/products-and-services/the-michelin-guide-california-2026"
+    },
+    {
+      "item": "Restaurant hours",
+      "conflict": "Hours come from the Michelin restaurant pages; not confirmed against each restaurant's own website yet. Holiday hours not captured.",
+      "used": "Michelin restaurant page (as listed)",
+      "source": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/benu"
+    },
+    {
+      "item": "Losses of stars",
+      "conflict": "Le Comptoir at Bar Crenn, O' by Claude Le Tohic, The Shota (SF) and Kenzo (Napa) are reported as losing stars in a third-party article; Michelin's losses list was not checked.",
+      "used": "Not used in counts",
+      "source": "https://www.sfchronicle.com/food/restaurants/article/2026-michelin-stars-of-bay-area-22317064.php"
+    }
+  ]
+}
