@@ -1,7 +1,7 @@
 # COORDINATION.md — Shared Task Board
 
-Session ID: `88da5baf` (branch: `arena/88da5baf-baymich3`)
-Last updated: 2026-11-24
+Session ID: `a4fdd108` (branch: `arena/a4fdd108-baymich3`) — audit/verification pass. Prior session 88da5baf work merged to main (b047b5d).
+Last updated: 2026-11-24 (session a4fdd108)
 
 ## Rules
 - Claim a task by writing session ID + file scope, commit + push immediately.
@@ -35,3 +35,17 @@ Last updated: 2026-11-24
 - T5 DONE: GitHub Pages site (10 pages, mobile-friendly, search/filter). Link check: no missing internal links. Local preview on :8000 OK.
 - T6 DONE: docs/executive-summary.md, docs/questions.md (12 Qs), docs/suggestions.md (10 suggestions S1-S10, none implemented).
 - T7 IN PROGRESS: final integration — re-verified combined data, link check passed, publish to GitHub Pages (merge to main + enable Pages).
+
+## Session a4fdd108 (2026-11-24) — Audit & Verification Pass
+
+| ID | Task | Status | Owner | Files | Notes |
+|----|------|--------|-------|-------|-------|
+| A1 | Line-by-line audit: CSV column shifts, price math, HTML↔CSV sync, counts | in progress | a4fdd108 | data/restaurants.csv, data/bib.csv, data/hotels.csv, *.html | Found: 11 rows michelin_url in price_pp column (R28,R33,R34,R36,R38-R42,R44), R26 verification in notes, R12 instagram in youtube col, Acquerello $708 vs $731.60 basis, Angler $156 vs $151.20 basis. Fixing. |
+| A2 | Re-verify prices/hours/social from official sites (fetch, no inference) | in progress | a4fdd108 | data/restaurants.csv | Fetch official_url per row; blank stays Unverified if not on official page. |
+| A3 | Fix site: regenerate tables from fixed CSV, mobile, broken-link check, Pages check | in progress | a4fdd108 | *.html, assets/*, _config.yml | Pages already built on main (legacy). This branch needs merge to main to go live. |
+| A4 | Update executive summary / questions / suggestions / flagged with audit findings | in progress | a4fdd108 | docs/*.md, *.html | Correct C5 count error (8 names listed as 7), update unverified counts. |
+| A5 | Final integration: re-verify, link check, commit/push | unclaimed | — | all | — |
+
+### Audit log a4fdd108
+- Michelin 2026 star list re-verified line-by-line vs official article https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california (24 Jun 2026): 3★ Bay Area 7, 2★ 9 (7 Core+2 Ext), 1★ 28 (27 Core+1 Ext) = 44 total. Matches CSV counts. Californios + Enclos NEW 3★, Naides/Wolfsbane/Troubadour NEW 1★ confirmed.
+- Irregularities found (see A1): column-shift corruption in 12 rows, 2 price-math mismatches, C5 cluster count text error in executive summary, 7 Adams/Angler "verified via search snippet" does not meet strict official-fetch rule — re-fetching.
