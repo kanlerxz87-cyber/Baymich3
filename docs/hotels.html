@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotels | SF Bay Area Michelin Guide</title>
+<meta name="description" content="Verified Michelin Guide data for the San Francisco Bay Area, 2026 edition. Every row links to an official source.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><a href="index.html">SF Bay Area Michelin Dashboard</a></div>
+  <nav class="nav"><a href="index.html">Home</a><a href="summary.html">Executive summary</a><a href="stars.html">Michelin stars</a><a href="bib.html">Bib &amp; Recommended</a><a href="hotels.html" class=on>Hotels</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flags.html">Flagged for review</a></nav>
+</header>
+<main>
+
+<h1>Hotels ranked by nearby Michelin restaurants</h1>
+<div class="banner warn"><b>Status: not completed.</b> No hotel was ranked in this pass, because I could not verify hotel addresses from official sources. Ranking hotels from guesses would break the verification rule.</div>
+<h2>Method (planned)</h2>
+<ol>
+  <li>Take the verified starred and Bib addresses from the <a href="stars.html">Michelin stars</a> and <a href="bib.html">Bib</a> tables.</li>
+  <li>Take candidate hotel addresses from official hotel sites or Michelin hotel pages (Michelin lists hotels on its own site, e.g. the SingleThread Inn page linked from its restaurant page).</li>
+  <li>Count starred and Bib restaurants within a set walking radius (for example 1 km and 3 km), and record the method and distance used.</li>
+  <li>Rank hotels by count, then tie-break by distance to the nearest starred restaurant.</li>
+</ol>
+<h2>Blockers</h2>
+<ul>
+  <li>Hotel addresses are not yet captured from official pages.</li>
+  <li>The radius and tie-break rule need your decision (see <a href="questions.html">Questions</a>).</li>
+  <li>Coordinates for each restaurant are not yet captured (Michelin pages show maps, not coordinates in text).</li>
+</ul>
+
+</main>
+<footer>
+  <p>Data snapshot: 2026-11-24. Sources are linked on every row. Blank cells are unverified and flagged, never inferred.
+  Repository: <a href="https://github.com/kanlerxz87-cyber/Baymich3">kanlerxz87-cyber/Baymich3</a> · Branch <code>arena/8bc23e0f-baymich3</code></p>
+</footer>
+<script src="assets/filter.js"></script>
+</body>
+</html>
