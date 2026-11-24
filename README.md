@@ -10,7 +10,7 @@ Verified, mobile-friendly dashboard of Michelin-starred, Bib Gourmand, and Recom
 - `listed.html` — Bib Gourmand (~36) + Recommended (86 count + link)
 - `hotels.html` — 14 hotels ranked by cluster density
 - `map.html` — cluster guide + Michelin map links (no guessed coordinates)
-- `executive-summary.html` / `questions.html` / `suggestions.html` / `flagged.html` / `methodology.html`
+- `executive-summary.html` / `questions.html` / `suggestions.html` / `flagged.html` (irregularity log) / `methodology.html`
 - `data/restaurants.csv`, `data/bib.csv`, `data/hotels.csv`, `data/SCOPE.md`
 - `docs/` — markdown sources for summary/questions/suggestions
 - `COORDINATION.md` — shared task board (parallel sessions)
@@ -19,6 +19,9 @@ Verified, mobile-friendly dashboard of Michelin-starred, Bib Gourmand, and Recom
 - Edition: MICHELIN Guide California 2026. Scope: 9-county Core + flagged Extension.
 - Every row has an official source link. Blank = Unverified (never guessed).
 - Price for 2 = per-person × 2 + service charge (formula per row, excl. tax/bev).
+
+## Rebuild data pages
+`python3 scripts/build_site.py` regenerates `restaurants.html`, `hotels.html`, `flagged.html`, and the summary/questions/suggestions pages from `data/*.csv` and `docs/*.md`. Edit the CSV or Markdown, then rerun the script. Other pages are hand-maintained.
 
 ## Run locally
 `python3 -m http.server 8000` then open http://localhost:8000/

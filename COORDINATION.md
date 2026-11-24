@@ -1,6 +1,6 @@
 # COORDINATION.md — Shared Task Board
 
-Session ID: `88da5baf` (branch: `arena/88da5baf-baymich3`)
+Session IDs: `88da5baf` (branch `arena/88da5baf-baymich3`, merged PR #3), `e1b8a912` (branch `arena/e1b8a912-baymich3`, merged PR #4), `15c870c6` (branch `arena/15c870c6-baymich3`)
 Last updated: 2026-11-24
 
 ## Rules
@@ -16,15 +16,20 @@ Last updated: 2026-11-24
 
 | ID | Task | Status | Owner Session | Files Touched | Sources / Verification | Irregularities |
 |----|------|--------|---------------|---------------|------------------------|----------------|
-| T1 | Michelin restaurants (stars + listed) — SF Bay Area | in progress | 88da5baf | data/restaurants.csv, data/restaurants.md | guide.michelin.com (official) | — |
-| T2 | Pricing for 2 adults (verified only) | in progress | 88da5baf | data/restaurants.csv, data/pricing.md | Official restaurant sites / Michelin | — |
-| T3 | Hours/days/exceptions + official links + social links | in progress | 88da5baf | data/restaurants.csv, data/hours-social.md | Official sites; YouTube/TikTok/Instagram search | — |
-| T4 | Hotels ranked by Michelin density | in progress | 88da5baf | data/hotels.csv, data/hotels.md | Hotel official sites + Michelin map distances | — |
-| T5 | GitHub Pages site (landing + subpages, mobile-friendly) | in progress | 88da5baf | index.html, *.html, assets/*, _config.yml | Build check, link check | — |
-| T6 | Executive summary, Questions/Answers, Suggestions | in progress | 88da5baf | docs/executive-summary.md, docs/questions.md, docs/suggestions.md | Cross-ref T1–T4 | — |
+| T1 | Michelin restaurants (stars + listed) — SF Bay Area | done (per 88da5baf log; irregularities in flagged.html) | 88da5baf | data/restaurants.csv, data/restaurants.md | guide.michelin.com (official) | — |
+| T2 | Pricing for 2 adults (verified only) | done (per 88da5baf log; irregularities in flagged.html) | 88da5baf | data/restaurants.csv, data/pricing.md | Official restaurant sites / Michelin | — |
+| T3 | Hours/days/exceptions + official links + social links | done (per 88da5baf log; irregularities in flagged.html) | 88da5baf | data/restaurants.csv, data/hours-social.md | Official sites; YouTube/TikTok/Instagram search | — |
+| T4 | Hotels ranked by Michelin density | done (per 88da5baf log; irregularities in flagged.html) | 88da5baf | data/hotels.csv, data/hotels.md | Hotel official sites + Michelin map distances | — |
+| T5 | GitHub Pages site (landing + subpages, mobile-friendly) | done (per 88da5baf log; irregularities in flagged.html) | 88da5baf | index.html, *.html, assets/*, _config.yml | Build check, link check | — |
+| T6 | Executive summary, Questions/Answers, Suggestions | done (per 88da5baf log; irregularities in flagged.html) | 88da5baf | docs/executive-summary.md, docs/questions.md, docs/suggestions.md | Cross-ref T1–T4 | — |
+| T8 | Repo review: irregularity log + starred-list re-check vs Michelin 2026 article | done | 15c870c6 | COORDINATION.md, docs/flagged-review.md, flagged.html | guide.michelin.com California 2026 article (24 Jun 2026); Michelin SF restaurants list | 21 items on flagged.html (F1–F21) |
+| T9 | Restaurants: verify blank rows from Michelin restaurant pages (address, website, tier, hours) | needs review | 15c870c6 | data/restaurants.csv | 17 Michelin restaurant pages fetched 24 Nov 2026 (linked per row) | Hours still missing for some rows; 0 YouTube/TikTok verified |
+| T10 | Hotels: correct starred counts, re-rank by count, document method | needs review (method decision Q13) | 15c870c6 | data/hotels.csv, data/hotels.md | Michelin 2026 article (cluster counts) | SF 20→25, Wine Country 7→8, ranks re-sorted; Bardessono address conflict flagged; distance method not applied |
+| T11 | Site: data pages from CSV/Markdown (scripts/build_site.py); flagged page; summary/questions/suggestions rendered from docs | done | 15c870c6 | scripts/build_site.py, scripts/build_restaurants.py (delegates), restaurants/hotels/flagged/executive-summary/questions/suggestions .html | Internal link check: 0 missing; external links not re-fetched | index/listed/map/methodology not regenerated |
 | T7 | Final integration: re-verify line-by-line, link check, publish | in progress (claimed 2026-11-24 14:30 UTC by e1b8a912; handoff from 88da5baf — see log) | e1b8a912 | data/restaurants.csv, restaurants.html, executive-summary.html, questions.html, flagged.html, docs/*.md, scripts/build_restaurants.py, COORDINATION.md | guide.michelin.com US article “Every MICHELIN-Starred Restaurant in California for 2026” (24 Jun 2026) + Michelin SF restaurants page (145 / 29★ / 30 Bib / 86 Selected) | See log 2026-11-24 e1b8a912 |
 
 ## Log
+- 2026-11-24 (15c870c6): Session 15c870c6 on branch arena/15c870c6-baymich3 claimed T8–T11 (remediation pass) before seeing the e1b8a912 T7 claim. Note: this overlaps T7 on data/restaurants.csv, restaurants.html, executive-summary.html, questions.html, flagged.html, docs/*.md and scripts/build_restaurants.py — see the 15c870c6 merge log below.
 - 2026-11-24: Repo was empty (only README). Session 88da5baf claimed T1–T6 on branch arena/88da5baf-baymich3. T7 left for final integration pass in same session after T1–T6 done.
 
 ## Update 2026-11-24 (session 88da5baf)
@@ -53,3 +58,11 @@ Last updated: 2026-11-24
 - **Other sessions:** Open PRs #1 (arena/d7b7bed1) and #2 (arena/db94882d) exist on other branches. Not touched. Their COORDINATION.md edits will conflict with this one; resolve at merge (keep all log entries).
 - **Status:** T7 re-verification complete for the starred set and the corrected rows. Not complete: per-row social links (only 3 verified), 29 unverified prices, and hotel address verification. These remain flagged and are blank, not inferred.
 
+## Log — session 15c870c6 (branch arena/15c870c6-baymich3), 2026-11-24 — remediation pass + merge with e1b8a912
+- **Scope done:** T8 (irregularity log), T9 (17 Michelin restaurant pages), T10 (hotels), T11 (site regenerated). Branch: arena/15c870c6-baymich3.
+- **Sources used:** Michelin California 2026 article https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california ; Michelin SF list https://guide.michelin.com/us/en/california/san-francisco/restaurants ; Michelin restaurant pages (linked per row in data/restaurants.csv).
+- **Verification performed:** Starred list (41 Core + 3 Extension) matched name-by-name to the Michelin 2026 article's lists. Hotel cluster counts recomputed from the same lists. Two-adult totals re-computed from their stated formulas. Internal links checked. External official sites NOT re-fetched in this session (only Michelin pages).
+- **Irregularities:** see flagged.html (F1–F18). Key: 2 wrong totals (fixed), 10 shifted URL cells (fixed), 2 hotel count errors (fixed), hotel ranks out of order (fixed), 2 same-address conflicts (open), Green Star list not checked (open), social coverage 3/44 (open).
+- **Open decisions:** Q13 (hotel ranking method), Q14 (on-site restaurants at hotels).
+- **Merge with e1b8a912 (PR #4):** PR #5 conflicted with main on the T7 files. Resolution: kept both sides. CSV: took e1b8a912's Sorrel price (409.50, SF mandate), Green Star flags (Atelier Crenn, Harbor House), and R26 status; kept 15c870c6's Michelin-page fields for R24 and R28–R44. HTML pages regenerated by scripts/build_site.py (scripts/build_restaurants.py now delegates to it). Their irregularities F19–F21 added to flagged.html. Nothing from e1b8a912 was discarded.
+- **Handoff note:** Tasks T9 and T10 are "needs review" and do not block other work. Any session that picks up T9 should start with the rows whose verification_status says "Partial" or "Unverified".
