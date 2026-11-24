@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Suggestions — SF Bay Area Michelin 2026</title><link rel="stylesheet" href="assets/style.css"></head><body><header class="top"><div class="wrap"><div class="brand">SF Bay Area Michelin<small>Guide California 2026 · Verified · Mobile-friendly</small></div><nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav></div></header><main><h1>Suggestions — Site Improvements for Better Decision-Making (Review Before Implementing)</h1>
+<p>&gt; <b>Status:</b> Suggestions only. Nothing here is implemented until reviewed and chosen. Each suggestion lists: Problem → Change → Effort → Risk → Decision needed.</p>
+<h2>S1. Verified-price badge + &quot;Budget for 2&quot; calculator</h2>
+<ul>
+<li><b>Problem:</b> Users can&#x27;t tell verified vs indicative prices at a glance.</li>
+<li><b>Change:</b> Add green &quot;Verified&quot; / amber &quot;Unverified&quot; badge per row; calculator: enter party size + wine pairing toggle → total incl. service %. Pulls from CSV.</li>
+<li><b>Effort:</b> Medium (JS + CSV). <b>Risk:</b> Low. <b>Decision:</b> Approve badge colors + tax inclusion (currently excl. tax).</li>
+</ul>
+<h2>S2. Cluster map with real pins (Leaflet + geocoded addresses)</h2>
+<ul>
+<li><b>Problem:</b> Map page currently links to Michelin/Google search (no pins). Users can&#x27;t see density.</li>
+<li><b>Change:</b> Geocode each verified address (Nominatim/OSM, date-stamped) → Leaflet pins colored by stars; hotel pins; 5/10/25 mi circles. Fallback to list if geocode fails.</li>
+<li><b>Effort:</b> High (geocoding 44 addresses + QA). <b>Risk:</b> Medium (coordinate accuracy). <b>Decision:</b> Approve OSM vs Google (ToS) + accuracy disclaimer.</li>
+</ul>
+<h2>S3. &quot;Bookable now?&quot; checker</h2>
+<ul>
+<li><b>Problem:</b> Hours/prices stale; users book closed venues (e.g., dropped 2025 stars).</li>
+<li><b>Change:</b> Per-row &quot;Last checked&quot; date; auto-flag rows &gt;90 days old; link to Tock/OpenTable/Resy booking page (from official site).</li>
+<li><b>Effort:</b> Medium. <b>Risk:</b> Low. <b>Decision:</b> Approve staleness threshold (90 days?) + booking links policy.</li>
+</ul>
+<h2>S4. Hotel total-trip cost estimator</h2>
+<ul>
+<li><b>Problem:</b> Hotel ranking ignores nightly rate; restaurant cost dominates.</li>
+<li><b>Change:</b> Add sample-date nightly rate (official site, date-stamped) + 3-night total + dinner total = trip total. Rank by value (stars per $) as secondary sort.</li>
+<li><b>Effort:</b> High (rates change daily). <b>Risk:</b> Medium (stale rates mislead). <b>Decision:</b> Approve sample dates + refresh cadence.</li>
+</ul>
+<h2>S5. Social proof wall (verified handles only)</h2>
+<ul>
+<li><b>Problem:</b> Social links sparse (3/44). Users want video previews.</li>
+<li><b>Change:</b> Collect official Instagram/YouTube/TikTok via official-site footers; embed Instagram grid (official embed) + YouTube playlist per cluster. Mark fan accounts separately.</li>
+<li><b>Effort:</b> High (44×3 searches). <b>Risk:</b> Low. <b>Decision:</b> Approve platforms priority (Instagram first?) + embed vs link.</li>
+</ul>
+<h2>S6. Bib vs Star value comparison</h2>
+<ul>
+<li><b>Problem:</b> Bib (value) buried; users overpay for stars.</li>
+<li><b>Change:</b> &quot;Value picks&quot; view: Bib + 1★ under $200pp for 2, sorted by price. Show $/star metric.</li>
+<li><b>Effort:</b> Low (filter on existing data). <b>Risk:</b> Low. <b>Decision:</b> Approve price threshold.</li>
+</ul>
+<h2>S7. Itinerary builder (cluster → hotel → 3 dinners)</h2>
+<ul>
+<li><b>Problem:</b> Tables don&#x27;t make an itinerary.</li>
+<li><b>Change:</b> Pick hotel → auto-suggest 3 restaurants in same cluster (1×3★/2★ + 1×1★ + 1×Bib) with total cost + days-open check. Export/print.</li>
+<li><b>Effort:</b> High. <b>Risk:</b> Medium (availability not real-time). <b>Decision:</b> Approve scope (print-only vs save).</li>
+</ul>
+<h2>S8. Accessibility &amp; mobile polish</h2>
+<ul>
+<li><b>Problem:</b> Tables hard on mobile; color-only badges fail WCAG.</li>
+<li><b>Change:</b> Card view &lt;640px (already planned), text labels on badges, keyboard nav, contrast AA, reduced-motion.</li>
+<li><b>Effort:</b> Medium. <b>Risk:</b> Low. <b>Decision:</b> Approve WCAG AA target.</li>
+</ul>
+<h2>S9. Data freshness + changelog</h2>
+<ul>
+<li><b>Problem:</b> No audit trail.</li>
+<li><b>Change:</b> CHANGELOG.md + per-row source URL + checked date; GitHub Actions link checker (weekly).</li>
+<li><b>Effort:</b> Low-Medium. <b>Risk:</b> Low. <b>Decision:</b> Approve checker (broken-link PRs?).</li>
+</ul>
+<h2>S10. Recommended (86) full enumeration</h2>
+<ul>
+<li><b>Problem:</b> 86 Recommended names missing; value dining incomplete.</li>
+<li><b>Change:</b> Transcribe Michelin SF search pagination → data/recommended.csv → Listed page table.</li>
+<li><b>Effort:</b> Medium (manual transcription + QA). <b>Risk:</b> Low. <b>Decision:</b> Approve (full 86 vs top 30?).</li>
+</ul>
+<h2>Decision log (fill after review)</h2>
+<div class="tblwrap"><table>
+<tr><th>Suggestion</th><th>Chosen?</th><th>Date</th><th>Notes</th></tr>
+<tr><td>S1</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>S2</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>S3</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>S4</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>S5</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>S6</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>S7</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>S8</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>S9</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>S10</td><td>—</td><td>—</td><td>—</td></tr>
+</table></div></main><footer>Sources: MICHELIN Guide California 2026 + official sites. See <a href="methodology.html">Method</a>.</footer><script src="assets/app.js"></script></body></html>
