@@ -4,7 +4,7 @@ No earlier task board existed when this session began. The active Arena branch i
 
 | Task | Status | Owner / session | File scope |
 |---|---|---|---|
-| SF Bay Area Michelin guide site, source-backed catalog, analysis, and GitHub Pages setup | in progress | `a66173a1` (Arena session on `arena/a66173a1-baymich3`) | `COORDINATION.md`, `README.md`, `index.html`, `assets/**`, `data/**`, `pages/**`, `.github/workflows/**` |
+| SF Bay Area Michelin guide site, source-backed catalog, analysis, and GitHub Pages setup | in progress | `a66173a1` (Arena session on `arena/a66173a1-baymich3`) | `COORDINATION.md`, `README.md`, `site/**`, `.github/workflows/**` |
 
 ## Handoff / verification log
 
