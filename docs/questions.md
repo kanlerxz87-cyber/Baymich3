@@ -15,8 +15,8 @@ Each question states: **What we know (verified) / What we don't know / How to di
 - **Owner:** User. **Blocks:** Hotel ranking, itinerary.
 
 ## Q3. What will dinner for 2 actually cost?
-- **Know:** 11 rows have a verified two-adult total (Benu, Acquerello, Birdsong, Commis, Kiln, Lazy Bear, Sons & Daughters, 7 Adams, Angler lunch, Madcap, Sorrel $409.50 incl. 5% SF Mandate). Auberge (Tock) is Partial. Formula shown per row. Totals for Acquerello (731.60), Commis (669.60) and Angler (151.20) corrected 24 Nov 2026.
-- **Don't know:** 33 of 44 rows have no verified two-adult total. Service % missing on some rows. Tax, wine, supplements extra. Michelin pages show only a $-symbol tier, not dollar amounts.
+- **Know:** 17 rows now carry a verified two-adult total (Benu $1,037; Acquerello $731.60; Aubergine $695.40; Kiln $756; Birdsong $700; Commis $669.60; Sons & Daughters $660; Lazy Bear $640; Auro $550; Ssal $540; Plumed Horse $450; Madcap $432; Troubadour $410; Sorrel $409.50; Chez Noir $396; 7 Adams $320.04; Angler lunch $151.20). Each row prints its formula. Acquerello, Commis, Angler, 7 Adams, Sorrel and Madcap were recomputed on 24 Nov 2026 because the displayed total disagreed with the row's own basis — 7 Adams had both its 6% surcharge and its 20% service missing.
+- **Don't know:** 27 of 44 rows have no publishable total, including six of the seven 3-star rooms (only Benu publishes a price). Service % is stated as "not stated on the official page" where a venue omits it, rather than assumed. Tax, wine and supplements are extra everywhere. Michelin pages show only a $-symbol tier, not dollar amounts.
 - **Discover:** Visit each official site's Reservations/Tock page (prices live there, not homepage); screenshot + date-stamp; update CSV. For Quince/Californios/SingleThread/French Laundry/Enclos/Saison, check Tock/OpenTable booking page (restaurant-controlled).
 - **Owner:** Research session. **Blocks:** Budgeting.
 
@@ -27,13 +27,13 @@ Each question states: **What we know (verified) / What we don't know / How to di
 - **Owner:** Research session. **Blocks:** Booking dates.
 
 ## Q5. Where are the YouTube/TikTok/Instagram links?
-- **Know:** 3 Instagram verified (Atelier @atelier.crenn via official sameAs, Benu @benu_sf via search, Lazy Bear @lazybearsf via official dinner page). YouTube/TikTok: 0 verified.
+- **Know:** 7 Instagram handles are now recorded (Atelier Crenn @atelier.crenn, Benu @benu_sf, Lazy Bear @lazybearsf, 7 Adams @7adamsrestaurant, Nisei @niseisf, Auro @auronapavalley, Chez Noir @cheznoircarmel), each taken from the venue's own site or its Michelin page. YouTube/TikTok: **0 verified** — no starred venue publishes a channel link, so those cells are blank rather than guessed.
 - **Don't know:** 41 of 44 rows have no verified social link. Restaurant-owned vs fan accounts unclear.
 - **Discover:** (1) Fetch official site footer for social icons (authoritative). (2) Search Instagram/YouTube/TikTok for exact restaurant name + city; only link if handle matches official site or Michelin page. (3) Record handle + URL + date checked.
 - **Owner:** Research session. **Blocks:** Social proof / marketing.
 
 ## Q6. Which hotel should we book? What does it cost per night?
-- **Know:** 14 hotels ranked by cluster density (method on hotels page). 2 addresses verified (Four Seasons, Fairmont partial). No nightly rates collected.
+- **Know:** 14 hotels ranked by cluster density. 7 addresses are now verified against the hotels' own pages (Four Seasons, Fairmont, 1 Hotel, Cavallo Point, Bardessono, SingleThread Inn, Auberge du Soleil), 3 are partial (St. Regis, Rosewood, Taj Campton Place) and 4 have a deliberately blank address (Palace, Ritz-Carlton SF, Hotel Kabuki, Claremont) because their official pages would not load. Three addresses were previously wrong and are now fixed — see the Flagged page. No nightly rates collected.
 - **Don't know:** Nightly rates (dynamic), Michelin Keys status, parking/valet, cancellation, pet policy, accessibility.
 - **Discover:** Check Michelin Guide Hotels (Keys) + official hotel site Rates page for sample dates; record date + occupancy. Do not use third-party rate blogs.
 - **Owner:** User (dates/budget) + research session. **Blocks:** Booking.

@@ -1,99 +1,117 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Questions, Information &amp; Answers — What Must Be Resolved Before Deciding — SF Bay Area Michelin 2026</title><link rel="stylesheet" href="assets/style.css"></head><body><header class="top"><div class="wrap"><div class="brand">SF Bay Area Michelin<small>Guide California 2026 · Verified · Mobile-friendly</small></div><nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html" aria-current="page">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav></div></header><main><h1>Questions, Information & Answers — What Must Be Resolved Before Deciding</h1><p>Source: <code>docs/questions.md</code> (rendered from Markdown). Verified facts link to official sources.</p><p>Each question states: <b>What we know (verified) / What we don&#x27;t know / How to discover it / Owner</b>. No decision should be made on Unverified rows.</p>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Questions, Information &amp; Answers — What Must Be Resolved Before Deciding</title>
+<meta name="description" content="SF Bay Area MICHELIN Guide 2026 dashboard: starred vs listed, verified prices for two, clusters, and hotels ranked by Michelin density.">
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="wrap">
+<div class="brand">SF Bay Area Michelin<small>Guide California 2026 &middot; source-linked &middot; mobile-friendly</small></div>
+<nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav>
+</div></header>
+<main>
+<p class="small">Rendered from <code>docs/questions.md</code>. Verified values link to official sources; this page regenerates with <code>python3 tools/build_site.py</code>.</p><p>Each question states: <b>What we know (verified) / What we don&#x27;t know / How to discover it / Owner</b>. No decision should be made on Unverified rows.</p>
 <h2>Q1. Which Michelin edition should we trust?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> 2026 is latest (June 2026). 2025 list is superseded. Californios/Enclos are 3★ in 2026 (were 2★ in 2025).</li>
 <li><b>Don&#x27;t know:</b> Will 2027 change stars? (Unknowable; check June 2027 ceremony.)</li>
 <li><b>Discover:</b> Re-check guide.michelin.com California 2026 article each quarter; subscribe to Michelin newsletter.</li>
 <li><b>Owner:</b> Site maintainer. <b>Blocks:</b> All star claims.</li>
 </ul>
 <h2>Q2. What counts as &quot;Bay Area&quot;?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> This project uses 9-county Core + flagged Extension (Carmel/Elk) + excluded Sacramento. Michelin &quot;SF and surroundings&quot; (145) blends them.</li>
 <li><b>Don&#x27;t know:</b> User&#x27;s travel radius (e.g., will they drive to Elk/Carmel?).</li>
 <li><b>Discover:</b> Ask user for max drive time / base city; re-cut hotel ranking accordingly.</li>
 <li><b>Owner:</b> User. <b>Blocks:</b> Hotel ranking, itinerary.</li>
 </ul>
 <h2>Q3. What will dinner for 2 actually cost?</h2>
-<ul>
-<li><b>Know:</b> 11 rows have a verified two-adult total (Benu, Acquerello, Birdsong, Commis, Kiln, Lazy Bear, Sons &amp; Daughters, 7 Adams, Angler lunch, Madcap, Sorrel $409.50 incl. 5% SF Mandate). Auberge (Tock) is Partial. Formula shown per row. Totals for Acquerello (731.60), Commis (669.60) and Angler (151.20) corrected 24 Nov 2026.</li>
-<li><b>Don&#x27;t know:</b> 33 of 44 rows have no verified two-adult total. Service % missing on some rows. Tax, wine, supplements extra. Michelin pages show only a $-symbol tier, not dollar amounts.</li>
+<ul class="tight">
+<li><b>Know:</b> 17 rows now carry a verified two-adult total (Benu $1,037; Acquerello $731.60; Aubergine $695.40; Kiln $756; Birdsong $700; Commis $669.60; Sons &amp; Daughters $660; Lazy Bear $640; Auro $550; Ssal $540; Plumed Horse $450; Madcap $432; Troubadour $410; Sorrel $409.50; Chez Noir $396; 7 Adams $320.04; Angler lunch $151.20). Each row prints its formula. Acquerello, Commis, Angler, 7 Adams, Sorrel and Madcap were recomputed on 24 Nov 2026 because the displayed total disagreed with the row&#x27;s own basis — 7 Adams had both its 6% surcharge and its 20% service missing.</li>
+<li><b>Don&#x27;t know:</b> 27 of 44 rows have no publishable total, including six of the seven 3-star rooms (only Benu publishes a price). Service % is stated as &quot;not stated on the official page&quot; where a venue omits it, rather than assumed. Tax, wine and supplements are extra everywhere. Michelin pages show only a $-symbol tier, not dollar amounts.</li>
 <li><b>Discover:</b> Visit each official site&#x27;s Reservations/Tock page (prices live there, not homepage); screenshot + date-stamp; update CSV. For Quince/Californios/SingleThread/French Laundry/Enclos/Saison, check Tock/OpenTable booking page (restaurant-controlled).</li>
 <li><b>Owner:</b> Research session. <b>Blocks:</b> Budgeting.</li>
 </ul>
 <h2>Q4. When is each restaurant open? Any closures/exceptions?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> 27 of 44 rows have days/hours from Michelin restaurant pages or official sites (added 24 Nov 2026, incl. 17 rows from Michelin). Earlier verified examples: Benu Wed-Sat, Quince Tue-Sat + Nov26/Dec25-26 closed, Birdsong Tue-Sat, Kiln Tue-Thu/Fri-Sat split, Lazy Bear Tue-Sat 5-9, Angler Daily lunch/dinner, Mister Jiu&#x27;s Tue-Sat, Nari 7 nights, Nisei Wed-Sun, Madcap Tue-Sat).</li>
 <li><b>Don&#x27;t know:</b> 17 rows have no hours; Michelin hours tables were cut off for Auro, Aubergine, Niku, Village Pub (Sun) and Harbor House (Sun). Holiday/seasonal exceptions mostly unknown.</li>
 <li><b>Discover:</b> Fetch each official site&#x27;s Hours/Visit page + Michelin individual page (Days open filter). Check Instagram for pop-up closures.</li>
 <li><b>Owner:</b> Research session. <b>Blocks:</b> Booking dates.</li>
 </ul>
 <h2>Q5. Where are the YouTube/TikTok/Instagram links?</h2>
-<ul>
-<li><b>Know:</b> 3 Instagram verified (Atelier @atelier.crenn via official sameAs, Benu @benu_sf via search, Lazy Bear @lazybearsf via official dinner page). YouTube/TikTok: 0 verified.</li>
+<ul class="tight">
+<li><b>Know:</b> 7 Instagram handles are now recorded (Atelier Crenn @atelier.crenn, Benu @benu_sf, Lazy Bear @lazybearsf, 7 Adams @7adamsrestaurant, Nisei @niseisf, Auro @auronapavalley, Chez Noir @cheznoircarmel), each taken from the venue&#x27;s own site or its Michelin page. YouTube/TikTok: <b>0 verified</b> — no starred venue publishes a channel link, so those cells are blank rather than guessed.</li>
 <li><b>Don&#x27;t know:</b> 41 of 44 rows have no verified social link. Restaurant-owned vs fan accounts unclear.</li>
 <li><b>Discover:</b> (1) Fetch official site footer for social icons (authoritative). (2) Search Instagram/YouTube/TikTok for exact restaurant name + city; only link if handle matches official site or Michelin page. (3) Record handle + URL + date checked.</li>
 <li><b>Owner:</b> Research session. <b>Blocks:</b> Social proof / marketing.</li>
 </ul>
 <h2>Q6. Which hotel should we book? What does it cost per night?</h2>
-<ul>
-<li><b>Know:</b> 14 hotels ranked by cluster density (method on hotels page). 2 addresses verified (Four Seasons, Fairmont partial). No nightly rates collected.</li>
+<ul class="tight">
+<li><b>Know:</b> 14 hotels ranked by cluster density. 7 addresses are now verified against the hotels&#x27; own pages (Four Seasons, Fairmont, 1 Hotel, Cavallo Point, Bardessono, SingleThread Inn, Auberge du Soleil), 3 are partial (St. Regis, Rosewood, Taj Campton Place) and 4 have a deliberately blank address (Palace, Ritz-Carlton SF, Hotel Kabuki, Claremont) because their official pages would not load. Three addresses were previously wrong and are now fixed — see the Flagged page. No nightly rates collected.</li>
 <li><b>Don&#x27;t know:</b> Nightly rates (dynamic), Michelin Keys status, parking/valet, cancellation, pet policy, accessibility.</li>
 <li><b>Discover:</b> Check Michelin Guide Hotels (Keys) + official hotel site Rates page for sample dates; record date + occupancy. Do not use third-party rate blogs.</li>
 <li><b>Owner:</b> User (dates/budget) + research session. <b>Blocks:</b> Booking.</li>
 </ul>
 <h2>Q7. What about Bib Gourmand and Recommended (non-starred) restaurants?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> Bib Bay Area ~36 names (data/bib.csv) verified via Michelin Bib page + OpenTable 2026 list. Recommended SF surroundings = 86 (Michelin count).</li>
 <li><b>Don&#x27;t know:</b> Full Recommended names list (86) not yet enumerated; Bib prices/hours/social Unverified.</li>
 <li><b>Discover:</b> Paginate Michelin SF restaurants search (145 = 29+30+86) and transcribe names + Michelin URLs; then verify Bib prices/hours for top picks.</li>
 <li><b>Owner:</b> Research session. <b>Blocks:</b> Value itinerary.</li>
 </ul>
 <h2>Q8. Which 2025 stars disappeared in 2026 — are they closed or demoted?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> Le Comptoir, O&#x27; by Claude Le Tohic, The Shota absent from 2026 starred list. Osito/Aphotic closed (Chronicle 2025). Chez TJ → Recommended (Chronicle 2025).</li>
 <li><b>Don&#x27;t know:</b> Current status of Le Comptoir/O&#x27;/Shota (closed? renamed? Recommended?).</li>
 <li><b>Discover:</b> Check Michelin individual pages + official sites for each; update Flagged page.</li>
 <li><b>Owner:</b> Research session. <b>Blocks:</b> Avoid booking closed venues.</li>
 </ul>
 <h2>Q9. How do we get there? Drive time, transit, parking?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> Addresses for 20 rows (official/secondary). Kiln parking/transit detail (official). Most parking Unverified.</li>
 <li><b>Don&#x27;t know:</b> Drive times from each hotel, BART/Muni routes, valet cost (Benu $30 verified; others unknown).</li>
 <li><b>Discover:</b> Use Google Maps directions from chosen hotel (record date/time); check official site Parking page.</li>
 <li><b>Owner:</b> User + research. <b>Blocks:</b> Itinerary feasibility.</li>
 </ul>
 <h2>Q10. Dietary, allergies, dress code, cancellation, minimum age?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> Kiln (no modifications), Commis (vegetarian/pescatarian only, no vegan), Sons &amp; Daughters (pescatarian/vegetarian 48h), Lazy Bear (no butter exclusion). Others unknown.</li>
 <li><b>Don&#x27;t know:</b> 40 rows dietary/cancellation unknown.</li>
 <li><b>Discover:</b> Fetch each official site&#x27;s FAQ/Policies page; do not assume.</li>
 <li><b>Owner:</b> Research session. <b>Blocks:</b> Suitability.</li>
 </ul>
 <h2>Q11. How fresh is this data? When to re-verify?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> Checked 24 Nov 2026. Michelin 2026 (June 2026). Prices seasonal (Sorrel Fall $125 vs Summer $195).</li>
 <li><b>Don&#x27;t know:</b> Next Michelin update date; seasonal menu change dates.</li>
 <li><b>Discover:</b> Re-verify quarterly + before any booking; date-stamp every price/hours cell.</li>
 <li><b>Owner:</b> Maintainer. <b>Blocks:</b> All decisions (staleness risk).</li>
 </ul>
 <h2>Q12. What is the decision this site supports?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> Site supports: pick cluster → pick hotel → pick restaurants → budget for 2.</li>
 <li><b>Don&#x27;t know:</b> User&#x27;s dates, party size (2 assumed), budget cap, cuisine preferences, mobility needs.</li>
 <li><b>Discover:</b> Ask user (or default to 2 adults, no cap, all cuisines — current assumption, flagged).</li>
 <li><b>Owner:</b> User. <b>Blocks:</b> Personalization.</li>
 </ul>
 <h2>Q13. Should hotels be ranked by distance counts or by cluster count? (Decision H1)</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> The current ranking uses the number of starred restaurants in each hotel&#x27;s cluster (SF 25, Wine Country 8, Peninsula 5, East Bay 2, Marin 1). All 8 SF hotels tie. SCOPE.md describes a distance method (5/10/25 miles) that has not been applied.</li>
 <li><b>Don&#x27;t know:</b> Which hotel addresses are verified (most are not) and whether an approved coordinates source exists.</li>
 <li><b>Discover:</b> Confirm each hotel address on its official site; agree on a coordinates source (e.g., the hotel&#x27;s own location page); then compute counts within 5 / 10 / 25 miles.</li>
 <li><b>Owner:</b> User (choose method) + research. <b>Blocks:</b> Hotel order within SF and within Wine Country.</li>
 </ul>
 <h2>Q14. Do on-site restaurants (e.g., AURO inside Four Seasons Napa Valley) count toward a hotel&#x27;s score?</h2>
-<ul>
+<ul class="tight">
 <li><b>Know:</b> Michelin lists AURO (1★) at 400 Silverado Trl, Calistoga, inside Four Seasons Resort and Residences Napa Valley (Michelin Calistoga page, fetched 24 Nov 2026). Auberge du Soleil and Harbor House are already scored as on-site cases.</li>
 <li><b>Don&#x27;t know:</b> Whether the user wants on-site restaurants to add points, and whether Four Seasons Napa should be added to hotels.csv.</li>
 <li><b>Discover:</b> User decision; if yes, verify the Four Seasons Napa official page and add the row.</li>
 <li><b>Owner:</b> User. <b>Blocks:</b> Wine Country hotel list.</li>
-</ul></main><footer>Sources: MICHELIN Guide California 2026 (guide.michelin.com) and restaurant/hotel official websites. Blank or "Unverified" = not confirmed from an official source; never inferred. Generated by scripts/build_site.py from data/*.csv.</footer><script src="assets/app.js"></script></body></html>
+</ul>
+</main>
+<footer>
+<p><b>Sources:</b> MICHELIN Guide California 2026 (guide.michelin.com) and each venue's own website. Every row links to its source. <b>Unverified</b> means the value was not published on the official page we checked &mdash; it is left blank, never guessed. Data checked 24 Nov 2026.</p>
+<p>Data: <a href="data/restaurants.csv">restaurants.csv</a> &middot; <a href="data/bib.csv">bib.csv</a> &middot; <a href="data/hotels.csv">hotels.csv</a> &middot; <a href="data/SCOPE.md">SCOPE.md</a>. See <a href="methodology.html">Method</a> and <a href="flagged.html">Flagged for Review</a>.</p>
+</footer>
+<script src="assets/app.js"></script></body></html>
