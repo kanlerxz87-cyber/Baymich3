@@ -15,7 +15,7 @@ Each question states: **What we know (verified) / What we don't know / How to di
 - **Owner:** User. **Blocks:** Hotel ranking, itinerary.
 
 ## Q3. What will dinner for 2 actually cost?
-- **Know:** 12 rows verified (Benu, Acquerello, Birdsong, Commis, Kiln, Lazy Bear, Sons & Daughters, 7 Adams, Angler lunch, Madcap, Sorrel, Auberge via Tock). Formula shown per row.
+- **Know:** 11 rows with verified prices (Benu, Acquerello, Birdsong, Commis, Kiln, Lazy Bear, Sons & Daughters, 7 Adams, Angler lunch, Madcap, Sorrel). Auberge (Tock) is Partial. Formula shown per row.
 - **Don't know:** 29 rows Unverified (official price not on fetched page). Service % missing on 4 verified rows. Tax, wine, supplements extra.
 - **Discover:** Visit each official site's Reservations/Tock page (prices live there, not homepage); screenshot + date-stamp; update CSV. For Quince/Californios/SingleThread/French Laundry/Enclos/Saison, check Tock/OpenTable booking page (restaurant-controlled).
 - **Owner:** Research session. **Blocks:** Budgeting.
@@ -63,7 +63,7 @@ Each question states: **What we know (verified) / What we don't know / How to di
 - **Owner:** Research session. **Blocks:** Suitability.
 
 ## Q11. How fresh is this data? When to re-verify?
-- **Know:** Checked 24 Nov 2026. Michelin 2026 (June 2026). Prices seasonal (Sorrel Fall $125 vs Summer $195).
+- **Know:** Checked 24 Nov 2026. Michelin 2026 (June 2026). Prices seasonal (Sorrel Fall 2026: 8-course $195 / 5-course $125 per official menus page, checked 24 Nov 2026).
 - **Don't know:** Next Michelin update date; seasonal menu change dates.
 - **Discover:** Re-verify quarterly + before any booking; date-stamp every price/hours cell.
 - **Owner:** Maintainer. **Blocks:** All decisions (staleness risk).

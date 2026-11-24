@@ -23,8 +23,8 @@
 
 ## Cost snapshot (verified official prices, 2 adults, excl. tax/bev unless noted)
 - **3★:** Benu $1,037 (425×2 +22%). Others: Atelier Crenn $365–465pp (Tock), Quince/Californios/SingleThread/French Laundry/Enclos — official price not published on fetched homepage (Unverified; indicative $295–450pp from secondary — do not budget from secondary).
-- **2★:** Acquerello $732 (295×2 +24%), Birdsong $700 (350×2), Commis $670 (279×2 +20%), Kiln $756 (315×2 +20%), Lazy Bear $640 (320×2), Sons & Daughters $660 (330×2). Saison Unverified.
-- **1★ value picks (verified):** 7 Adams $254 (127×2), Angler lunch $151 (60×2 +26%), Madcap $360 (180×2), Sorrel $390 (195×2 summer). Most 1★ prices Unverified — see table.
+- **2★:** Acquerello $731.60 (295×2 +24% service+surcharge), Birdsong $700 (350×2), Commis $670 (279×2 +20%), Kiln $756 (315×2 +20%), Lazy Bear $640 (320×2), Sons & Daughters $660 (330×2). Saison Unverified.
+- **1★ value picks (verified):** 7 Adams $254 (127×2), Angler lunch $151 (60×2 +26%), Madcap $360 (180×2), Sorrel $409.50 (195×2 +5% SF Mandate, Fall 2026). Most 1★ prices Unverified — see table.
 - **Rule:** Budget only from "Verified" rows. "Unverified" = check official site/Tock before booking. Service charges 20–26% are the swing factor.
 
 ## Hotels (ranked by Michelin density — see hotels page for method)
