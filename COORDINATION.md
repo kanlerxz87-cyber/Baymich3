@@ -22,7 +22,11 @@ Last updated: 2026-11-24
 | T4 | Hotels ranked by Michelin density | in progress | 88da5baf | data/hotels.csv, data/hotels.md | Hotel official sites + Michelin map distances | — |
 | T5 | GitHub Pages site (landing + subpages, mobile-friendly) | in progress | 88da5baf | index.html, *.html, assets/*, _config.yml | Build check, link check | — |
 | T6 | Executive summary, Questions/Answers, Suggestions | in progress | 88da5baf | docs/executive-summary.md, docs/questions.md, docs/suggestions.md | Cross-ref T1–T4 | — |
-| T7 | Final integration: re-verify line-by-line, link check, publish | unclaimed | — | all | — | — |
+| T7 | Final integration: re-verify line-by-line, link check, publish | in progress (88da5baf; merged PR #3 at 14:27Z) | 88da5baf | all | — | — |
+| T8 | Michelin 2026 star list re-verification from official Michelin article + Michelin restaurant pages (days/hours, price level, official site link) | in progress | 049fdb53 (branch arena/049fdb53-baymich3) | data/restaurants.csv (stars, hours, price-level, michelin columns only) | guide.michelin.com article (24 Jun 2026) + per-restaurant Michelin pages | see Log |
+| T9 | Hotels: official addresses + Michelin density recheck | in progress | 049fdb53 | data/hotels.csv | official hotel sites | see Log |
+| T10 | Site regeneration from CSVs (restaurants/hotels pages, Verified / Unverified badges, mobile tables) | in progress | 049fdb53 | scripts/build_tables.py, restaurants.html, hotels.html, listed.html, map.html, index.html | build check, link check | see Log |
+| T11 | Exec summary / Questions / Suggestions refresh (suggestions NOT implemented until user approves) | in progress | 049fdb53 | docs/executive-summary.md, docs/questions.md, docs/suggestions.md, executive-summary.html, questions.html, suggestions.html | cross-ref T8–T10 | see Log |
 
 ## Log
 - 2026-11-24: Repo was empty (only README). Session 88da5baf claimed T1–T6 on branch arena/88da5baf-baymich3. T7 left for final integration pass in same session after T1–T6 done.
@@ -35,3 +39,10 @@ Last updated: 2026-11-24
 - T5 DONE: GitHub Pages site (10 pages, mobile-friendly, search/filter). Link check: no missing internal links. Local preview on :8000 OK.
 - T6 DONE: docs/executive-summary.md, docs/questions.md (12 Qs), docs/suggestions.md (10 suggestions S1-S10, none implemented).
 - T7 IN PROGRESS: final integration — re-verified combined data, link check passed, publish to GitHub Pages (merge to main + enable Pages).
+
+## Session 049fdb53 — claim (2026-11-24, 14:3x UTC)
+- Branch: `arena/049fdb53-baymich3` (fixed by Arena session; the `session-<id>/<task>` naming in the rules above could not be used because the session is bound to this branch). All claimed work is committed here and opened as a PR to `main`.
+- Claimed T8–T11 above. T7 remains with 88da5baf (PR #3 already merged to main).
+- Open PRs #1 (arena/d7b7bed1) and #2 (arena/db94882d) from earlier sessions touch docs/ and scripts/build_site.py; not merged by this session. Flagged for integration owner.
+- Non-overlap: this session edits only the files listed in T8–T11. Shared index/navigation changes are limited to restaurants/hotels/listed/map/index pages (T10) and must be re-verified by the integration session.
+
