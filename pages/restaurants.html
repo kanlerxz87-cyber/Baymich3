@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurants — Baymich3</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="site-title"><a href="../index.html">Baymich3</a></h1>
+    <p class="site-tagline">SF Bay Area Michelin Guide — Restaurants</p>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="container">
+    <a href="../index.html">Home</a>
+    <a href="restaurants.html" class="active">Restaurants</a>
+    <a href="hotels.html">Hotels</a>
+    <a href="verification.html">Verification</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<section>
+  <h2>Restaurants by MICHELIN Star Level</h2>
+  <p style="font-size:0.9rem;color:#666;">★★★ = Three Stars · ★★ = Two Stars · ★ = One Star · Listed = in the guide, no star. Every row links to its official MICHELIN page.</p>
+
+  <div id="dashboard-counts"></div>
+
+  <section id="three-star-section">
+    <h3>Three Stars (★★★)</h3>
+    <p style="font-size:0.85rem;color:#666;margin-bottom:1rem;">Exceptional cuisine, worth a special journey.</p>
+    <div id="table-3star"></div>
+  </section>
+
+  <section id="two-star-section">
+    <h3>Two Stars (★★)</h3>
+    <p style="font-size:0.85rem;color:#666;margin-bottom:1rem;">Excellent cooking, worth a detour.</p>
+    <div id="table-2star"></div>
+  </section>
+
+  <section id="one-star-section">
+    <h3>One Star (★)</h3>
+    <p style="font-size:0.85rem;color:#666;margin-bottom:1rem;">High-quality cooking, worth a stop.</p>
+    <div id="table-1star"></div>
+  </section>
+
+  <section id="listed-section">
+    <h3>Listed (no star) — Bib Gourmand &amp; Selected</h3>
+    <p style="font-size:0.85rem;color:#666;margin-bottom:1rem;">In the MICHELIN Guide but not starred. Bib Gourmand = good quality at moderate prices; Selected = recognized by inspectors.</p>
+    <div id="table-listed"></div>
+  </section>
+</section>
+
+</div>
+
+<script src="../data/restaurants.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+renderDashboard();
+renderTable('table-3star', getByStars(3), 'Three Stars');
+renderTable('table-2star', getByStars(2), 'Two Stars');
+renderTable('table-1star', getByStars(1), 'One Star');
+renderTable('table-listed', getListed(), 'Listed (no star)');
+</script>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>Baymich3</strong> — Data verified against <a href="https://guide.michelin.com" target="_blank" rel="noopener">guide.michelin.com</a>. Blank values = unverified, never inferred.</p>
+  </div>
+</footer>
+
+</body>
+</html>

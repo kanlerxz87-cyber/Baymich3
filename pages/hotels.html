@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotels — Baymich3</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="site-title"><a href="../index.html">Baymich3</a></h1>
+    <p class="site-tagline">SF Bay Area Michelin Guide — Hotels</p>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="container">
+    <a href="../index.html">Home</a>
+    <a href="restaurants.html">Restaurants</a>
+    <a href="hotels.html" class="active">Hotels</a>
+    <a href="verification.html">Verification</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<section>
+  <h2>Hotels Ranked by Nearby MICHELIN Restaurants</h2>
+  <p style="font-size:0.9rem;color:#666;">Hotels in the MICHELIN Guide hotel selection, ranked by the number and star level of nearby MICHELIN-ranked restaurants. 2-adult per-night price estimates are before tax and fees.</p>
+
+  <div id="table-hotels"></div>
+</section>
+
+<section>
+  <h2>How the ranking works</h2>
+  <div class="callout">
+    <ul>
+      <li>Hotels are sorted by the star value of nearby MICHELIN restaurants (3★ counts most, then 2★, then 1★, then Bib/Selected).</li>
+      <li>MICHELIN Keys are shown per hotel (1 = very special stay, 2 = exceptional stay, 3 = extraordinary stay).</li>
+      <li>Guest scores come from the MICHELIN Guide hotel page where available.</li>
+      <li>Price estimates are per night for 2 adults, before tax and fees — blank where unverified.</li>
+      <li>"Nearby" restaurants are those listed on the hotel&rsquo;s own MICHELIN page under &ldquo;Restaurants near the hotel.&rdquo;</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+
+<script src="../data/hotels.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+function renderStarBadge(stars) {
+  if (stars >= 3) return '<span class="star-badge star3">★★★</span>';
+  if (stars === 2) return '<span class="star-badge star2">★★</span>';
+  if (stars === 1) return '<span class="star-badge star1">★</span>';
+  return '<span class="star-badge bib">Bib/Listed</span>';
+}
+
+function scoreHotel(h) {
+  let score = 0;
+  (h.nearbyMichelinRestaurants || []).forEach(r => {
+    if (r.includes('3★') || r.includes('★★★')) score += 100;
+    else if (r.includes('2★') || r.includes('★★')) score += 50;
+    else if (r.includes('1★') || r.includes(' ★')) score += 10;
+    else score += 1;
+  });
+  return score;
+}
+
+const hotels = getHotels().slice().sort((a, b) => scoreHotel(b) - scoreHotel(a));
+
+let rows = '';
+hotels.forEach(h => {
+  const stars = h.michelinKeys || 0;
+  const keyClass = stars >= 3 ? 'star3' : stars === 2 ? 'star2' : 'star1';
+  const keyBadge = `<span class="star-badge ${keyClass}">${'★'.repeat(stars || 1)} KEY</span>`;
+  const phone = h.phone ? `<a href="tel:${h.phone}">${h.phone}</a>` : '<span class="blank">unverified</span>';
+  const website = h.website ? `<a href="${h.website}" target="_blank" rel="noopener">Visit site</a>` : '<span class="blank">unverified</span>';
+  const price = h.priceEstimate2Adults || '<span class="blank">unverified</span>';
+  const guest = h.guestScore || '<span class="blank">unverified</span>';
+  const nearby = (h.nearbyMichelinRestaurants || []).map(r => {
+    const m = r.match(/\((.*?)\)/);
+    const starPart = m ? m[1] : '';
+    return `<div style="font-size:0.8rem;">${r.replace(/ \(.*?\)/,'')} <span style="font-size:0.7rem;color:#666;">${starPart}</span></div>`;
+  }).join('') || '<span class="blank">none listed</span>';
+  const source = h.michelinUrl ? `<a href="${h.michelinUrl}" target="_blank" rel="noopener" class="source-link">Michelin hotel page</a>` : '<span class="blank">unverified</span>';
+
+  rows += `
+    <tr>
+      <td>
+        <div style="font-weight:600;">${h.name}</div>
+        <div style="font-size:0.8rem;color:#666;">${h.city}</div>
+        <div style="font-size:0.75rem;color:#666;margin-top:0.25rem;">${h.keyLabel}</div>
+      </td>
+      <td>${h.address || '<span class="blank">unverified</span>'}</td>
+      <td>${stars} KEY${stars !== 1 ? 'S' : ''}</td>
+      <td>${guest}</td>
+      <td>${price}</td>
+      <td>${phone}</td>
+      <td>${website}</td>
+      <td>${nearby}</td>
+      <td>${source}</td>
+    </tr>
+  `;
+});
+
+document.getElementById('table-hotels').innerHTML = `
+  <table>
+    <thead>
+      <tr>
+        <th>Hotel</th>
+        <th>Address</th>
+        <th>MICHELIN Keys</th>
+        <th>Guest Score</th>
+        <th>Est. 2 Adults/Night</th>
+        <th>Phone</th>
+        <th>Website</th>
+        <th>Nearby MICHELIN Restaurants</th>
+        <th>Official Source</th>
+      </tr>
+    </thead>
+    <tbody>${rows}</tbody>
+  </table>
+  <div style="font-size:0.8rem;color:#666;margin-top:0.5rem;">
+    ${hotels.length} hotel${hotels.length !== 1 ? 's' : ''} ranked by nearby MICHELIN restaurant stars
+  </div>
+`;
+</script>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>Baymich3</strong> — Data verified against <a href="https://guide.michelin.com" target="_blank" rel="noopener">guide.michelin.com</a>. Blank values = unverified, never inferred.</p>
+  </div>
+</footer>
+
+</body>
+</html>

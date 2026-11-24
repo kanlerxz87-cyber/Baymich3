@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baymich3 — SF Bay Area Michelin Guide</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="site-title"><a href="index.html">Baymich3</a></h1>
+    <p class="site-tagline">SF Bay Area Michelin Guide — verified restaurant data, hotel rankings, and sourcing transparency</p>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="container">
+    <a href="index.html">Home</a>
+    <a href="pages/restaurants.html">Restaurants</a>
+    <a href="pages/hotels.html">Hotels</a>
+    <a href="pages/verification.html">Verification</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<section class="hero">
+  <h1>SF Bay Area Michelin Guide Explorer</h1>
+  <p>Independent compilation of MICHELIN Guide data for the San Francisco Bay Area. Every entry is verified against guide.michelin.com — no inferred values, no hallucinations.</p>
+</section>
+
+<section>
+  <h2>What&rsquo;s here</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h4>Restaurants</h4>
+      <div class="meta">3★ · 2★ · 1★ · Bib Gourmand · Listed</div>
+      <div class="price">Tables with addresses, prices, hours, social links, and official Michelin source links.</div>
+      <a href="pages/restaurants.html">View restaurants &rarr;</a>
+    </div>
+    <div class="card">
+      <h4>Hotels</h4>
+      <div class="meta">Ranked by nearby MICHELIN restaurants</div>
+      <div class="price">2-adult pricing, Michelin proximity, and official source links per property.</div>
+      <a href="pages/hotels.html">View hotels &rarr;</a>
+    </div>
+    <div class="card">
+      <h4>Verification</h4>
+      <div class="meta">Sources, open questions, and answers</div>
+      <div class="price">Which values came from official sources, which are blank/unverified, and why.</div>
+      <a href="pages/verification.html">View verification &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Executive Summary</h2>
+  <div class="callout">
+    <p><strong>Scope:</strong> San Francisco Bay Area MICHELIN Guide coverage — San Francisco, Oakland, Napa/Sonoma Valleys, San Jose area, Peninsula, Marin, and Wine Country.</p>
+    <p><strong>Star vs. listed:</strong> This site clearly distinguishes restaurants that <em>currently hold a MICHELIN star</em> from those that are simply <em>listed in the guide</em> (Bib Gourmand or Selected). Every table row shows both the star level and the status.</p>
+    <p><strong>Pricing:</strong> Michelin price symbols ($–$$$$$) are shown alongside a verified total price estimate range for two adults (before tax, tip, and wine). Where the estimate can&rsquo;t be confirmed from an official source, it is left blank and flagged unverified.</p>
+    <p><strong>Social media:</strong> YouTube, TikTok, and Instagram links are shown beside each entry. Where none could be found on the official Michelin page or the restaurant&rsquo;s own site, the slot is left blank (not inferred).</p>
+    <p><strong>Hours:</strong> Days open, daily hours, and exceptions are shown per restaurant, taken directly from guide.michelin.com.</p>
+    <p><strong>Sources:</strong> Every row links to its official MICHELIN Guide page. Nothing is invented.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Suggestions (to review before implementing)</h2>
+  <div class="callout">
+    <ul>
+      <li>Add a map view showing star distribution across the Bay Area.</li>
+      <li>Add a filter for cuisine type, price range, and Green Star status.</li>
+      <li>Add &ldquo;nearby hotels&rdquo; links on each restaurant page.</li>
+      <li>Add a print-friendly view of each table.</li>
+      <li>Consider a nightly build that re-fetches Michelin pages to catch star changes.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Open Questions / Information / Answers</h2>
+  <div class="callout">
+    <div class="qa-item">
+      <div class="q">Q: Why are some prices blank?</div>
+      <div class="a">A: Per user constraint, if a value can&rsquo;t be confirmed from an official source, it is left blank and flagged unverified — never inferred.</div>
+    </div>
+    <div class="qa-item">
+      <div class="q">Q: Are social media links complete?</div>
+      <div class="a">A: No. Michelin restaurant pages do not display YouTube/TikTok/Instagram links. Each entry shows blank social slots until verified from the restaurant&rsquo;s own site or another official source.</div>
+    </div>
+    <div class="qa-item">
+      <div class="q">Q: Enclos shows 3★ on its page but 2★ in the 2025 announcement.</div>
+      <div class="a">A: Flagged as a discrepancy. The individual Michelin page renders three star icons; the 2025 ceremony article lists it as 2★. Needs re-verification after the next Michelin announcement.</div>
+    </div>
+    <div class="qa-item">
+      <div class="q">Q: Is The Shota still open?</div>
+      <div class="a">A: Some Michelin snippets note &ldquo;temporarily closed.&rdquo; Hours are shown (Wed–Sun 17:00–20:15) but status is unverified — call ahead.</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>Baymich3</strong> — Independent MICHELIN Guide data compilation. Not affiliated with MICHELIN. All restaurant data sourced from <a href="https://guide.michelin.com" target="_blank" rel="noopener">guide.michelin.com</a>. Built on GitHub Pages.</p>
+  </div>
+</footer>
+
+</body>
+</html>

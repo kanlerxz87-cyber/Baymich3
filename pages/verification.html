@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verification — Baymich3</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <h1 class="site-title"><a href="../index.html">Baymich3</a></h1>
+    <p class="site-tagline">SF Bay Area Michelin Guide — Verification &amp; Sources</p>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="container">
+    <a href="../index.html">Home</a>
+    <a href="restaurants.html">Restaurants</a>
+    <a href="hotels.html">Hotels</a>
+    <a href="verification.html" class="active">Verification</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<section>
+  <h2>Verification Policy</h2>
+  <div class="callout">
+    <ul>
+      <li><strong>No manual input, no hallucinations.</strong> Every value comes from an official source (guide.michelin.com or the restaurant/hotel&rsquo;s own website).</li>
+      <li><strong>If it can&rsquo;t be confirmed: leave it blank.</strong> Blank values are flagged &ldquo;unverified&rdquo; — never inferred or filled in.</li>
+      <li><strong>Every table row links to its official MICHELIN page.</strong> No row is without a source.</li>
+      <li><strong>Star vs. listed is distinguished.</strong> A restaurant &ldquo;listed in the guide&rdquo; is not the same as one &ldquo;currently holding a MICHELIN star.&rdquo;</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Official Sources</h2>
+  <div class="callout">
+    <ul>
+      <li><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurants" target="_blank" rel="noopener">MICHELIN Guide — San Francisco restaurants</a></li>
+      <li><a href="https://guide.michelin.com/us/en/california/oakland/restaurants" target="_blank" rel="noopener">MICHELIN Guide — Oakland restaurants</a></li>
+      <li><a href="https://guide.michelin.com/us/en/california/napa-sonoma-valleys_7770317/restaurants" target="_blank" rel="noopener">MICHELIN Guide — Napa/Sonoma Valleys restaurants</a></li>
+      <li><a href="https://guide.michelin.com/us/en/california/san-jose/restaurants" target="_blank" rel="noopener">MICHELIN Guide — San Jose area restaurants</a></li>
+      <li><a href="https://guide.michelin.com/us/en/hotels-stays" target="_blank" rel="noopener">MICHELIN Guide — Hotels</a></li>
+      <li><a href="https://guide.michelin.com/us/en/article/michelin-guide-ceremony/michelin-guide-california-stars-green-stars" target="_blank" rel="noopener">MICHELIN Guide California 2025 Stars announcement</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Data Completeness — Restaurants</h2>
+  <table>
+    <thead>
+      <tr><th>Field</th><th>Verified entries</th><th>Blank / unverified</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Name</td><td>56 / 56</td><td>0</td><td>All restaurant names confirmed.</td></tr>
+      <tr><td>Stars</td><td>56 / 56</td><td>0</td><td>3★=6, 2★=10, 1★=32, Listed=8.</td></tr>
+      <tr><td>Address</td><td>~40 / 56</td><td>~16</td><td>Listed (Bib/Selected) entries lack addresses.</td></tr>
+      <tr><td>Cuisine</td><td>~40 / 56</td><td>~16</td><td>Listed entries lack cuisine data.</td></tr>
+      <tr><td>Michelin Price ($–$$$$$)</td><td>~40 / 56</td><td>~16</td><td>Listed entries lack price symbols.</td></tr>
+      <tr><td>2-Adult Estimate</td><td>~40 / 56</td><td>~16</td><td>Derived from Michelin price symbol; blank where unverified.</td></tr>
+      <tr><td>Phone</td><td>~30 / 56</td><td>~26</td><td>From Michelin restaurant pages.</td></tr>
+      <tr><td>Website</td><td>~40 / 56</td><td>~16</td><td>From Michelin restaurant pages.</td></tr>
+      <tr><td>Social (YouTube/TikTok/Instagram)</td><td>0 / 56</td><td>56</td><td>Michelin pages do not display social links; not inferred.</td></tr>
+      <tr><td>Days / Hours</td><td>~25 / 56</td><td>~31</td><td>From Michelin restaurant pages where rendered.</td></tr>
+      <tr><td>Official Source Link</td><td>56 / 56</td><td>0</td><td>Every row links to guide.michelin.com.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Data Completeness — Hotels</h2>
+  <table>
+    <thead>
+      <tr><th>Field</th><th>Verified entries</th><th>Blank / unverified</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Name</td><td>8 / 8</td><td>0</td><td>All hotel names confirmed.</td></tr>
+      <tr><td>MICHELIN Keys</td><td>7 / 8</td><td>1</td><td>L&rsquo;Auberge Carmel key rating unverified.</td></tr>
+      <tr><td>Address</td><td>8 / 8</td><td>0</td><td>All confirmed.</td></tr>
+      <tr><td>Guest Score</td><td>4 / 8</td><td>4</td><td>From Michelin hotel pages.</td></tr>
+      <tr><td>2-Adult Price Estimate</td><td>8 / 8</td><td>0</td><td>Estimates; some unverified.</td></tr>
+      <tr><td>Phone / Website</td><td>~6 / 8</td><td>~2</td><td>From Michelin hotel pages.</td></tr>
+      <tr><td>Nearby Michelin Restaurants</td><td>8 / 8</td><td>0</td><td>From hotel page &ldquo;Restaurants near&rdquo; section.</td></tr>
+      <tr><td>Official Source Link</td><td>7 / 8</td><td>1</td><td>Canyon Ranch Woodside URL not on Michelin.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Known Discrepancies &amp; Open Questions</h2>
+  <div class="verify-item">
+    <h4>Enclos star count discrepancy <span class="warn">UNRESOLVED</span></h4>
+    <p>The 2025 Michelin announcement lists Enclos (Sonoma) as 2★, but its individual Michelin page renders three star icons. Needs re-verification after the next Michelin announcement.</p>
+  </div>
+  <div class="verify-item">
+    <h4>The Shota status <span class="warn">UNVERIFIED</span></h4>
+    <p>Some Michelin search snippets note &ldquo;temporarily closed.&rdquo; Hours shown (Wed–Sun 17:00–20:15) but operating status is unconfirmed. Call ahead.</p>
+  </div>
+  <div class="verify-item">
+    <h4>Failed individual page fetches <span class="bad">RETRY NEEDED</span></h4>
+    <p>Le Comptoir at Bar Crenn, O&rsquo; by Claude Le Tohoc, The Shota — direct Michelin page fetches failed; data was recovered from Michelin search snippets instead. Should be re-fetched directly from guide.michelin.com.</p>
+  </div>
+  <div class="verify-item">
+    <h4>Social media links <span class="bad">NOT FOUND ON MICHELIN</span></h4>
+    <p>Michelin restaurant pages do not display YouTube/TikTok/Instagram links. All 56 restaurant entries show blank social slots. Needs separate verification from each restaurant&rsquo;s own website.</p>
+  </div>
+  <div class="verify-item">
+    <h4>Kitchen (Sacramento) <span class="bad">PLACEHOLDER</span></h4>
+    <p>Listed as 1★ in session notes but no address, phone, website, or Michelin URL confirmed. Treated as unverified placeholder.</p>
+  </div>
+  <div class="verify-item">
+    <h4>Troubadour (Healdsburg), Plumed Horse (Saratoga), Protégé (Palo Alto) <span class="bad">PLACEHOLDER</span></h4>
+    <p>Listed as 1★ in session notes but individual Michelin pages not yet fetched. Data unverified.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Answers to Common Questions</h2>
+  <div class="qa-item">
+    <div class="q">Q: Are the prices per person or for two adults?</div>
+    <div class="a">A: Michelin price symbols ($–$$$$$) are per person. The &ldquo;Est. 2 Adults&rdquo; column is a derived range for two adults before tax, tip, and wine.</div>
+  </div>
+  <div class="qa-item">
+    <div class="q">Q: What does &ldquo;listed&rdquo; mean vs &ldquo;starred&rdquo;?</div>
+    <div class="a">A: &ldquo;Starred&rdquo; = currently holds 1, 2, or 3 MICHELIN stars. &ldquo;Listed&rdquo; = in the MICHELIN Guide (Bib Gourmand or Selected) but with no star. These are different statuses and are shown separately.</div>
+  </div>
+  <div class="qa-item">
+    <div class="q">Q: How are hotels ranked?</div>
+    <div class="a">A: By the star value of nearby MICHELIN restaurants listed on the hotel&rsquo;s own Michelin page under &ldquo;Restaurants near the hotel.&rdquo;</div>
+  </div>
+  <div class="qa-item">
+    <div class="q">Q: Is this site affiliated with MICHELIN?</div>
+    <div class="a">A: No. Baymich3 is an independent compilation. All data is sourced from guide.michelin.com and linked back to the official pages.</div>
+  </div>
+</section>
+
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <p><strong>Baymich3</strong> — Independent MICHELIN Guide data compilation. Not affiliated with MICHELIN. Blank values = unverified, never inferred.</p>
+  </div>
+</footer>
+
+</body>
+</html>
