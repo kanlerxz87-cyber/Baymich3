@@ -26,10 +26,10 @@
 | Fetch individual Michelin pages for stars | DONE | 28+ fetched directly; 3 recovered from search snippets (Le Comptoir, O' by Claude Le Tohoc, The Shota) |
 | Fetch Michelin hotel data | DONE | 8 hotels with Keys, scores, nearby restaurants |
 | Build data files (restaurants.js, hotels.js) | DONE | data/restaurants.js, data/hotels.js |
-| Build website (index, restaurants, hotels, verification) | DONE | 4 HTML pages + CSS + JS |
+| Build website (index, restaurants, hotels, verification) | DONE | 4 HTML pages + CSS + JS, pushed to origin |
 | Add social media links | PENDING | Michelin pages don't show them; need restaurant-site verification |
 | Fill remaining unverified blanks | PENDING | Addresses/hours for Bib/Selected and some 1★ |
-| Deploy to GitHub Pages | PENDING | Push to origin arena/3c9252ca-baymich3 |
+| Deploy to GitHub Pages | PENDING | Need to enable Pages in repo settings |
 
 ## Key Data (verified)
 
