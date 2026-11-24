@@ -1,6 +1,6 @@
 # COORDINATION — shared task board
 
-Repo: `kanlerxz87-cyber/Baymich3` · Live site (GitHub Pages, from this branch's `docs/`): see the Pages link in the Log.
+Repo: `kanlerxz87-cyber/Baymich3` · Live site: https://kanlerxz87-cyber.github.io/Baymich3/ (serves `main` root until PR #1 merges and Pages points to `/docs`).
 
 ## Rules used in this file
 
@@ -26,6 +26,7 @@ Repo: `kanlerxz87-cyber/Baymich3` · Live site (GitHub Pages, from this branch's
 
 ## Log
 
+- **2026-11-24 · arena/d7b7bed1** — Opened PR #1 (`arena/d7b7bed1-baymich3` → `main`) with the site. Pages is currently configured for `main` / root, and the token cannot change the Pages source (HTTP 403), so the site goes live only after PR #1 is merged and Pages is pointed at `/docs`. Not merged in this session.
 - **2026-11-24 · arena/d7b7bed1** — Claimed T1–T10 (single active session). Read official Michelin California 2026 article (`guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california`, 24 Jun 2026) and 14 official Michelin restaurant pages. Built the first version of the site and the data file.
 
 ## Repo review (T1)
