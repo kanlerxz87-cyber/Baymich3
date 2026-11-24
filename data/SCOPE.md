@@ -32,12 +32,12 @@ Rationale: Michelin markets "San Francisco and surroundings" (145 restaurants) w
 - Never infer, estimate from third-party blogs, or fill from memory. Third-party prices (Tock/OpenTable/press) are recorded separately as "Indicative (non-official)" and never presented as verified.
 - Pricing for 2 adults = (per-person tasting price × 2) + service charge where official site states it. Tax excluded unless official site includes it. Show formula.
 
-## Clusters (for hotel ranking)
+## Clusters (context for hotel candidates)
 - C1 SF Core (SF city: SoMa, Mission, Hayes Valley, Pacific Heights, etc.)
 - C2 Peninsula / South Bay (San Mateo, Palo Alto, Saratoga, Woodside, Atherton)
 - C3 East Bay (Oakland, Berkeley, Alameda)
 - C4 Marin / North Bay gateway (San Anselmo, Mill Valley, Fairfax)
 - C5 Wine Country — Napa / Sonoma (Yountville, Rutherford, Calistoga, St Helena, Healdsburg, Sonoma, Geyserville)
-- C6 Extension coast (Carmel, Elk) — flagged, not used for core hotel ranking
+- C6 Extension coast (Carmel, Elk) — flagged, not counted in Core hotel-cluster totals
 
-Hotel ranking method: count of Core starred restaurants within 5 mi / 10 mi / 25 mi straight-line from hotel address (computed from published addresses), plus cluster total. See data/hotels.md for method + caveats. Distances are indicative (address-to-address), not drive-time.
+No hotel ranking is currently published. `starred_in_cluster` in `data/hotels.csv` is a broad area total for context only, not a count near the hotel. Hotel coordinates and an approved distance/route method have not been established. See `data/hotels.md` and Questions Q13 before proposing a score.

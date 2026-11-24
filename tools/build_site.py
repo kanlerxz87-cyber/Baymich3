@@ -60,7 +60,7 @@ def shell(title, body, depth=0):
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)}</title>
-<meta name="description" content="SF Bay Area MICHELIN Guide 2026 dashboard: starred vs listed, verified prices for two, clusters, and hotels ranked by Michelin density.">
+<meta name="description" content="SF Bay Area MICHELIN Guide 2026 dashboard: starred vs listed, verified prices for two, restaurant clusters, and unranked hotel candidates.">
 <link rel="stylesheet" href="assets/style.css"></head>
 <body>
 <header class="top"><div class="wrap">
@@ -245,14 +245,14 @@ for cname, rows in cluster.items():
 
 index_body = f"""
 <h1>SF Bay Area Michelin Guide &amp; Map</h1>
-<p class="lead">One organised dashboard for the <b>MICHELIN Guide California 2026</b> in the Bay Area: which places hold a star and which are only <i>listed</i> (Bib Gourmand or Selected), where the stars cluster, what dinner for <b>two adults</b> costs, and which hotels sit in the densest Michelin neighbourhoods. Every row links to the official source it came from.</p>
+<p class="lead">One organised dashboard for the <b>MICHELIN Guide California 2026</b> in the Bay Area: which places hold a star and which are only <i>listed</i> (Bib Gourmand or Selected), where the stars cluster, what dinner for <b>two adults</b> costs, and which unranked hotel candidates fall within the broad restaurant clusters. Every row links to the official source it came from.</p>
 
 <div class="grid">
 {stat(len(CORE), "Core Bay Area starred", "9-county definition")}
 {stat(len(EXT), "Extension starred", "Carmel / Elk, flagged separately")}
 {stat(dist["3 Stars"], "three-star", "Bay Area incl. extension")}
 {stat(len(BIB), "Bib Gourmand rows", "value list, no star")}
-{stat(len(HOT), "hotels ranked", "by Michelin density")}
+{stat(len(HOT), "hotel candidates", "unranked; grouped by cluster")}
 </div>
 
 <div class="card">
@@ -269,7 +269,7 @@ index_body = f"""
 <div class="card">
 <h2>Clusters at a glance</h2>
 <div class="tblwrap"><table>
-<thead><tr><th>Cluster</th><th>3&#9733;</th><th>2&#9733;</th><th>1&#9733;</th><th>Total starred</th><th>Hotels ranked</th></tr></thead>
+<thead><tr><th>Cluster</th><th>3&#9733;</th><th>2&#9733;</th><th>1&#9733;</th><th>Total starred</th><th>Hotel candidates</th></tr></thead>
 <tbody>{cluster_rows}</tbody></table></div>
 <p class="small">Counts computed from <a href="data/restaurants.csv">restaurants.csv</a> and <a href="data/hotels.csv">hotels.csv</a> at build time. C1&ndash;C5 are the 9-county Core (41 starred); C6 is an Extension area outside it (3 starred).</p>
 </div>
@@ -279,7 +279,7 @@ index_body = f"""
 <p class="btnrow">
 <a class="btn" href="restaurants.html">Starred restaurants &rarr;</a>
 <a class="btn" href="listed.html">Bib &amp; listed-only &rarr;</a>
-<a class="btn" href="hotels.html">Ranked hotels &rarr;</a>
+<a class="btn" href="hotels.html">Hotel candidates &rarr;</a>
 <a class="btn" href="map.html">Map &amp; clusters &rarr;</a>
 </p>
 <p class="small">Short on time? Read the <a href="executive-summary.html">executive summary</a>, then the <a href="questions.html">open questions</a> and <a href="suggestions.html">suggestions</a> (proposed only &mdash; nothing is implemented without your approval).</p>
@@ -314,13 +314,14 @@ for r in R:
         if r["price_basis"]:
             price += f'<br><span class="small">{e(r["price_basis"])}</span>'
 
-    hours = ""
-    if r["days_open"] or r["hours"]:
-        hours = f'<b>{e(r["days_open"]) or "&mdash;"}</b><br><span class="small">{e(r["hours"])}</span>'
-    else:
-        hours = '<span class="muted">&mdash;</span>'
+    hours = (
+        f'<b>Days:</b> {e(r["days_open"]) or "Unverified"}'
+        f'<br><span class="small"><b>Hours:</b> {e(r["hours"]) or "Unverified"}</span>'
+    )
     if r["exceptions"]:
-        hours += f'<br><span class="small ex">{e(r["exceptions"])}</span>'
+        hours += f'<br><span class="small ex"><b>Exceptions:</b> {e(r["exceptions"])}</span>'
+    else:
+        hours += '<br><span class="small ex"><b>Exceptions:</b> Unverified</span>'
 
     socials = []
     for key, label in (("instagram", "Instagram"), ("youtube", "YouTube"), ("tiktok", "TikTok")):
@@ -358,6 +359,7 @@ rest_body = f"""
 <div class="controls">
 <input data-filter="#restTable" placeholder="Search restaurant, cuisine, city&hellip;" aria-label="Search starred restaurants">
 <select data-filter-select="#restTable" data-key="0" aria-label="Filter by distinction"><option value="">All distinctions</option><option>3 Stars</option><option>2 Stars</option><option>1 Star</option></select>
+<select data-filter-select="#restTable" data-key="2" aria-label="Filter by scope"><option value="">Core and Extension</option><option>Core</option><option>Extension</option></select>
 <select data-filter-select="#restTable" data-key="1" aria-label="Filter by cluster"><option value="">All clusters</option>{"".join(f"<option>{e(k)}</option>" for k in cluster)}</select>
 <select data-filter-select="#restTable" data-key="3" aria-label="Filter by verification"><option value="">All rows</option><option value="v">Verified only</option><option value="p">Partial only</option><option value="u">Unverified only</option></select>
 </div>
@@ -438,7 +440,7 @@ hot_rows = ""
 for h in HOT:
     addr = e(h["address"]) if h["address"] else '<span class="muted">not published on official page</span>'
     hot_rows += (
-        f'<tr data-group="{e(h["hotel"])}|{e(h["cluster"])}|{flag(h["verification_status"])}"><td><b>#{e(h["rank"])} {e(h["hotel"])}</b><br><span class="small">{e(h["city"])} &middot; {e(h["cluster"])}</span></td>'
+        f'<tr data-group="{e(h["hotel"])}|{e(h["cluster"])}|{flag(h["verification_status"])}"><td><b>{e(h["hotel"])}</b><br><span class="small">{e(h["city"])} &middot; {e(h["cluster"])}</span><br><span class="badge warn">Unranked candidate</span></td>'
         f'<td>{addr}</td>'
         f'<td><b>{e(h["starred_in_cluster"])}</b> starred<br><span class="small">in {e(h["cluster"])}</span></td>'
         f'<td class="small">{e(h["why_ranked"])}</td>'
@@ -447,22 +449,22 @@ for h in HOT:
     )
 
 hotels_body = f"""
-<h1>Hotels ranked by Michelin density</h1>
-<p class="lead">Ranking question: if you sleep here, how many starred restaurants are in the same cluster? The rank uses the starred count of the cluster each hotel sits in, computed from <a href="data/restaurants.csv">restaurants.csv</a> &mdash; never a guessed drive time.</p>
+<h1>Hotel candidates by restaurant cluster</h1>
+<p class="lead">These 14 properties are an <b>unranked candidate list</b>, grouped by broad restaurant cluster. Cluster totals show the number of starred restaurants assigned to that area, not the number nearby. Verified hotel addresses, coordinates, distance method, hotel rates and stay dates are incomplete, so no hotel score or ordering is published.</p>
 
 <div class="grid">
-<div class="stat"><b>{len(HOT)}</b><span>hotels ranked</span></div>
+<div class="stat"><b>{len(HOT)}</b><span>unranked candidates</span></div>
 <div class="stat"><b>25</b><span>starred in the top cluster</span><em>C1 SF Core</em></div>
 <div class="stat"><b>8</b><span>starred in Wine Country</span><em>C5, incl. three 3&#9733;</em></div>
 </div>
 
 <div class="card">
-<h2>Method, stated plainly</h2>
+<h2>What the cluster counts mean</h2>
 <ul class="tight">
-<li><b>What is counted:</b> starred restaurants in the hotel's cluster (C1 25, C5 8, C2 5, C3 2, C4 1). Ties are broken by how central the address is to the dense part of the cluster, which is a judgement, not a measurement.</li>
-<li><b>What is not counted:</b> nightly rates (dynamic, and a rate seen today is stale next week), drive times (not measured), and Michelin "Keys" unless the hotel's own site states them.</li>
-<li><b>Address corrections found in this audit:</b> Cavallo Point is at 601 Murray Circle, Fort Baker (not "601 Bridgeway"); 1 Hotel San Francisco is at 8 Mission Street (not "22 Battery"); Bardessono is at 6526 Yount St (the previously listed 6640 Washington St is The French Laundry's address).</li>
-<li><b>Blank addresses</b> mean the hotel's official page did not load or did not state a street address when checked, so nothing was filled in.</li>
+<li><b>What is counted:</b> Michelin-starred restaurants assigned to each broad cluster (C1 25, C5 8, C2 5, C3 2, C4 1). These area totals are context only; they do not measure proximity to any individual hotel.</li>
+<li><b>Not measured:</b> straight-line or route distance, walk/transit/drive time, stay-date rates, or room value. No hotel ranking is defensible until the address set and method are verified and explicitly chosen.</li>
+<li><b>Addresses:</b> values are shown only when supported by the verification record and official source. Blank addresses are unverified, not inferred from nearby landmarks.</li>
+<li><b>Candidate status:</b> inclusion is not a Michelin hotel rating or booking recommendation. Rates and Michelin Key status have not been verified for every property.</li>
 </ul>
 </div>
 
@@ -474,16 +476,16 @@ hotels_body = f"""
 <p class="small" data-count="#hotTable"></p>
 
 <div class="tblwrap"><table id="hotTable">
-<thead><tr><th>Hotel</th><th>Address</th><th>Density</th><th>Why it ranks here</th><th>Sources &amp; status</th><th>Notes</th></tr></thead>
+<thead><tr><th>Candidate hotel</th><th>Address</th><th>Cluster total (not proximity)</th><th>Cluster note</th><th>Sources &amp; status</th><th>Notes</th></tr></thead>
 <tbody>{hot_rows}</tbody></table></div>
 
 <div class="card">
-<h2>If you only read one line</h2>
-<p>For a first trip, stay in <b>C1 SF Core</b> &mdash; it holds {len([r for r in cluster['C1 SF Core'] if 'Star' in r['distinction']])} of the {len(CORE)} Core starred restaurants and you can walk or ride-share to a different one each night. For an eating-first Wine Country trip, <b>Auberge du Soleil</b> and <b>SingleThread Inn</b> are the two places where the starred restaurant is in the building; Bardessono is the walk-to-French-Laundry option.</p>
-<p class="small">Ranking by density flatters the city. It says nothing about room quality, price or service &mdash; see <a href="questions.html">Q6</a> and <a href="suggestions.html">S5</a> before treating this as a booking list.</p>
+<h2>Before choosing a hotel</h2>
+<p>Use the cluster as geographic context only. Choose a base after comparing your dates, budget, transport, accessibility and room needs against each property's official details; the current list is not ranked and is not a personalized booking recommendation.</p>
+<p class="small">See <a href="questions.html">Q6, Q13 and Q14</a> for open hotel decisions and <a href="suggestions.html">S5</a> for a proposed cost estimator.</p>
 </div>
 """
-write("hotels.html", "Hotels ranked by Michelin density — SF Bay Area", hotels_body)
+write("hotels.html", "Unranked hotel candidates — SF Bay Area", hotels_body)
 
 # ---------------------------------------------------------------- map
 CLUSTER_INFO = {
