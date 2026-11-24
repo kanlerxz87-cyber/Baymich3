@@ -15,7 +15,7 @@ Repo: `kanlerxz87-cyber/Baymich3` · Project: SF Bay Area Michelin guide, map, h
 |----|------|--------|-----------------|----------------|-------|
 | T0 | Create coordination board | done | `401d224f` | `COORDINATION.md` | Created in this session. |
 | T1 | Repo review (line by line) + irregularities | in progress | `401d224f` | `docs/review.html`, `data/flags.json` | See Irregularities log. |
-| T2 | Michelin Bay Area starred restaurants (detail-page verification) | in progress | `401d224f` | `data/restaurants_starred.json` | Source: guide.michelin.com detail pages. |
+| T2 | Michelin Bay Area starred restaurants (detail-page verification) | in progress | `401d224f` | `data/restaurants_starred.json` | 3★–1★ entries drafted from guide.michelin.com detail pages (38 entries). Missing: Angler, Mister Jiu's, Sons & Daughters, Gary Danko (unverified). Hours incomplete for several entries (flagged). Link check pending. |
 | T3 | Michelin Bib Gourmand + Selected restaurants (Bay Area) | unclaimed | — | `data/restaurants_bib.json` | Official listing: `/restaurants/bib-gourmand` (30 SF & surroundings). Not started. |
 | T4 | Hotels in Bay Area + Michelin Keys + ranking | unclaimed | — | `data/hotels.json` | Needs official hotel listing + coordinates. Not started. |
 | T5 | Social links (YouTube / TikTok / Instagram) per row | unclaimed | — | `data/social_links.json` | Must come from the venue's official website or verified account. |
@@ -26,6 +26,7 @@ Repo: `kanlerxz87-cyber/Baymich3` · Project: SF Bay Area Michelin guide, map, h
 ## Claims log
 
 - 2026-11-24 · `401d224f` · claimed T0–T2, T7, T8 (and T1). Scope listed above. Commit: see git log.
+- 2026-11-24 · `401d224f` · T2 progress: `data/restaurants_starred.json` drafted (38 starred entries; per-row status and flags included). Pushed for review.
 
 ## Handoff rule
 
@@ -45,6 +46,10 @@ Logged in `docs/review.html` and `data/flags.json`. Summary:
 4. Michelin price levels ($–$$$$) are categories, not dollar amounts. Exact prices are therefore not verified.
 5. The SFist "michelin-guide" tag page carries a 2018 date in its metadata, so it was not used as a source.
 6. The repository contains only `README.md` (`# Baymich3`). It has no license, no `.gitignore`, and no description.
+7. Selby's: press and the Michelin URL say Redwood City, but the official page lists it in **Atherton** (3001 El Camino Real). Recorded as Atherton; flagged.
+8. Slug traps: `/san-francisco/restaurant/kiln` resolves to London's Kiln (SF Kiln is `kiln-1210355`); `/san-francisco/restaurant/progress` failed (working slug `the-progress`); Angler, Mister Jiu's, and Sons & Daughters detail pages did not load.
+9. SingleThread hours: the Michelin Location block shows 4–8:45 PM daily, the same text as another entry's page. Flagged for re-check.
+10. Several `michelin_url` slugs in `data/restaurants_starred.json` were rebuilt from restaurant names. Link check is pending for the integration step.
 
 ## Sources
 
