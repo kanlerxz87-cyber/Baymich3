@@ -24,3 +24,9 @@ The repository started with only `README.md`; no other task was claimed. Arena r
 - City counts and map searches are star-only, municipality-level approximations; not walking-radius counts, venue pins, or counts of all Michelin Guide selections.
 - The full 2026 Guide-selected/Bib Gourmand inventory is not represented; nine verified non-star examples are included to demonstrate distinct labels.
 - GitHub Pages currently reports `build_type: legacy`, sourced from `main`. Attempting to switch to GitHub Actions with `gh api` returned HTTP 403 (`Resource not accessible by integration`). The workflow is ready, but publishing this branch to the live Pages URL requires an owner/admin to enable Actions as the Pages source; no permission workaround or credential request was attempted.
+
+## Deployment status (checked 2026-11-24)
+
+- Pages API: `build_type: legacy`, source `main`, URL `https://kanlerxz87-cyber.github.io/Baymich3/`. Not yet switched to the Actions workflow (HTTP 403 on change attempt).
+- Actions history shows a failed run "Build source-first Bay Area Michelin planning dashboard" (`Deploy static site to GitHub Pages`) on branch `arena/46b28920-baymich3`, a different session's branch. Not investigated or modified here; flagged for the integration session.
+- Live site is therefore NOT yet showing this branch's dashboard.
