@@ -34,3 +34,15 @@ th{background:#fafafa;position:sticky;top:0}
 .okbox{background:#e9f7ef;border:1px solid #a8d8b9;border-radius:10px;padding:10px 12px;font-size:13px}
 footer{max-width:1100px;margin:0 auto;padding:20px 16px;color:var(--mut);font-size:12px}
 @media(max-width:640px){table{font-size:13px}th,td{padding:7px 6px}.card{padding:12px}header.top{position:static}}
+/* --- added 24 Nov 2026 (session 049fdb53): conflict badge, unverified text, mobile card tables --- */
+.badge.bad{color:#b00020;border-color:#b00020;background:#fdecef}
+.unv{color:var(--warn);font-style:italic;font-size:13px}
+.note{background:#fff8e1}
+@media(max-width:640px){
+  table.stack thead{display:none}
+  table.stack, table.stack tbody, table.stack tr, table.stack td{display:block;width:100%}
+  table.stack tr{border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:6px 4px;background:#fff}
+  table.stack td{border:0;padding:5px 8px}
+  table.stack td::before{content:attr(data-label);display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--mut)}
+  .tblwrap{overflow:visible;border:0;background:transparent}
+}

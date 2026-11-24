@@ -1,23 +1,42 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Methodology — SF Bay Area Michelin 2026</title><link rel="stylesheet" href="assets/style.css"></head><body><header class="top"><div class="wrap"><div class="brand">SF Bay Area Michelin<small>Guide California 2026 · Verified · Mobile-friendly</small></div><nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav></div></header><main>
-<h1>Methodology &amp; Sources</h1>
-<div class="card"><h2>Sources (official only for verified values)</h2><ul>
-<li>Star/Bib/Recommended status: <a href="https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california">MICHELIN Guide California 2026</a> (24 June 2026) + <a href="https://www.michelin.com/en/publications/products-and-services/the-michelin-guide-california-2026">Michelin press release</a> (26 June 2026).</li>
-<li>SF surroundings counts (145 = 29+30+86): <a href="https://guide.michelin.com/us/en/california/san-francisco/restaurants">Michelin SF search</a>.</li>
-<li>Price/hours: restaurant official site (URL per row in CSV). Tock/OpenTable = restaurant booking page (recorded as indicative, not "official homepage").</li>
-<li>Hotels: official hotel site + Michelin Hotels search. Ranking = cluster starred count (no fake mile math).</li>
-<li>Social: official-site footer/sameAs preferred; Instagram search only as lead (flagged).</li>
-</ul></div>
-<div class="card"><h2>Verification log (sample)</h2><ul>
-<li>Benu $425+22% Wed-Sat — benusf.com/info (fetched).</li>
-<li>Acquerello $295+20%+4% — acquerellosf.com/seasonal-tasting-menu (fetched).</li>
-<li>Birdsong $290/$350 — birdsongsf.com/experience (fetched).</li>
-<li>Commis $279+20% — commisrestaurant.com/info (fetched).</li>
-<li>Kiln $315+20% Tue-Thu/Fri-Sat — kilnsf.com/information (fetched).</li>
-<li>Lazy Bear $320 Tue-Sat 5-9 — lazybearsf.com/tickets (fetched).</li>
-<li>Sons &amp; Daughters $330 — sonsanddaughterssf.com/food (fetched).</li>
-<li>7 Adams $87/$127/$157 — 7adamsrestaurant.com/menus (search snippet quoting official).</li>
-<li>Angler lunch $60 + hours — anglerrestaurants.com/menu (search snippet quoting official).</li>
-<li>Four Seasons SF 757 Market — fourseasons.com/sanfrancisco (fetched).</li>
-</ul></div>
-<div class="card"><h2>Rules</h2><p>Blank = Unverified. Never inferred. Price for 2 = pp×2 + service (formula per row, excl. tax/bev). Re-verify quarterly + before booking. See <a href="data/SCOPE.md">SCOPE.md</a> for geography.</p></div>
-</main><footer>Sources: MICHELIN Guide California 2026 + official sites. See <a href="methodology.html">Method</a>.</footer><script src="assets/app.js"></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Method — SF Bay Area Michelin 2026</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body><header class="top"><div class="wrap"><div class="brand">SF Bay Area Michelin<small>Guide California 2026 · Verified · Mobile-friendly</small></div>
+<nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html" aria-current="page">Method</a></nav></div></header>
+<main><h1>Method — how this site is built and verified</h1>
+<h2>Sources (in order of trust)</h2>
+<p>1. <b>MICHELIN Guide official pages</b> — the 2026 California article (stars, 24 Jun 2026) and each restaurant&#x27;s guide.michelin.com page (address, price level, hours, website).</p>
+<p>2. <b>Restaurant and hotel official sites</b> — the restaurant&#x27;s own pages (prices, hours, social icons, booking pages).</p>
+<p>3. <b>Booking partners</b> named on the official site (OpenTable, Tock) — used for booking links, not for prices unless the restaurant states them.</p>
+<p>4. <b>Third-party sites</b> (press, blogs, aggregators) — <b>never</b> used for a value in the table. They can be listed as leads only.</p>
+<h2>Rules</h2>
+<ul>
+<li>A blank cell is <b>Unverified</b> and must not be filled by inference.</li>
+<li>Price for 2 = per-person price × 2 + service charge (formula shown). Tax, beverages, and gratuity are excluded unless the official page includes them.</li>
+<li>Michelin&#x27;s &quot;$$$$&quot; is a price level, not a dollar amount. It is shown separately.</li>
+<li>Two official sources that disagree are both shown and flagged as a <b>Conflict</b>.</li>
+<li>Each row carries a &quot;checked&quot; date and the verification log lists every URL used.</li>
+</ul>
+<h2>Geography</h2>
+<ul>
+<li><b>Core (9 counties):</b> San Francisco, San Mateo, Santa Clara, Alameda, Contra Costa, Marin, Sonoma, Napa, Solano. This is the standard Bay Area definition used for the star count and hotel ranking.</li>
+<li><b>Extension (not in the Core counts):</b> Carmel-by-the-Sea (Monterey County) and Elk (Mendocino County).</li>
+<li>Michelin&#x27;s own &quot;San Francisco and surroundings&quot; list is a different geography and is shown only for comparison (see Flagged F9).</li>
+</ul>
+<h2>Hotel ranking</h2>
+<ul>
+<li>Metric: count of Core starred restaurants in the hotel&#x27;s cluster.</li>
+<li>Clusters: C1 SF (25), C2 Peninsula (5), C3 East Bay (2), C4 Marin (1), C5 Wine Country (8).</li>
+<li>Hotels in the same cluster are tied. Distance-based ranking needs verified coordinates (not done).</li>
+</ul>
+<h2>Build</h2>
+<ul>
+<li>Data: <code>data/restaurants.csv</code>, <code>data/hotels.csv</code>.</li>
+<li>Pages: <code>restaurants.html</code> and <code>hotels.html</code> are generated by <code>scripts/build_tables.py</code>. Edit the CSV, then run the script.</li>
+<li>The site is plain HTML/CSS/JS. There is no framework and no external tracking.</li>
+</ul><p class="small">Source file: <code>docs/methodology.md</code>. Generated by scripts/build_tables.py on 24 Nov 2026.</p></main>
+<footer>Generated by scripts/build_tables.py from data/*.csv on 24 Nov 2026. Blank = Unverified (never guessed).
+Sources: <a href="https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california">MICHELIN Guide California 2026 article</a> ·
+<a href="data/restaurants.csv">restaurants.csv</a> · <a href="data/hotels.csv">hotels.csv</a> · <a href="data/verification-log-2026-11-24.md">verification log</a> · <a href="flagged.html">Flagged</a></footer>
+<script src="assets/app.js"></script></body></html>
