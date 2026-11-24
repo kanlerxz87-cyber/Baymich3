@@ -1,7 +1,7 @@
 # COORDINATION.md — Shared Task Board
 
-Session ID: `88da5baf` (branch: `arena/88da5baf-baymich3`)
-Last updated: 2026-11-24
+Session IDs: `88da5baf` (branch `arena/88da5baf-baymich3`, merged to main via PR #3) and `15c870c6` (branch `arena/15c870c6-baymich3`, current)
+Last updated: 2026-11-24 (session 15c870c6)
 
 ## Rules
 - Claim a task by writing session ID + file scope, commit + push immediately.
@@ -22,9 +22,14 @@ Last updated: 2026-11-24
 | T4 | Hotels ranked by Michelin density | in progress | 88da5baf | data/hotels.csv, data/hotels.md | Hotel official sites + Michelin map distances | — |
 | T5 | GitHub Pages site (landing + subpages, mobile-friendly) | in progress | 88da5baf | index.html, *.html, assets/*, _config.yml | Build check, link check | — |
 | T6 | Executive summary, Questions/Answers, Suggestions | in progress | 88da5baf | docs/executive-summary.md, docs/questions.md, docs/suggestions.md | Cross-ref T1–T4 | — |
-| T7 | Final integration: re-verify line-by-line, link check, publish | unclaimed | — | all | — | — |
+| T7 | Final integration: re-verify line-by-line, link check, publish | done (88da5baf, merged PR #3; Pages built from main) | 88da5baf | all | — | — |
+| T8 | Repo review: irregularity log + starred-list re-check vs Michelin 2026 article | in progress | 15c870c6 | COORDINATION.md, data/SCOPE.md, docs/flagged-review.md | guide.michelin.com California 2026 article (24 Jun 2026) | see log |
+| T9 | Fill blank restaurant rows (R28–R44) from Michelin restaurant pages (address, website, price tier, hours) | in progress | 15c870c6 | data/restaurants.csv | guide.michelin.com restaurant pages | see log |
+| T10 | Hotels: correct SF starred count, document ranking method | in progress | 15c870c6 | data/hotels.csv, data/hotels.md | guide.michelin.com + official hotel sites | see log |
+| T11 | Site: regenerate pages from CSV (generator), flagged page, mobile check | in progress | 15c870c6 | scripts/build_site.py, *.html, assets/* | Build + link check | — |
 
 ## Log
+- 2026-11-24 (15c870c6): Session 15c870c6 starts on branch arena/15c870c6-baymich3 (the only active branch per session rules; session-<id>/<task> naming not used — branch name fixed by Arena). Prior tasks T1–T6 are complete per the 88da5baf log and merged. Claimed T8–T11 as the remediation pass. No other session holds a claim on any file listed above.
 - 2026-11-24: Repo was empty (only README). Session 88da5baf claimed T1–T6 on branch arena/88da5baf-baymich3. T7 left for final integration pass in same session after T1–T6 done.
 
 ## Update 2026-11-24 (session 88da5baf)
