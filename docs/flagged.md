@@ -25,4 +25,4 @@ Flagged items do not block publication. Each one lists both sources so you can c
 | F19 | Green-Star-only Bay Area restaurants not in dataset | Chez Panisse (Berkeley) and Pomet (Oakland) on the 2026 Green Star list (secondary sources, PR #4) | No row in the starred or Bib tables | Open. Needs Michelin listing check; not added. |
 | F20 | Michelin URL path | Official article links use guide.michelin.com/ca/en/… | CSV uses /us/en/… for the same pages | Both resolve to the same restaurant pages (checked for 14 rows); seven rows filled from the article (PR #4). |
 | F21 | Two generators for restaurants.html | scripts/build_restaurants.py (PR #4) | scripts/build_tables.py (this session) | `build_tables.py` is the single generator. `build_restaurants.py` is superseded and must not be run. Integration owner to decide on removal. |
-
+| F22 | Michelin green-icon column not re-verified | `michelin_green_icon` values for R01–R14 were entered from earlier chunk-0 records; the per-page green-icon check is not in this session's fetch log | Re-check each Michelin page's green sustainability block | Open. Do not cite the green-icon column as verified. |
