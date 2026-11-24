@@ -1,8 +1,8 @@
 # SF Bay Area Michelin Guide & Map (2026)
 
-Verified, mobile-friendly dashboard of Michelin-starred, Bib Gourmand, and Recommended restaurants in the San Francisco Bay Area, plus hotels ranked by Michelin density.
+Verified, mobile-friendly dashboard of Michelin-starred, Bib Gourmand, and Recommended restaurants in the San Francisco Bay Area, plus an unranked hotel-candidate directory grouped by restaurant cluster.
 
-**Live site (GitHub Pages):** https://kanlerxz87-cyber.github.io/Baymich3/ (enable Pages → Deploy from branch `main` if not yet enabled; see COORDINATION.md)
+**Live site (GitHub Pages):** https://kanlerxz87-cyber.github.io/Baymich3/ (deployed from `main`; see COORDINATION.md for verification)
 
 ## Regenerate the site
 All HTML is generated from the CSVs, so it can never drift from the data:
@@ -12,7 +12,7 @@ All HTML is generated from the CSVs, so it can never drift from the data:
 - `index.html` — landing dashboard (all counts computed from the CSVs)
 - `restaurants.html` — 41 Core starred + 3 Extension (stars, price for 2, hours, social, sources, per-row verification badge)
 - `listed.html` — Bib Gourmand (36 rows, per-city Michelin citation) + Recommended (86 count + link)
-- `hotels.html` — 14 hotels ranked by cluster density
+- `hotels.html` — 14 unranked hotel candidates grouped by broad restaurant cluster; not proximity scores
 - `map.html` — cluster guide + Michelin map links (no guessed coordinates)
 - `executive-summary.html` / `questions.html` / `suggestions.html` / `flagged.html` (irregularity log) / `methodology.html`
 - `data/restaurants.csv`, `data/bib.csv`, `data/hotels.csv`, `data/SCOPE.md`

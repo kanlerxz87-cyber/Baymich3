@@ -28,18 +28,12 @@
 - **Rule:** Budget only from "Verified" rows. "Unverified" = check the official site or Tock before booking. Service charges of 20–26% are the single biggest swing factor — the same $195 menu costs $390 or $409.50 depending on how the operator publishes it.
 - **Arithmetic corrections made in this audit:** Acquerello was shown as $708 (basis $731.60), Angler as $156 (basis $151.20), Commis as $669 (basis $669.60), 7 Adams as $254 (omitted both surcharges), Sorrel as $390 (summer menu), Madcap as $360 (omitted 20%). All now match their printed formula.
 
-## Hotels (ranked by Michelin density — see hotels page for method)
-Ranked strictly by the number of starred restaurants in the hotel's cluster — 25 in SF, 8 in Wine Country, 5 on the Peninsula, 2 in the East Bay, 1 in Marin. That ordering is why the eight SF hotels lead and Cavallo Point sits last.
+## Hotel candidates (unranked)
 
-1. Four Seasons SF (757 Market St) — walkable to the SoMa cluster. 2. Fairmont SF (950 Mason St, Nob Hill). 3–8 SF Core alternates (St. Regis, Palace, Ritz-Carlton, Taj Campton Place, Hotel Kabuki, 1 Hotel at 8 Mission St). 9. Auberge du Soleil (1★ on site). 10. SingleThread Inn (3★ + inn, 131 North St). 11. Bardessono (6526 Yount St, steps from The French Laundry). 12. Rosewood Sand Hill (Menlo Park). 13. Claremont (Berkeley). 14. Cavallo Point (601 Murray Circle, Fort Baker).
-
-Ranking by cluster count flatters the city: all eight SF hotels tie at 25, so their internal order is editorial, not measured. See Questions Q13.
-- **Verification state:** 7 hotels have a verified address (Four Seasons, Fairmont, 1 Hotel, Cavallo Point, Bardessono, SingleThread Inn, Auberge du Soleil); 3 are partial (St. Regis, Rosewood, Taj Campton Place); 4 are Unverified with a blank address cell (Palace, Ritz-Carlton SF, Hotel Kabuki, Claremont) because their official pages did not load when checked.
-- **Address errors fixed in this audit:** Bardessono was listed at 6640 Washington St (that is The French Laundry's address), Cavallo Point at "601 Bridgeway", 1 Hotel at 22 Battery St.
-- **Recommendation:** First-time visitors → SF Core (Four Seasons/Fairmont). Wine Country → Auberge or SingleThread Inn (eat where you sleep). East Bay food trip → Claremont.
+The 14 hotel properties are grouped by broad cluster only. The cluster totals are SF 25, Wine Country 8, Peninsula 5, East Bay 2 and Marin 1; these are not nearby counts or hotel scores. Official addresses/coordinates are incomplete across the list, no distance method has been selected, and rates are date-dependent. No proximity ranking or booking recommendation is published. See [Questions Q6 and Q13–Q14](questions.html) and [hotel method notes](data/hotels.md).
 
 ## Risks & unknowns (see Questions page)
 - Prices/hours change seasonally; 27 of 44 starred rows have no publishable official price (6 rows have no verified value at all, 1 is partial), and 28 of 36 Bib rows were not re-confirmed on a Michelin page in this audit. Instagram is verified from an official page for 7 venues (Atelier Crenn, Benu, Lazy Bear, 7 Adams, Nisei, Auro, Chez Noir); **no venue publishes a YouTube or TikTok channel**, so those cells are blank rather than guessed. Hotel nightly rates not collected (dynamic pricing). Recommended (86) names not yet enumerated. Drive times not measured. Allergies/dietary, cancellation and dress code vary — check per restaurant.
 
 ## How to use this site
-- **Restaurants page:** filter by stars/cluster/price; every row links to Michelin + official site. **Listed page:** Bib (value) vs Recommended. **Hotels page:** ranked table. **Map page:** cluster guide + Michelin map links. **Flagged page:** irregularities + dropped stars. **Methodology:** sources + verification log.
+- **Restaurants page:** filter by stars/cluster/price; every row links to Michelin + official site. **Listed page:** Bib (value) vs Recommended. **Hotels page:** unranked cluster-grouped candidates. **Map page:** cluster guide + Michelin map links. **Flagged page:** irregularities + dropped stars. **Methodology:** sources + verification log.
