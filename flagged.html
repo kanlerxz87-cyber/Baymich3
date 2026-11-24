@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Flagged for review — SF Bay Area Michelin 2026</title>
+<title>Flagged for Review</title>
 <meta name="description" content="SF Bay Area MICHELIN Guide 2026 dashboard: starred vs listed, verified prices for two, clusters, and hotels ranked by Michelin density.">
 <link rel="stylesheet" href="assets/style.css"></head>
 <body>
@@ -10,74 +10,42 @@
 <nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav>
 </div></header>
 <main>
-
-<h1>Flagged for review</h1>
-<p class="lead">Irregularities found while checking this repository line by line, in the order they were found. Nothing here is hidden behind a status badge: each item states what was wrong, what was done, and what is still open.</p>
-
-<div class="card">
-<h2>1. Column corruption in the starred data <span class="badge ok">fixed</span></h2>
-<p><b>What was wrong:</b> eleven rows (Naides, Wolfsbane, Sun Moon Studio, Auro, Troubadour, Press, Plumed Horse, The Village Pub, Aubergine, Chez Noir and Hilda and Jesse's neighbour row) had the Michelin URL stored in the <code>price_pp_usd</code> column. Every later field had shifted one place, so the rendered page printed a URL where a price belonged and showed no address, no hours and no sources. A twelfth row (Lazy Bear) had its Instagram link in the YouTube column.</p>
-<p><b>What was done:</b> all 44 rows were rebuilt in canonical 24-column order, the shift was reversed per row, and a build-time assertion now fails if any row lacks a Michelin source link. The generator reads the CSV, so the HTML cannot drift out of step again.</p>
-</div>
-
-<div class="card">
-<h2>2. Price arithmetic <span class="badge ok">fixed</span></h2>
+<p class="small">Rendered from <code>docs/flagged-review.md</code>. Verified values link to official sources; this page regenerates with <code>python3 tools/build_site.py</code>.</p><p>Every irregularity found while checking this repository line by line. <b>FIXED</b> = corrected in the data and checked against a source. <b>OPEN</b> = needs a decision or a fetch before it can be resolved; open items do not block publication.</p>
+<div class="tblwrap"><table><thead><tr><th>ID</th><th>Item</th><th>What we found</th><th>Status</th><th>Source</th></tr></thead><tbody>
+<tr><td>F1</td><td><b>Starred count, Core (Michelin 2026)</b></td><td>Core list = 41 starred (7×3★, 7×2★, 27×1★) + 3 Extension (Aubergine 2★, Harbor House 2★, Chez Noir 1★). Michelin&#x27;s own &#x27;San Francisco and surroundings&#x27; filter shows 29 starred — a narrower area, so the two counts differ.</td><td>Checked — matches Michelin article; scope difference explained</td><td><a href="https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california">source</a></td></tr>
+<tr><td>F2</td><td><b>Hotel count: SF starred</b></td><td>Recorded 20; Michelin 2026 gives 25 in SF proper (4×3★ + 6×2★ + 15×1★). Audit re-check: 25 confirmed and now computed from restaurants.csv at build time.</td><td>FIXED (hotels.csv)</td><td><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurants">source</a></td></tr>
+<tr><td>F3</td><td><b>Hotel count: Wine Country (C5)</b></td><td>Recorded 7; Michelin 2026 gives 8 (3×3★ SingleThread, French Laundry, Enclos; 5×1★ Auro, Cyrus, Troubadour, Press, Auberge). All eight are in Napa/Sonoma, inside the Core. Cluster sum now checks: 25+5+2+1+8 = 41.</td><td>FIXED (hotels.csv)</td><td><a href="https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california">source</a></td></tr>
+<tr><td>F4</td><td><b>Hotel ranking order</b></td><td>Ranks 12–14 (Wine Country, 8 starred) sat below Peninsula (5) and East Bay (2) — contradicts the stated count method.</td><td>FIXED (re-sorted by count)</td><td></td></tr>
+<tr><td>F5</td><td><b>Hotel ranking method</b></td><td>SCOPE.md describes 5/10/25-mile counts from coordinates; the CSV ranks by cluster count only. All 8 SF hotels tie at 25.</td><td>OPEN — decision needed (Questions Q13); 8 SF hotels still tie at 25</td><td></td></tr>
+<tr><td>F6</td><td><b>Acquerello 2-adult total</b></td><td>Listed $708; its own formula (295×2=590, +24%) gives $731.60.</td><td>FIXED (restaurants.csv)</td><td><a href="https://www.acquerellosf.com/seasonal-tasting-menu">source</a></td></tr>
+<tr><td>F7</td><td><b>Angler 2-adult total</b></td><td>Listed $156; formula (60×2=120, +26%) gives $151.20.</td><td>FIXED (restaurants.csv)</td><td><a href="https://anglerrestaurants.com/menu/">source</a></td></tr>
+<tr><td>F8</td><td><b>Shifted cells (10 rows)</b></td><td>Michelin URL was in the price column for Naides, Wolfsbane, Sun Moon Studio, Auro, Troubadour, Press, Plumed Horse, Village Pub, Aubergine, Chez Noir.</td><td>FIXED (URL moved to michelin_url)</td><td></td></tr>
+<tr><td>F9</td><td><b>Selby&#x27;s address</b></td><td>Prior row said Redwood City; Michelin 2026 lists 3001 El Camino Real, Atherton CA 94061 (OpenTable slug still says redwood-city).</td><td>FIXED to Michelin; postal-city wording flagged</td><td><a href="https://guide.michelin.com/us/en/california/atherton/restaurant/selby-s">source</a></td></tr>
+<tr><td>F10</td><td><b>Protégé hours</b></td><td>Prior (secondary) said 5–9:30 PM; Michelin page says Tue–Sat 5 PM–9:15 PM.</td><td>FIXED</td><td><a href="https://guide.michelin.com/us/en/california/palo-alto/restaurant/protege">source</a></td></tr>
+<tr><td>F11</td><td><b>Same address: Naides and Sons &amp; Daughters</b></td><td>Michelin lists Naides at 708 Bush St — the same address as Sons &amp; Daughters (2★).</td><td>FIXED — confirmed: Naides shares 708 Bush St with Sons &amp; Daughters (a residency); Michelin and the restaurant&#x27;s own page agree</td><td><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurant/naides">source</a></td></tr>
+<tr><td>F12</td><td><b>Same address: Bardessono and The French Laundry</b></td><td>Hotel file gives Bardessono 6640 Washington St, Yountville — the address Michelin gives for The French Laundry.</td><td>FIXED — Bardessono&#x27;s contact page gives 6526 Yount St; 6640 Washington St is The French Laundry&#x27;s own address</td><td><a href="https://guide.michelin.com/us/en/california/yountville/restaurant/the-french-laundry">source</a></td></tr>
+<tr><td>F13</td><td><b>Green Star claims</b></td><td>Quince marked Green Star (2026) and Sons &amp; Daughters &#x27;Green Star 2025&#x27; — the 2026 Green Star list was not fetched this session.</td><td>PARTLY RESOLVED — Green Star confirmed on Michelin pages for Quince, SingleThread, The French Laundry, Enclos, Sons &amp; Daughters and Harbor House Inn; Atelier Crenn now set to &#x27;Unconfirmed&#x27; (secondary list only)</td><td><a href="https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california">source</a></td></tr>
+<tr><td>F14</td><td><b>Four Seasons Napa hosts AURO (1★)</b></td><td>Auro&#x27;s official address is inside Four Seasons Resort &amp; Residences Napa Valley; the hotel is not in hotels.csv.</td><td>OPEN — whether Four Seasons Napa joins hotels.csv is a user decision (Question Q14)</td><td><a href="https://guide.michelin.com/us/en/california/calistoga/restaurant/auro">source</a></td></tr>
+<tr><td>F15</td><td><b>Hours still unverified (Michelin page truncated)</b></td><td>Auro, Aubergine, Niku, Village Pub (Sunday), Harbor House (Sunday). Michelin hours table cut off in the fetched portion.</td><td>PARTLY RESOLVED — Michelin hours/exceptions added for 13 more rows this pass; Auro, Aubergine, Niku, Village Pub (Sun), Harbor House (Sun) still open</td><td></td></tr>
+<tr><td>F16</td><td><b>Social links</b></td><td>Only 3 Instagram links verified in the prior session; zero YouTube or TikTok links verified.</td><td>PARTLY RESOLVED — 7 Instagram handles now verified from official pages; YouTube/TikTok confirmed at zero (no venue publishes one)</td><td></td></tr>
+<tr><td>F17</td><td><b>Bib list sources</b></td><td>data/bib.csv points every Bib row to the San Francisco Bib URL, including Oakland, Berkeley and Sonoma rows.</td><td>FIXED — each Bib row now cites its own city&#x27;s list; 28 of 36 rows marked Unverified rather than &#x27;verified&#x27;</td><td><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurants/bib-gourmand">source</a></td></tr>
+<tr><td>F19</td><td><b>Green-Star-only restaurants not in dataset</b></td><td>Chez Panisse (Berkeley) and Pomet (Oakland) appear on the 2026 Green Star list (secondary sources, session e1b8a912) but have no row in the starred or Bib tables.</td><td>OPEN — Chez Panisse and Pomet are not in the starred or Bib tables; needs a Michelin list check</td><td><a href="https://www.visitcalifornia.com/experience/california-restaurants-top-nation-michelin-green-stars/">source</a></td></tr>
+<tr><td>F20</td><td><b>Green Star list not confirmed on Michelin</b></td><td>Atelier Crenn and Harbor House Inn set to Green Star &#x27;Yes&#x27;. Harbor House&#x27;s Michelin page shows the green-star icon; the Atelier Crenn Green Star rests on the secondary VisitCalifornia list.</td><td>RESOLVED — Atelier Crenn&#x27;s Green Star is not on its Michelin page, so it is recorded as Unconfirmed, not Yes</td><td><a href="https://guide.michelin.com/us/en/california/elk/restaurant/harbor-house">source</a></td></tr>
+<tr><td>F21</td><td><b>Two Michelin URL path styles</b></td><td>The 2026 article links use guide.michelin.com/ca/en/…; the CSV uses /us/en/… for the same restaurant pages. Both resolve in the fetched pages.</td><td>OPEN — cosmetic; both path styles resolve, so no link is broken</td><td><a href="https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california">source</a></td></tr>
+<tr><td>F18</td><td><b>Missing file referenced by SCOPE.md</b></td><td>SCOPE.md pointed to data/hotels.md, which did not exist.</td><td>FIXED — data/hotels.md created</td><td></td></tr>
+<tr><td>F22</td><td><b>Hotel street addresses (3 wrong)</b></td><td>Bardessono was listed at 6640 Washington St (The French Laundry&#x27;s address), Cavallo Point at &#x27;601 Bridgeway&#x27; and 1 Hotel San Francisco at 22 Battery St.</td><td>FIXED — 6526 Yount St, 601 Murray Circle (Fort Baker), 8 Mission St, each from the hotel&#x27;s own contact page</td><td><a href="https://www.bardessono.com/">source</a></td></tr>
+<tr><td>F23</td><td><b>4 Hotels with no verifiable official page</b></td><td>Palace, Ritz-Carlton SF, Hotel Kabuki and Claremont official pages would not load during the audit; a plausible address from memory is exactly the failure mode above.</td><td>FIXED — address cells blanked and marked Unverified instead of guessed</td><td></td></tr>
+<tr><td>F24</td><td><b>Madcap, Sorrel and 7 Adams totals</b></td><td>Madcap showed $360 with no service charge (it publishes 20%), Sorrel showed the summer price in a Fall 2026 file, and 7 Adams showed $254 with both its 6% surcharge and 20% service missing.</td><td>FIXED — $432, $409.50 and $320.04, each with its formula</td><td><a href="https://www.sorrelrestaurant.com/menus/">source</a></td></tr>
+<tr><td>F25</td><td><b>Bib rows labelled &#x27;verified&#x27; without a list page</b></td><td>All 36 Bib rows said &#x27;verified&#x27;, but only the SF rows could have been — Michelin publishes separate city lists, and 28 names were not re-seen in this audit.</td><td>FIXED — 8 Verified, 28 Unverified, per-city citations (see F17)</td><td><a href="https://guide.michelin.com/us/en/california/oakland/restaurants/bib-gourmand">source</a></td></tr>
+<tr><td>F26</td><td><b>Site could drift from the data</b></td><td>restaurants.html was hand-maintained, so a corrected CSV did not change the page — that is how a URL stayed in a price cell after the data was fixed.</td><td>FIXED — every page is generated by tools/build_site.py; counts computed at build time</td><td></td></tr>
+</tbody></table></div>
+<h2>How this list is kept honest</h2>
+<p>Two failure modes are worth naming, because both looked like success:</p>
 <ul class="tight">
-<li><b>Acquerello</b> displayed $708 for two while its own stated basis was $731.60 ($295 &times; 2, +24%). Corrected to $731.60; the surcharge is 20% service <i>plus</i> a 4% employee-benefit surcharge.</li>
-<li><b>Angler</b> displayed $156 against a $151.20 basis ($60 &times; 2, +26%). Corrected to $151.20.</li>
-<li><b>Commis</b> displayed $669 against $669.60. Corrected.</li>
-<li><b>7 Adams</b> omitted its charges entirely. Its own menu page states a 6% surcharge <i>and</i> a 20% service charge, so the total for two is $320.04, not $254. Both figures now appear with the formula.</li>
-<li><b>Sorrel</b> had a summer price in a Fall 2026 dataset. Corrected to the Fall menu ($195 pp) with the 5% SF mandate added: $409.50 for two.</li>
-<li><b>Madcap</b> omitted the 20% service charge it publishes in place of gratuity: $432 for two.</li>
+<li><b>A blank that was filled with a plausible value.</b> Bardessono carried The French Laundry&#x27;s street address for two sessions. It was plausible, in the same town, on the right street. It is now blank-checked against the hotel&#x27;s own contact page.</li>
+<li><b>The page and the data disagreeing.</b> The starred table was hand-maintained, so a repaired CSV did not change what visitors saw. All ten pages are now generated from the data by <code>tools/build_site.py</code>, and the counts are recomputed on every build.</li>
 </ul>
-</div>
-
-<div class="card">
-<h2>3. Wrong hotel addresses <span class="badge ok">fixed</span></h2>
-<ul class="tight">
-<li><b>Bardessono</b> was listed at 6640 Washington St &mdash; that is The French Laundry's address. Bardessono's own contact page gives 6526 Yount St, Yountville.</li>
-<li><b>Cavallo Point</b> was listed at "601 Bridgeway". Its contact page gives 601 Murray Circle, Fort Baker, Sausalito.</li>
-<li><b>1 Hotel San Francisco</b> was listed at 22 Battery St. Its own site gives 8 Mission St.</li>
-</ul>
-<p>Five further hotels (St. Regis, Palace, Ritz-Carlton, Taj Campton Place, Rosewood Sand Hill, Claremont, Hotel Kabuki) have addresses that could not be confirmed from an official page during this audit. Their address cells are now <b>blank</b> and labelled Unverified rather than carrying a plausible-looking guess.</p>
-</div>
-
-<div class="card">
-<h2>4. Source provenance for Bib Gourmand <span class="badge ok">fixed</span></h2>
-<p><b>What was wrong:</b> every Bib row, including Oakland, Berkeley, Marin and Wine Country restaurants, cited the <i>San Francisco</i> Bib Gourmand list as its source, and all 36 were labelled "verified". Michelin publishes separate city lists, so the citation was wrong even where the restaurant was genuinely a Bib.</p>
-<p><b>What was done:</b> each row now cites its own city's list, and rows whose names were not actually re-seen on a Michelin list page in this audit are marked <b>Unverified</b> (28 of 36). Michelin's own filter counts are 30 for San Francisco, 29 for Oakland and 28 for Berkeley, and those lists overlap &mdash; so a simple sum would also have been wrong.</p>
-</div>
-
-<div class="card">
-<h2>5. Cluster count contradiction <span class="badge ok">fixed</span></h2>
-<p>The executive summary described Wine Country as having 7 starred restaurants while listing 8 names (The French Laundry, SingleThread, Enclos, Auberge du Soleil, Auro, Cyrus, Troubadour, Press). The data has 8, and the sum across clusters is 25 + 5 + 2 + 1 + 8 = 41, matching the Core total. The text now says 8 and all cluster counts are computed from the CSV at build time.</p>
-</div>
-
-<div class="card">
-<h2>6. Sources that could not be read <span class="badge warn">open</span></h2>
-<p>These are recorded as Unverified rather than filled from memory:</p>
-<ul class="tight">
-<li><b>frenchlaundry.com</b> returned HTTP 500 on every attempt, so The French Laundry has no price and no hours.</li>
-<li><b>pressnapavalley.com/food</b> returned a bot challenge. Press has verified hours from its homepage but no price.</li>
-<li><b>enclos-sonoma.com</b> is a video-only page with no readable text, so Enclos has no hours or price.</li>
-<li><b>statebirdsf.com</b> and <b>theprogress-sf.com</b> publish reservation links only, so both rows are Unverified for price and hours.</li>
-<li><b>californiossf.com</b> publishes address, phone and a booking link, but no price and no hours. Californios, the first 3-star Mexican restaurant in the world, therefore has no price on this site.</li>
-<li><b>Mister Jiu's, San Ho Won, Protege, Wakuriya and Saison</b> publish menus as PDFs or images. The prices are real but were not machine-readable, so they stay blank.</li>
-</ul>
-<p>Discovery route for each is on the <a href="questions.html">Questions</a> page (Q3, Q4).</p>
-</div>
-
-<div class="card">
-<h2>7. Editorial notes worth a human eye <span class="badge mid">review</span></h2>
-<ul class="tight">
-<li><b>Selby's city label:</b> Michelin files it under Atherton, the street address is in Redwood City. Both are shown.</li>
-<li><b>Cyrus address:</b> Michelin prints "587 St. Helena St." for Press, which is inconsistent with the restaurant's own "587 St Helena Highway". The official form is used.</li>
-<li><b>Auberge du Soleil:</b> it appears both as a restaurant (1 star) and as a hotel. It is counted once in restaurant totals and once in hotel rankings, deliberately.</li>
-<li><b>Extension vs Core:</b> Aubergine, Harbor House Inn and Chez Noir are starred but sit in Monterey and Mendocino counties. They are excluded from the Core count of 41 and shown separately; folding them in would inflate the Bay Area figure.</li>
-<li><b>Recommended tier:</b> 86 names are counted but not enumerated, because Michelin does not publish that set as one page. This is a stated gap, not an oversight.</li>
-</ul>
-</div>
-
+<p>If a row cannot be sourced, it says so. That is the only way a table like this stays worth reading.</p>
 </main>
 <footer>
 <p><b>Sources:</b> MICHELIN Guide California 2026 (guide.michelin.com) and each venue's own website. Every row links to its source. <b>Unverified</b> means the value was not published on the official page we checked &mdash; it is left blank, never guessed. Data checked 24 Nov 2026.</p>

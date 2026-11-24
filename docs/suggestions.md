@@ -2,10 +2,11 @@
 
 > **Status:** Suggestions only. Nothing here is implemented until reviewed and chosen. Each suggestion lists: Problem → Change → Effort → Risk → Decision needed.
 
-## S1. Verified-price badge + "Budget for 2" calculator
+## S1. Verified-price badge + "Budget for 2" calculator — **badges DONE, calculator open**
 - **Problem:** Users can't tell verified vs indicative prices at a glance.
-- **Change:** Add green "Verified" / amber "Unverified" badge per row; calculator: enter party size + wine pairing toggle → total incl. service %. Pulls from CSV.
-- **Effort:** Medium (JS + CSV). **Risk:** Low. **Decision:** Approve badge colors + tax inclusion (currently excl. tax).
+- **Done this pass:** every starred row now carries a Verified / Partial / Unverified badge, and the badge is filterable. The badge logic lives in `tools/build_site.py`, so it cannot disagree with the CSV.
+- **Still open:** the calculator (party size + wine-pairing toggle → total including service %). The per-row formula needed for it is already in the data.
+- **Effort:** Low now that the badges exist. **Risk:** Low. **Decision:** Approve tax inclusion (totals are currently tax-excluded).
 
 ## S2. Cluster map with real pins (Leaflet + geocoded addresses)
 - **Problem:** Map page currently links to Michelin/Google search (no pins). Users can't see density.

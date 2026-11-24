@@ -14,16 +14,19 @@ All HTML is generated from the CSVs, so it can never drift from the data:
 - `listed.html` — Bib Gourmand (36 rows, per-city Michelin citation) + Recommended (86 count + link)
 - `hotels.html` — 14 hotels ranked by cluster density
 - `map.html` — cluster guide + Michelin map links (no guessed coordinates)
-- `executive-summary.html` / `questions.html` / `suggestions.html` / `flagged.html` / `methodology.html`
+- `executive-summary.html` / `questions.html` / `suggestions.html` / `flagged.html` (irregularity log) / `methodology.html`
 - `data/restaurants.csv`, `data/bib.csv`, `data/hotels.csv`, `data/SCOPE.md`
 - `tools/` — `build_site.py` (generator) and the three data-repair scripts
-- `docs/` — markdown sources for summary/questions/suggestions
+- `docs/` — markdown sources for the text pages (summary, questions, suggestions, flagged, method)
 - `COORDINATION.md` — shared task board (parallel sessions)
 
 ## Rules
 - Edition: MICHELIN Guide California 2026. Scope: 9-county Core + flagged Extension.
 - Every row has an official source link. Blank = Unverified (never guessed).
 - Price for 2 = per-person × 2 + service charge (formula per row, excl. tax/bev).
+
+## Contributing
+Edit the CSV or the Markdown, never the HTML — the HTML is output. There is exactly one generator (`tools/build_site.py`); run it and commit both the data and the regenerated pages.
 
 ## Run locally
 `python3 -m http.server 8000` then open http://localhost:8000/

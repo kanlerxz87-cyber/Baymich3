@@ -84,8 +84,124 @@ def write(name, title, body):
     print("wrote", name)
 
 
+
+# ------------------------------------------------------------- markdown renderer
+# The text pages (executive summary, questions, suggestions, flagged, method) are
+# authored in docs/*.md and rendered here, so the Markdown stays the single source.
+import re as _re
+
+
+def inline_md(text):
+    t = e(text)
+    t = _re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", t)
+    t = _re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", r'<a href="\2">\1</a>', t)
+    t = _re.sub(r"`([^`]+)`", r"<code>\1</code>", t)
+    return t
+
+
+def md_to_body(md):
+    out, title, lines = [], "", md.splitlines()
+    i, in_ul, in_ol = 0, False, False
+
+    def close_lists():
+        nonlocal in_ul, in_ol
+        if in_ul:
+            out.append("</ul>"); in_ul = False
+        if in_ol:
+            out.append("</ol>"); in_ol = False
+
+    while i < len(lines):
+        ln = lines[i].rstrip()
+        if ln.startswith("# ") and not title:
+            title = ln[2:].strip(); i += 1; continue
+        if ln.startswith("|"):
+            close_lists()
+            rows = []
+            while i < len(lines) and lines[i].startswith("|"):
+                cells = [c.strip() for c in lines[i].strip().strip("|").split("|")]
+                if not all(set(c) <= set("-: ") for c in cells):
+                    rows.append(cells)
+                i += 1
+            head, body = rows[0], rows[1:]
+            out.append('<div class="tblwrap"><table><thead><tr>' +
+                       "".join(f"<th>{inline_md(c)}</th>" for c in head) +
+                       "</tr></thead><tbody>")
+            for r in body:
+                out.append("<tr>" + "".join(f"<td>{inline_md(c)}</td>" for c in r) + "</tr>")
+            out.append("</tbody></table></div>")
+            continue
+        if ln.startswith("### "):
+            close_lists(); out.append(f"<h3>{inline_md(ln[4:])}</h3>")
+        elif ln.startswith("## "):
+            close_lists(); out.append(f"<h2>{inline_md(ln[3:])}</h2>")
+        elif ln.startswith("- "):
+            if in_ol:
+                out.append("</ol>"); in_ol = False
+            if not in_ul:
+                out.append('<ul class="tight">'); in_ul = True
+            out.append(f"<li>{inline_md(ln[2:])}</li>")
+        elif _re.match(r"^\d+\. ", ln):
+            if in_ul:
+                out.append("</ul>"); in_ul = False
+            if not in_ol:
+                out.append('<ol class="tight">'); in_ol = True
+            item = _re.sub(r"^\d+\.\s*", "", ln)
+            out.append("<li>" + inline_md(item) + "</li>")
+        elif ln.startswith("> "):
+            close_lists(); out.append(f'<div class="note">{inline_md(ln[2:])}</div>')
+        elif ln.strip() == "":
+            close_lists()
+        else:
+            close_lists(); out.append(f"<p>{inline_md(ln)}</p>")
+        i += 1
+    close_lists()
+    return title, "\n".join(out)
+
+
+def write_doc(md_path, out_name, fallback_title):
+    with open(os.path.join(ROOT, md_path), encoding="utf-8") as fh:
+        title, body = md_to_body(fh.read())
+    write(out_name, title or fallback_title,
+          f'<p class="small">Rendered from <code>{e(md_path)}</code>. Verified values link to official sources; '
+          f'this page regenerates with <code>python3 tools/build_site.py</code>.</p>' + body)
+
+
 # ---------------------------------------------------------------- compute
+SCHEMA = ["id", "name", "city", "cluster", "scope", "distinction", "green_star",
+          "cuisine", "address", "michelin_url", "official_url", "price_pp_usd",
+          "service_charge", "price_2adults_usd", "price_basis", "price_source",
+          "michelin_price_tier", "days_open", "hours", "exceptions", "instagram", "youtube",
+          "tiktok", "verification_status", "notes"]
+
+def money_ok(v):
+    try:
+        float(v); return True
+    except (TypeError, ValueError):
+        return False
+
+
 R = load("restaurants.csv")
+
+# ---- build-time assertions: fail loudly instead of publishing a bad page ----
+_hdr = list(R[0].keys())
+assert _hdr == SCHEMA, f"restaurants.csv schema drifted: {set(_hdr) ^ set(SCHEMA)}"
+_bad_src = [r["name"] for r in R if "guide.michelin.com" not in (r["michelin_url"] or "")]
+assert not _bad_src, f"rows without a Michelin source link: {_bad_src}"
+_bad_price = []
+for r in R:
+    if r["price_2adults_usd"]:
+        assert money_ok(r["price_2adults_usd"]), f"unparseable price on {r['name']}"
+        pp = float(r["price_pp_usd"] or 0) * 2
+        tot = float(r["price_2adults_usd"])
+        if pp and tot + 0.01 < pp:
+            _bad_price.append(r["name"])
+assert not _bad_price, f"total below the bare 2x menu price: {_bad_price}"
+_url_in_price = [r["name"] for r in R if "http" in (r["price_pp_usd"] or "")]
+assert not _url_in_price, f"a URL is sitting in the price column: {_url_in_price}"
+_social_mix = [r["name"] for r in R
+               if "instagram.com" in (r["youtube"] or "") or "instagram.com" in (r["tiktok"] or "")]
+assert not _social_mix, f"Instagram URL in a YouTube/TikTok column: {_social_mix}"
+
 BIB = load("bib.csv")
 HOT = load("hotels.csv")
 
@@ -428,342 +544,10 @@ map_body = f"""
 """
 write("map.html", "Map & clusters — SF Bay Area Michelin 2026", map_body)
 
-# ---------------------------------------------------------------- summary
-def tier_rows():
-    out = ""
-    for d in ("3 Stars", "2 Stars", "1 Star"):
-        vals = sorted((money(r["price_2adults_usd"]), r["name"]) for r in R
-                      if r["distinction"] == d and money(r["price_2adults_usd"]))
-        total = len([r for r in R if r["distinction"] == d])
-        if not vals:
-            continue
-        lo, hi = vals[0], vals[-1]
-        rng = f"${lo[0]:,.0f}" if lo[0] == hi[0] else f"${lo[0]:,.0f}&ndash;${hi[0]:,.0f}"
-        out += (f'<tr><td>{star_badge(d)}</td><td>{len(vals)} of {total}</td><td>{rng}</td>'
-                f'<td>{e(lo[1])}</td><td>{e(hi[1])}</td></tr>\n')
-    return out
-
-
-sum_body = f"""
-<h1>Executive summary</h1>
-<p class="lead">MICHELIN Guide California 2026, checked {CHECKED}. Scope: the 9-county Core Bay Area plus a separately flagged Extension. Everything below is computed from the data files, and every claim traces to a linked source.</p>
-
-<div class="grid">
-{stat(len(CORE), "Core starred", "7&#215;3&#9733; / 7&#215;2&#9733; / 27&#215;1&#9733;")}
-{stat(dist["3 Stars"], "3-star rows in dataset", "Bay Area incl. extension")}
-{stat(f"${min(totals):,.0f}–${max(totals):,.0f}", "verified dinner for two", f"{len(verified_price)} rows with an official price")}
-{stat(f"{round(100*len(sf)/len(CORE))}%", "of Core stars are in SF city", f"{len(sf)} of {len(CORE)}")}
-</div>
-
-<div class="card">
-<h2>Five things that matter for a decision</h2>
-<ol class="tight">
-<li><b>Concentration beats breadth.</b> {len(sf)} of {len(CORE)} Core starred restaurants are inside San Francisco. If you want maximum Michelin with minimum travel, base yourself in the city and do not split the trip.</li>
-<li><b>Wine Country is a second trip, not a day trip.</b> {len([r for r in cluster['C5 Wine Country'] if 'Star' in r['distinction']])} starred restaurants sit in Napa/Sonoma, including three of the seven 3-star rooms. Two of them (Auberge du Soleil, SingleThread) also have rooms, which removes the driving problem.</li>
-<li><b>The 2026 edition moved.</b> Californios went to 3 stars (the first Mexican restaurant in the world to reach that tier) and Enclos was promoted to 3. Naides and Wolfsbane arrived with 1 star. Any list built from a 2025 source is out of date.</li>
-<li><b>Service charges, not menu prices, decide the bill.</b> Published per-person prices run $60 (Angler lunch) to $425 (Benu), but San Francisco adds 20&ndash;26% on top, and 7 Adams adds a 6% mandate on top of its 20% service. Two adults at Benu is $1,037 before tax and wine.</li>
-<li><b>The data is deliberately incomplete.</b> {vcount['Verified']} of {len(R)} starred rows carry a verified value; {vcount['Partial']} are partial and {vcount['Unverified']} unverified. Prices and hours live behind booking platforms for most venues, so they are blank rather than guessed.</li>
-</ol>
-</div>
-
-<div class="card">
-<h2>Cost picture, by tier (total for two adults, before tax and drinks)</h2>
-<div class="tblwrap"><table><thead><tr><th>Tier</th><th>Rows with a verified total</th><th>Range</th><th>Cheapest</th><th>Most expensive</th></tr></thead><tbody>
-{tier_rows()}</tbody></table></div>
-<p class="small">A &ldquo;verified total&rdquo; is a row where the per-person menu price and the service charge both came from an official page. 3-star prices are the biggest gap: Atelier Crenn, Quince, Californios, SingleThread, The French Laundry and Enclos publish no readable price on the official page we checked &mdash; only Benu does. See <a href="questions.html">Q3</a> for how to close that.</p>
-</div>
-
-<div class="card">
-<h2>Hotels, in one line each</h2>
-<p><b>Densest:</b> Four Seasons SF, Fairmont, St. Regis, Palace, Ritz-Carlton, Taj Campton, Hotel Kabuki, 1 Hotel &mdash; all C1, all sitting inside a 25-star cluster. <b>Peninsula:</b> Rosewood Sand Hill (5 stars in cluster). <b>East Bay:</b> The Claremont (2). <b>Marin:</b> Cavallo Point (1). <b>Wine Country:</b> Auberge du Soleil (1-star restaurant on site), SingleThread Inn (3-star restaurant + inn), Bardessono (walk to The French Laundry).</p>
-<p class="small">Nightly rates are not collected &mdash; they are dynamic and a stale rate misleads. See <a href="questions.html">Q6</a>.</p>
-</div>
-
-<div class="card">
-<h2>What changed in this audit</h2>
-<ul class="tight">
-<li><b>Data corruption fixed.</b> Eleven rows in the starred table had the Michelin URL sitting in the price column, which had pushed every later field out of place and rendered junk prices on the live site. All 44 rows were rebuilt in canonical column order.</li>
-<li><b>Price arithmetic fixed.</b> Acquerello showed $708 against a $731.60 basis, Angler $156 against $151.20, Commis $669 against $669.60, and 7 Adams omitted its 6% mandate entirely.</li>
-<li><b>Hotel addresses corrected.</b> Three were wrong, including one that listed The French Laundry's address as a hotel's.</li>
-<li><b>Provenance corrected.</b> Bib rows outside San Francisco had been citing the San Francisco list as their source.</li>
-<li><b>Cluster count corrected.</b> Wine Country has 8 Core starred restaurants, not 7 &mdash; the earlier text said 7 while listing 8 names.</li>
-</ul>
-<p>Full detail on the <a href="flagged.html">Flagged for Review</a> page.</p>
-</div>
-"""
-write("executive-summary.html", "Executive summary — SF Bay Area Michelin 2026", sum_body)
-
-# ---------------------------------------------------------------- questions
-qs = [
-    ("Q1", "Which Michelin edition is authoritative right now?",
-     f"Guide California 2026 (revealed 24–26 June 2026) is the current edition, and this build is checked against it on {CHECKED}.",
-     "When the 2027 edition lands, every star in this dataset could change. Nothing on the site can pre-empt that.",
-     "Re-read the ceremony article each June and diff it against <code>data/restaurants.csv</code>; the starred page should be regenerated the same day.",
-     "Blocks: every star claim after June 2027."),
-    ("Q2", "What counts as 'the Bay Area' for this project?",
-     "A 9-county Core (SF, San Mateo, Santa Clara, Alameda, Contra Costa, Marin, Sonoma, Napa, Solano) plus a separately flagged Extension (Carmel, Elk) and an excluded Sacramento metro. Defined in <code>data/SCOPE.md</code>.",
-     "Your actual travel radius. Someone based in Palo Alto and someone based in Napa should not get the same hotel ranking.",
-     "Ask for a base city and a maximum drive time; then re-cut the hotel table. Until then the ranking assumes SF-centric travel.",
-     "Blocks: hotel ranking, itinerary design."),
-    ("Q3", "What does dinner for two actually cost?",
-     f"{len(verified_price)} starred rows have an official price and a printed formula, ranging ${min(totals):,.0f}–${max(totals):,.0f} before tax and drinks.",
-     "The other rows publish no price on their own site, including six of the seven 3-star rooms. Tax, wine, supplements and corkage are excluded everywhere.",
-     "Prices appear on the booking layer (Tock, OpenTable, SevenRooms, Resy) which the restaurant controls. Open each, screenshot, date-stamp, record in the CSV. Start with the 3-star six, where the money is largest.",
-     "Blocks: budgeting, and any 'cheapest 2-star' comparison."),
-    ("Q4", "When is each place open, and what are the exceptions?",
-     f"{len([r for r in R if r['days_open']])} of {len(R)} starred rows have days or hours from an official page; several carry explicit exceptions (Quince closed 26 Nov and 25–26 Dec; SingleThread closed 1 Jan, Thanksgiving, 25 Dec; Harbor House closed Tue–Wed; Chez Noir closed Wed).",
-     "Holiday closures, private buy-outs and seasonal breaks are mostly unpublished until the week of.",
-     "Check the venue's own reservation page for the exact date, plus its Instagram for same-week closures. Michelin's per-restaurant page also carries a day-by-day open/closed block.",
-     "Blocks: booking a specific date."),
-    ("Q5", "Where are the YouTube, TikTok and Instagram links?",
-     "Four Instagram handles are verified from an official page: @atelier.crenn, @benu_sf, @lazybearsf, @7adamsrestaurant, @niseisf, @auronapavalley, @cheznoircarmel (verified in this audit from each venue's own site).",
-     "YouTube and TikTok: no Bay Area starred restaurant links a channel from its own site. A search-result handle is not an official link, so those cells are blank.",
-     "Ask each restaurant's press page or inspect the social icon row in the site source (a <code>sameAs</code> block in JSON-LD is the reliable signal). Where a venue has no channel, record 'none' rather than a lookalike account.",
-     "Blocks: social column completeness (a nice-to-have, not a decision blocker)."),
-    ("Q6", "Which hotel should we actually book?",
-     f"{len(HOT)} hotels are ranked by starred-restaurant density in their cluster. Three hotels have an address corrected in this audit and five have no verified street address at all.",
-     "Nightly rates, room quality, and whether the hotel holds Michelin Keys. Density alone flatters the city.",
-     "Pull a dated rate from each hotel's own booking engine for two or three sample nights, and read the Keys off each Michelin hotel page. Then rank on density-per-dollar as a second column.",
-     "Blocks: booking. Currently the ranking answers 'where are the restaurants', not 'what is the best stay'."),
-    ("Q7", "How do we enumerate the 86 Selected/Recommended restaurants?",
-     "Michelin's city filter reports 86 Selected restaurants for SF and surroundings, and the tier is explained on the listed page.",
-     "The names. Michelin does not publish that set as a single page.",
-     "Walk each city listing paginated 30 at a time, or query the Michelin site with the distinction filter and capture each card. It is a few hours of careful work, not an inference problem.",
-     "Blocks: a complete 'listed-only' table."),
-    ("Q8", "How many Bib Gourmands are in the Bay Area, really?",
-     "Michelin's filter counts are 30 (San Francisco), 29 (Oakland) and 28 (Berkeley) — and these lists overlap, so they cannot simply be added.",
-     f"A de-duplicated Bay Area total, and confirmation of the {len(BIB)} rows carried in this dataset ({len(BIB)-bib_verified} of which were not re-seen on a Michelin page in this audit).",
-     "Fetch each city Bib list in full, dedupe by name, and reconcile against the statewide 117 figure.",
-     "Blocks: any precise Bib count claim."),
-    ("Q9", "Does a star include the Green Star?",
-     "Green Star is a separate sustainability award that can sit alongside stars (Quince and Harbor House both carry it). It is recorded in the <code>green_star</code> field, not counted as a star.",
-     "Whether you want Green Star venues surfaced as their own shortlist.",
-     "Filter the CSV on <code>green_star = Yes</code> and add a page, if that matters to you.",
-     "Blocks: nothing; it is a presentation choice."),
-    ("Q10", "Which prices are 'for two' versus 'per person'?",
-     "Every price on the starred page is a total for two adults, and the per-person figure and the formula are printed inside the cell.",
-     "Whether you want the table to also show a per-person column for comparison with other guides.",
-     "Trivial change to the generator; it needs your sign-off on layout, not more data.",
-     "Blocks: nothing."),
-    ("Q11", "What is missing that a diner would notice immediately?",
-     "Cancellation terms, dress codes and dietary limits are on many official pages (Benu corkage $100, Kiln no substitutions, Harbor House no under-15s, SingleThread closures) and are summarised in the notes column.",
-     "Party-size limits, deposit amounts and allergy policies are only partly captured.",
-     "Add three structured fields (deposit, cancellation window, dietary limits) to the CSV and fill them from the same official pages already cited.",
-     "Blocks: nothing, but improves booking confidence."),
-    ("Q12", "What should not be trusted on this site?",
-     f"Every row links to its source, and blank means unverified. {vcount['Unverified']} starred rows and {len(BIB)-bib_verified} Bib rows are still unverified.",
-     "Anything not carrying a source link — there should be nothing in that state, and a link check runs over the whole site.",
-     "Read the status badge before the number. Where a cell is blank, open the official site; if the value still is not there, leave it blank.",
-     "Blocks: nothing, but it is the single most important reading instruction."),
-]
-q_html = ""
-for qid, q, know, dont, how, blocks in qs:
-    q_html += f"""
-<div class="card q">
-<h2><span class="qid">{qid}</span> {e(q)}</h2>
-<dl>
-<dt>What we know (verified)</dt><dd>{know}</dd>
-<dt>What we do not know</dt><dd>{e(dont)}</dd>
-<dt>How to discover it</dt><dd>{how}</dd>
-<dt>What it blocks</dt><dd>{e(blocks)}</dd>
-</dl>
-</div>"""
-
-questions_body = f"""
-<h1>Questions to settle before any decision</h1>
-<p class="lead">A decision made on unverified data is a guess with a nice table around it. Each question below records what is verified, what is missing, how to close the gap, and what it blocks.</p>
-<div class="note"><b>Current scoreboard:</b> {vcount['Verified']} starred rows verified, {vcount['Partial']} partial, {vcount['Unverified']} unverified &middot; {bib_verified} of {len(BIB)} Bib rows re-confirmed &middot; 0 YouTube and 0 TikTok links published by the venues themselves.</div>
-{q_html}
-"""
-write("questions.html", "Open questions — SF Bay Area Michelin 2026", questions_body)
-
-# ---------------------------------------------------------------- suggestions
-sugs = [
-    ("S1", "Finish the price sweep on the booking layer",
-     "Six of seven 3-star rooms and roughly half the 1-star list have no publishable price, because the price lives in Tock/OpenTable/SevenRooms rather than on the marketing site.",
-     "Open each booking page, capture the per-person price and service charge, date-stamp it, and write it into the CSV with the booking URL as the source. Budget lines become usable for all 44 rows.",
-     "High (roughly 30 pages to read carefully).", "Low — it is recording, not estimating.", "Approve treating a restaurant-controlled booking page as an official source."),
-    ("S2", "Real map pins, geocoded from verified addresses",
-     "The map page links out instead of plotting, because guessing coordinates would look authoritative and be wrong.",
-     "Geocode the addresses that are actually verified, keep the address text visible next to each pin, and fall back to a plain list where no address is confirmed.",
-     "Medium-high.", "Medium — geocoder error is invisible to a reader.", "Approve OpenStreetMap Nominatim, and a visible 'approximate' disclaimer."),
-    ("S3", "A 'bookable tonight' view",
-     "Hours and closures go stale fast, and the site cannot tell you whether a room is open on your date.",
-     "Add a per-row 'last checked' date, auto-flag rows older than 90 days, and link each row to its own booking engine rather than to a generic homepage.",
-     "Medium.", "Low.", "Approve the 90-day staleness threshold."),
-    ("S4", "Total-trip cost: hotel + dinners",
-     "The hotel ranking ignores what the room costs, so density alone drives the order.",
-     "Add a dated nightly rate for two or three sample nights per hotel, then show density and cost side by side instead of one blended score.",
-     "Medium.", "Medium — rates move weekly.", "Approve the sample dates and the refresh cadence."),
-    ("S5", "Split the hotel table into 'eat-and-sleep' vs 'base'",
-     "Auberge du Soleil and SingleThread Inn have the starred kitchen in the building; the SF hotels do not. Those are different products ranked in one list.",
-     "Two tables: venues where the restaurant is on site, and city bases where you travel to dinner.",
-     "Low.", "Low.", "Approve the split."),
-    ("S6", "A green-star and dietary filter",
-     "Sustainability and dietary accommodation are the two most common questions a diner asks a table like this, and neither is filterable today.",
-     "Expose <code>green_star</code> and a small set of dietary flags (vegetarian menu, no vegan, no gluten-free) as filters on the starred page.",
-     "Low-medium, needs the dietary fields filled first.", "Low.", "Approve adding three dietary columns to the CSV."),
-    ("S7", "Social column: 'none published' instead of blanks",
-     "Zero YouTube and zero TikTok links are published by the venues themselves; blanks read as unfinished work.",
-     "Search each venue's own site for a <code>sameAs</code> block or icon row, record what exists, and write 'none published' where nothing exists.",
-     "Low.", "Low.", "Approve 'none published' as a value."),
-    ("S8", "Enumerate the Selected/Recommended tier",
-     "The 86 Selected restaurants are counted but not listed, which leaves a visible gap between 'listed' and 'starred'.",
-     "Page through the Michelin city listings with the distinction filter and capture each card, then add them to the listed page as a third table.",
-     "High.", "Low.", "Approve the extra pages of research."),
-    ("S9", "A printable one-page plan",
-     "The dashboard is good for browsing and bad for standing outside a restaurant door with no signal.",
-     "Generate a single-page print stylesheet with the chosen cluster, the confirmed bookings and the phone numbers.",
-     "Low.", "Low.", "Approve adding a print stylesheet."),
-    ("S10", "Kitchen notes per row",
-     "Deposits, cancellation windows and allergy policies differ sharply (Commis takes a $100pp deposit, Ssal $150pp non-refundable, Harbor House refuses under-15s and most substitutions).",
-     "Three extra fields per row, filled only from the official page already cited.",
-     "Medium.", "Low.", "Approve the extra fields."),
-]
-s_html = ""
-for sid, title, problem, change, effort, risk, decision in sugs:
-    s_html += f"""
-<div class="card sug">
-<h2><span class="qid">{sid}</span> {e(title)} <span class="badge warn">proposed</span></h2>
-<dl>
-<dt>Problem</dt><dd>{e(problem)}</dd>
-<dt>Proposed change</dt><dd>{e(change)}</dd>
-<dt>Effort</dt><dd>{e(effort)}</dd>
-<dt>Risk</dt><dd>{e(risk)}</dd>
-<dt>Decision needed</dt><dd>{e(decision)}</dd>
-</dl>
-</div>"""
-
-sugg_body = f"""
-<h1>Suggestions for review</h1>
-<p class="lead">Nothing on this page has been implemented. Each item states the problem, the change, the cost and the decision it needs from you, so you can take the ones worth taking and drop the rest.</p>
-<div class="note"><b>Already done, not proposed:</b> verification badges on every row, per-row price formulas, the distinction split between starred and listed, cluster tables, and the audit fixes listed on <a href="flagged.html">Flagged</a>. These proposals start from there.</div>
-{s_html}
-<div class="card">
-<h2>If you only approve one</h2>
-<p><b>S1</b> — finishing the price sweep. The site's whole premise is a real total for two, and it currently has that number for {len(verified_price)} of {len(R)} starred rows. S1 is the only proposal that changes how usable the core table is.</p>
-<p><b>S2</b> is the most visible upgrade after that, and <b>S5</b> is the cheapest fix to the hotel ranking's weakest point.</p>
-</div>
-"""
-write("suggestions.html", "Suggestions for review — SF Bay Area Michelin 2026", sugg_body)
-
-# ---------------------------------------------------------------- flagged
-flag_body = f"""
-<h1>Flagged for review</h1>
-<p class="lead">Irregularities found while checking this repository line by line, in the order they were found. Nothing here is hidden behind a status badge: each item states what was wrong, what was done, and what is still open.</p>
-
-<div class="card">
-<h2>1. Column corruption in the starred data <span class="badge ok">fixed</span></h2>
-<p><b>What was wrong:</b> eleven rows (Naides, Wolfsbane, Sun Moon Studio, Auro, Troubadour, Press, Plumed Horse, The Village Pub, Aubergine, Chez Noir and Hilda and Jesse's neighbour row) had the Michelin URL stored in the <code>price_pp_usd</code> column. Every later field had shifted one place, so the rendered page printed a URL where a price belonged and showed no address, no hours and no sources. A twelfth row (Lazy Bear) had its Instagram link in the YouTube column.</p>
-<p><b>What was done:</b> all 44 rows were rebuilt in canonical 24-column order, the shift was reversed per row, and a build-time assertion now fails if any row lacks a Michelin source link. The generator reads the CSV, so the HTML cannot drift out of step again.</p>
-</div>
-
-<div class="card">
-<h2>2. Price arithmetic <span class="badge ok">fixed</span></h2>
-<ul class="tight">
-<li><b>Acquerello</b> displayed $708 for two while its own stated basis was $731.60 ($295 &times; 2, +24%). Corrected to $731.60; the surcharge is 20% service <i>plus</i> a 4% employee-benefit surcharge.</li>
-<li><b>Angler</b> displayed $156 against a $151.20 basis ($60 &times; 2, +26%). Corrected to $151.20.</li>
-<li><b>Commis</b> displayed $669 against $669.60. Corrected.</li>
-<li><b>7 Adams</b> omitted its charges entirely. Its own menu page states a 6% surcharge <i>and</i> a 20% service charge, so the total for two is $320.04, not $254. Both figures now appear with the formula.</li>
-<li><b>Sorrel</b> had a summer price in a Fall 2026 dataset. Corrected to the Fall menu ($195 pp) with the 5% SF mandate added: $409.50 for two.</li>
-<li><b>Madcap</b> omitted the 20% service charge it publishes in place of gratuity: $432 for two.</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>3. Wrong hotel addresses <span class="badge ok">fixed</span></h2>
-<ul class="tight">
-<li><b>Bardessono</b> was listed at 6640 Washington St &mdash; that is The French Laundry's address. Bardessono's own contact page gives 6526 Yount St, Yountville.</li>
-<li><b>Cavallo Point</b> was listed at "601 Bridgeway". Its contact page gives 601 Murray Circle, Fort Baker, Sausalito.</li>
-<li><b>1 Hotel San Francisco</b> was listed at 22 Battery St. Its own site gives 8 Mission St.</li>
-</ul>
-<p>Five further hotels (St. Regis, Palace, Ritz-Carlton, Taj Campton Place, Rosewood Sand Hill, Claremont, Hotel Kabuki) have addresses that could not be confirmed from an official page during this audit. Their address cells are now <b>blank</b> and labelled Unverified rather than carrying a plausible-looking guess.</p>
-</div>
-
-<div class="card">
-<h2>4. Source provenance for Bib Gourmand <span class="badge ok">fixed</span></h2>
-<p><b>What was wrong:</b> every Bib row, including Oakland, Berkeley, Marin and Wine Country restaurants, cited the <i>San Francisco</i> Bib Gourmand list as its source, and all 36 were labelled "verified". Michelin publishes separate city lists, so the citation was wrong even where the restaurant was genuinely a Bib.</p>
-<p><b>What was done:</b> each row now cites its own city's list, and rows whose names were not actually re-seen on a Michelin list page in this audit are marked <b>Unverified</b> ({len(BIB)-bib_verified} of {len(BIB)}). Michelin's own filter counts are 30 for San Francisco, 29 for Oakland and 28 for Berkeley, and those lists overlap &mdash; so a simple sum would also have been wrong.</p>
-</div>
-
-<div class="card">
-<h2>5. Cluster count contradiction <span class="badge ok">fixed</span></h2>
-<p>The executive summary described Wine Country as having 7 starred restaurants while listing 8 names (The French Laundry, SingleThread, Enclos, Auberge du Soleil, Auro, Cyrus, Troubadour, Press). The data has 8, and the sum across clusters is 25 + 5 + 2 + 1 + 8 = 41, matching the Core total. The text now says 8 and all cluster counts are computed from the CSV at build time.</p>
-</div>
-
-<div class="card">
-<h2>6. Sources that could not be read <span class="badge warn">open</span></h2>
-<p>These are recorded as Unverified rather than filled from memory:</p>
-<ul class="tight">
-<li><b>frenchlaundry.com</b> returned HTTP 500 on every attempt, so The French Laundry has no price and no hours.</li>
-<li><b>pressnapavalley.com/food</b> returned a bot challenge. Press has verified hours from its homepage but no price.</li>
-<li><b>enclos-sonoma.com</b> is a video-only page with no readable text, so Enclos has no hours or price.</li>
-<li><b>statebirdsf.com</b> and <b>theprogress-sf.com</b> publish reservation links only, so both rows are Unverified for price and hours.</li>
-<li><b>californiossf.com</b> publishes address, phone and a booking link, but no price and no hours. Californios, the first 3-star Mexican restaurant in the world, therefore has no price on this site.</li>
-<li><b>Mister Jiu's, San Ho Won, Protege, Wakuriya and Saison</b> publish menus as PDFs or images. The prices are real but were not machine-readable, so they stay blank.</li>
-</ul>
-<p>Discovery route for each is on the <a href="questions.html">Questions</a> page (Q3, Q4).</p>
-</div>
-
-<div class="card">
-<h2>7. Editorial notes worth a human eye <span class="badge mid">review</span></h2>
-<ul class="tight">
-<li><b>Selby's city label:</b> Michelin files it under Atherton, the street address is in Redwood City. Both are shown.</li>
-<li><b>Cyrus address:</b> Michelin prints "587 St. Helena St." for Press, which is inconsistent with the restaurant's own "587 St Helena Highway". The official form is used.</li>
-<li><b>Auberge du Soleil:</b> it appears both as a restaurant (1 star) and as a hotel. It is counted once in restaurant totals and once in hotel rankings, deliberately.</li>
-<li><b>Extension vs Core:</b> Aubergine, Harbor House Inn and Chez Noir are starred but sit in Monterey and Mendocino counties. They are excluded from the Core count of 41 and shown separately; folding them in would inflate the Bay Area figure.</li>
-<li><b>Recommended tier:</b> 86 names are counted but not enumerated, because Michelin does not publish that set as one page. This is a stated gap, not an oversight.</li>
-</ul>
-</div>
-"""
-write("flagged.html", "Flagged for review — SF Bay Area Michelin 2026", flag_body)
-
-# ---------------------------------------------------------------- methodology
-meth_body = f"""
-<h1>Method &amp; verification</h1>
-<p class="lead">How each number on this site was obtained, and what was refused. The rule is simple: if an official page did not say it, the cell stays empty.</p>
-
-<div class="card">
-<h2>Sources, in order of authority</h2>
-<ol class="tight">
-<li><b>guide.michelin.com</b> — the star or Bib itself, the address as Michelin prints it, and the day-by-day open/closed block on each restaurant page.</li>
-<li><b>The venue's own website</b> — menu price, service charge, opening days and hours, closures, and social accounts that the site itself links to.</li>
-<li><b>The venue's own booking page</b> (Tock, OpenTable, SevenRooms, Resy) — only where the restaurant controls the listing, and always labelled as such. Never presented as a homepage-verified price.</li>
-<li><b>Not used:</b> aggregators, review sites, press articles quoting prices, or memory. Third-party figures seen during the audit were recorded as indicative at most and are not shown as totals.</li>
-</ol>
-</div>
-
-<div class="card">
-<h2>The price formula</h2>
-<p>Total for two adults = (published per-person menu price &times; 2) + the service charge and surcharges the restaurant publishes.</p>
-<ul class="tight">
-<li>San Francisco operators add 20&ndash;26% in service charge and mandate. Benu: $425 &times; 2 + 22% = <b>$1,037</b>. Angler lunch: $60 &times; 2 + 26% = <b>$151.20</b>.</li>
-<li>7 Adams is the clearest case of why both charges matter: $127 &times; 2 = $254, plus 6% surcharge and 20% service = <b>$320.04</b>.</li>
-<li>Where a venue publishes "starting at", the row says so and the total is a floor, not a quote.</li>
-<li>Sales tax and beverages are always excluded unless the row says otherwise.</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>Status labels</h2>
-<div class="tblwrap"><table><thead><tr><th>Label</th><th>Meaning</th></tr></thead><tbody>
-<tr><td><span class="badge ok">Verified</span></td><td>A value on the row was read off an official page, and that page is linked in the row's source cell.</td></tr>
-<tr><td><span class="badge mid">Partial</span></td><td>Some values are official, others are not. The status text says which is which.</td></tr>
-<tr><td><span class="badge warn">Unverified</span></td><td>Nothing on the row could be confirmed from an official page. Values are blank.</td></tr>
-<tr><td><span class="badge star bib">Bib Gourmand</span></td><td>In the Guide for value. Not a star.</td></tr>
-</tbody></table></div>
-</div>
-
-<div class="card">
-<h2>Build integrity</h2>
-<p>The site is generated from the CSVs by <code>tools/build_site.py</code>. The generator asserts that every restaurant row carries a <code>guide.michelin.com</code> source link, refuses to run if the column schema has drifted, and computes every count on every page from the data — so a stale headline is not possible. Data repair scripts record exactly which values were changed and why: <code>tools/fix_data.py</code>, <code>tools/fix_bib.py</code>, <code>tools/fix_hotels.py</code>.</p>
-<p>To run locally: <code>python3 -m http.server 8000</code> from the repository root, then open <code>localhost:8000</code>. To regenerate: <code>python3 tools/build_site.py</code>.</p>
-</div>
-
-<div class="card">
-<h2>What is still missing</h2>
-<p>{vcount['Unverified']} of {len(R)} starred rows and {len(BIB)-bib_verified} of {len(BIB)} Bib rows are unverified, no YouTube or TikTok channel is published by any starred venue, and the 86 Selected restaurants are counted but not listed. Each gap has a discovery route on the <a href="questions.html">Questions</a> page.</p>
-</div>
-"""
-write("methodology.html", "Method & verification — SF Bay Area Michelin 2026", meth_body)
+# ---------------------------------------------------------------- doc pages
+write_doc("docs/executive-summary.md", "executive-summary.html", "Executive summary")
+write_doc("docs/questions.md", "questions.html", "Open questions")
+write_doc("docs/suggestions.md", "suggestions.html", "Suggestions for review")
+write_doc("docs/flagged-review.md", "flagged.html", "Flagged for review")
+write_doc("docs/methodology.md", "methodology.html", "Method and verification")
 print("done")
