@@ -1,0 +1,52 @@
+{
+  "_note": "Values copied from official Michelin restaurant detail pages (guide.michelin.com) during this session. Fields not present on the page are left empty. Couple price is NOT published on Michelin pages and is left empty.",
+  "quince": {
+    "address": "470 Pacific Ave., San Francisco, CA 94133, USA",
+    "hours": "Mon closed · Tue 5-9 PM · Wed 5-9 PM · Thu 5-9 PM · Fri 11:30 AM-1 PM, 5-9 PM · Sat 11:30 AM-1 PM, 5-9 PM · Sun closed",
+    "phone": "+1 415-775-8500",
+    "website": "https://www.quincerestaurant.com/",
+    "source": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/quince"
+  },
+  "californios": {
+    "address": "355 11th St., San Francisco, CA 94103, USA",
+    "hours": "Mon closed · Tue-Sat 5-10 PM · Sun closed",
+    "phone": "+1 415-757-0994",
+    "website": "https://www.californiossf.com/",
+    "source": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/californios"
+  },
+  "benu": {
+    "address": "22 Hawthorne St., San Francisco, CA 94105, USA",
+    "hours": "Mon closed · Tue closed · Wed 5-8 PM · Thu 5-8 PM · Fri 5-8:30 PM · Sat 5-8:30 PM · Sun closed",
+    "phone": "+1 415-685-4860",
+    "website": "https://www.benusf.com/",
+    "source": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/benu"
+  },
+  "atelier-crenn": {
+    "address": "3127 Fillmore St., San Francisco, CA 94123, USA",
+    "hours": "",
+    "phone": "+1 415-440-0462",
+    "website": "https://www.ateliercrenn.com/",
+    "source": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/atelier-crenn"
+  },
+  "acquerello": {
+    "address": "1722 Sacramento St., San Francisco, CA 94109, USA",
+    "hours": "Mon closed · Tue-Sat 5:30-9:45 PM · Sun closed",
+    "phone": "+1 415-567-5432",
+    "website": "https://www.acquerellosf.com/",
+    "source": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/acquerello"
+  },
+  "kiln-1210355": {
+    "address": "149 Fell St., San Francisco, CA 94102, USA",
+    "hours": "Mon closed · Tue-Thu 6-8 PM · Fri-Sat 5-8:30 PM · Sun closed",
+    "phone": "+1 415-982-9722",
+    "website": "https://www.kilnsf.com/",
+    "source": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/kiln-1210355"
+  },
+  "izakaya-rintaro": {
+    "address": "82 14th St., San Francisco, CA 94103, USA",
+    "hours": "Daily 5-10 PM",
+    "phone": "+1 415-589-7022",
+    "website": "https://www.izakayarintaro.com/",
+    "source": "https://guide.michelin.com/us/en/california/san-francisco/restaurant/izakaya-rintaro"
+  }
+}
