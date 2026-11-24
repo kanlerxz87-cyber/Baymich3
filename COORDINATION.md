@@ -1,6 +1,6 @@
 # COORDINATION.md — Shared Task Board
 
-Session ID: `88da5baf` (branch: `arena/88da5baf-baymich3`)
+Session ID: `601676aa` (branch: `arena/601676aa-baymich3`)
 Last updated: 2026-11-24
 
 ## Rules
@@ -22,10 +22,11 @@ Last updated: 2026-11-24
 | T4 | Hotels ranked by Michelin density | in progress | 88da5baf | data/hotels.csv, data/hotels.md | Hotel official sites + Michelin map distances | — |
 | T5 | GitHub Pages site (landing + subpages, mobile-friendly) | in progress | 88da5baf | index.html, *.html, assets/*, _config.yml | Build check, link check | — |
 | T6 | Executive summary, Questions/Answers, Suggestions | in progress | 88da5baf | docs/executive-summary.md, docs/questions.md, docs/suggestions.md | Cross-ref T1–T4 | — |
-| T7 | Final integration: re-verify line-by-line, link check, publish | unclaimed | — | all | — | — |
+| T7 | Final integration: re-verify line-by-line, link check, publish | in progress | 601676aa | all integration outputs on current branch | Initial repo/data audit; official Michelin + venue/hotel source checks in progress | Prior log said in progress but no owner in row; merged source commit is b047b5d. Took over on current branch. |
 
 ## Log
 - 2026-11-24: Repo was empty (only README). Session 88da5baf claimed T1–T6 on branch arena/88da5baf-baymich3. T7 left for final integration pass in same session after T1–T6 done.
+- 2026-11-24: Session 601676aa took over T7 on `arena/601676aa-baymich3` at merged base b047b5d. Existing T7 row was unclaimed although the old log said “in progress”; prior T1–T6 artifacts are present but require line-by-line source audit before publication. Integration scope is the current site/data/docs and coordination log; no separate branch/worktree created because the Arena session requires this branch.
 
 ## Update 2026-11-24 (session 88da5baf)
 - T1 DONE: 41 Core starred (2026) + 3 Extension in data/restaurants.csv. Source: Michelin Guide California 2026 article (24 Jun 2026) + press release (26 Jun 2026). Irregularity: 2025 stars Le Comptoir/O'/Shota absent 2026 — flagged.
