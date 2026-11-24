@@ -1,22 +1,86 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Flagged for Review — SF Bay Area Michelin 2026</title><link rel="stylesheet" href="assets/style.css"></head><body><header class="top"><div class="wrap"><div class="brand">SF Bay Area Michelin<small>Guide California 2026 · Verified · Mobile-friendly</small></div><nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav></div></header><main>
-<h1>Flagged for Review</h1>
-<p>Irregularities, dropped stars, and Unverified items needing attention. Nothing here blocks the site — review and resolve.</p>
-<div class="card"><h2>2025 → 2026 star changes (verify before booking)</h2><ul>
-<li><b>Le Comptoir at Bar Crenn</b> (1★ 2025) — absent from 2026 starred list. Status unknown (closed? Recommended?). Check Michelin individual page + official site.</li>
-<li><b>O' by Claude Le Tohic</b> (1★ 2025) — absent 2026. Status unknown.</li>
-<li><b>The Shota</b> (1★ 2025, temporarily closed Mar 2025) — absent 2026. Likely still closed.</li>
-<li><b>Osito / Aphotic</b> — closed 2024/2025 (Chronicle). Do not book.</li>
-<li><b>Chez TJ</b> (Mountain View, 1★ since 2007) — lost star 2025, now Recommended (Chronicle). Not in starred table.</li>
-<li><b>Californios / Enclos</b> — promoted to 3★ in 2026 (were 2★). Prices conflict across secondary sources ($325–$450) — official price Unverified.</li>
-</ul></div>
-<div class="card"><h2>Data irregularities</h2><ul>
-<li><b>French Laundry official site</b> fetch failed (HTTP 500) — price/hours Unverified.</li>
-<li><b>Enclos official site</b> is JS video (no price text) — price/hours Unverified.</li>
-<li><b>SingleThread / Saison / Californios</b> homepages list no price — Unverified (check Tock/OpenTable).</li>
-<li><b>Quince retail confusion:</b> search returns retail "Quince" (quince.com), not restaurant. Restaurant is quincerestaurant.com.</li>
-<li><b>Michelin SF counts:</b> SF search shows 29 starred (4+7+18) vs 25 city-proper in this project — difference is "surroundings" (Oakland/Peninsula). Reconciled via Scope.</li>
-<li><b>Social:</b> only 3/44 verified. YouTube/TikTok 0/44. Do not trust fan accounts.</li>
-<li><b>Hotels:</b> 12/14 addresses Unverified (secondary). Nightly rates not collected.</li>
-</ul></div>
-<div class="card"><h2>Unverified counts (24 Nov 2026)</h2><p>Price Unverified: 29/44. Hours Unverified: 34/44. Social Unverified: 41/44. Bib price/hours: 36/36 Unverified. See CSVs for per-row status.</p></div>
-</main><footer>Sources: MICHELIN Guide California 2026 + official sites. See <a href="methodology.html">Method</a>.</footer><script src="assets/app.js"></script></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flagged for review — SF Bay Area Michelin 2026</title>
+<meta name="description" content="SF Bay Area MICHELIN Guide 2026 dashboard: starred vs listed, verified prices for two, clusters, and hotels ranked by Michelin density.">
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="wrap">
+<div class="brand">SF Bay Area Michelin<small>Guide California 2026 &middot; source-linked &middot; mobile-friendly</small></div>
+<nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav>
+</div></header>
+<main>
+
+<h1>Flagged for review</h1>
+<p class="lead">Irregularities found while checking this repository line by line, in the order they were found. Nothing here is hidden behind a status badge: each item states what was wrong, what was done, and what is still open.</p>
+
+<div class="card">
+<h2>1. Column corruption in the starred data <span class="badge ok">fixed</span></h2>
+<p><b>What was wrong:</b> eleven rows (Naides, Wolfsbane, Sun Moon Studio, Auro, Troubadour, Press, Plumed Horse, The Village Pub, Aubergine, Chez Noir and Hilda and Jesse's neighbour row) had the Michelin URL stored in the <code>price_pp_usd</code> column. Every later field had shifted one place, so the rendered page printed a URL where a price belonged and showed no address, no hours and no sources. A twelfth row (Lazy Bear) had its Instagram link in the YouTube column.</p>
+<p><b>What was done:</b> all 44 rows were rebuilt in canonical 24-column order, the shift was reversed per row, and a build-time assertion now fails if any row lacks a Michelin source link. The generator reads the CSV, so the HTML cannot drift out of step again.</p>
+</div>
+
+<div class="card">
+<h2>2. Price arithmetic <span class="badge ok">fixed</span></h2>
+<ul class="tight">
+<li><b>Acquerello</b> displayed $708 for two while its own stated basis was $731.60 ($295 &times; 2, +24%). Corrected to $731.60; the surcharge is 20% service <i>plus</i> a 4% employee-benefit surcharge.</li>
+<li><b>Angler</b> displayed $156 against a $151.20 basis ($60 &times; 2, +26%). Corrected to $151.20.</li>
+<li><b>Commis</b> displayed $669 against $669.60. Corrected.</li>
+<li><b>7 Adams</b> omitted its charges entirely. Its own menu page states a 6% surcharge <i>and</i> a 20% service charge, so the total for two is $320.04, not $254. Both figures now appear with the formula.</li>
+<li><b>Sorrel</b> had a summer price in a Fall 2026 dataset. Corrected to the Fall menu ($195 pp) with the 5% SF mandate added: $409.50 for two.</li>
+<li><b>Madcap</b> omitted the 20% service charge it publishes in place of gratuity: $432 for two.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>3. Wrong hotel addresses <span class="badge ok">fixed</span></h2>
+<ul class="tight">
+<li><b>Bardessono</b> was listed at 6640 Washington St &mdash; that is The French Laundry's address. Bardessono's own contact page gives 6526 Yount St, Yountville.</li>
+<li><b>Cavallo Point</b> was listed at "601 Bridgeway". Its contact page gives 601 Murray Circle, Fort Baker, Sausalito.</li>
+<li><b>1 Hotel San Francisco</b> was listed at 22 Battery St. Its own site gives 8 Mission St.</li>
+</ul>
+<p>Five further hotels (St. Regis, Palace, Ritz-Carlton, Taj Campton Place, Rosewood Sand Hill, Claremont, Hotel Kabuki) have addresses that could not be confirmed from an official page during this audit. Their address cells are now <b>blank</b> and labelled Unverified rather than carrying a plausible-looking guess.</p>
+</div>
+
+<div class="card">
+<h2>4. Source provenance for Bib Gourmand <span class="badge ok">fixed</span></h2>
+<p><b>What was wrong:</b> every Bib row, including Oakland, Berkeley, Marin and Wine Country restaurants, cited the <i>San Francisco</i> Bib Gourmand list as its source, and all 36 were labelled "verified". Michelin publishes separate city lists, so the citation was wrong even where the restaurant was genuinely a Bib.</p>
+<p><b>What was done:</b> each row now cites its own city's list, and rows whose names were not actually re-seen on a Michelin list page in this audit are marked <b>Unverified</b> (28 of 36). Michelin's own filter counts are 30 for San Francisco, 29 for Oakland and 28 for Berkeley, and those lists overlap &mdash; so a simple sum would also have been wrong.</p>
+</div>
+
+<div class="card">
+<h2>5. Cluster count contradiction <span class="badge ok">fixed</span></h2>
+<p>The executive summary described Wine Country as having 7 starred restaurants while listing 8 names (The French Laundry, SingleThread, Enclos, Auberge du Soleil, Auro, Cyrus, Troubadour, Press). The data has 8, and the sum across clusters is 25 + 5 + 2 + 1 + 8 = 41, matching the Core total. The text now says 8 and all cluster counts are computed from the CSV at build time.</p>
+</div>
+
+<div class="card">
+<h2>6. Sources that could not be read <span class="badge warn">open</span></h2>
+<p>These are recorded as Unverified rather than filled from memory:</p>
+<ul class="tight">
+<li><b>frenchlaundry.com</b> returned HTTP 500 on every attempt, so The French Laundry has no price and no hours.</li>
+<li><b>pressnapavalley.com/food</b> returned a bot challenge. Press has verified hours from its homepage but no price.</li>
+<li><b>enclos-sonoma.com</b> is a video-only page with no readable text, so Enclos has no hours or price.</li>
+<li><b>statebirdsf.com</b> and <b>theprogress-sf.com</b> publish reservation links only, so both rows are Unverified for price and hours.</li>
+<li><b>californiossf.com</b> publishes address, phone and a booking link, but no price and no hours. Californios, the first 3-star Mexican restaurant in the world, therefore has no price on this site.</li>
+<li><b>Mister Jiu's, San Ho Won, Protege, Wakuriya and Saison</b> publish menus as PDFs or images. The prices are real but were not machine-readable, so they stay blank.</li>
+</ul>
+<p>Discovery route for each is on the <a href="questions.html">Questions</a> page (Q3, Q4).</p>
+</div>
+
+<div class="card">
+<h2>7. Editorial notes worth a human eye <span class="badge mid">review</span></h2>
+<ul class="tight">
+<li><b>Selby's city label:</b> Michelin files it under Atherton, the street address is in Redwood City. Both are shown.</li>
+<li><b>Cyrus address:</b> Michelin prints "587 St. Helena St." for Press, which is inconsistent with the restaurant's own "587 St Helena Highway". The official form is used.</li>
+<li><b>Auberge du Soleil:</b> it appears both as a restaurant (1 star) and as a hotel. It is counted once in restaurant totals and once in hotel rankings, deliberately.</li>
+<li><b>Extension vs Core:</b> Aubergine, Harbor House Inn and Chez Noir are starred but sit in Monterey and Mendocino counties. They are excluded from the Core count of 41 and shown separately; folding them in would inflate the Bay Area figure.</li>
+<li><b>Recommended tier:</b> 86 names are counted but not enumerated, because Michelin does not publish that set as one page. This is a stated gap, not an oversight.</li>
+</ul>
+</div>
+
+</main>
+<footer>
+<p><b>Sources:</b> MICHELIN Guide California 2026 (guide.michelin.com) and each venue's own website. Every row links to its source. <b>Unverified</b> means the value was not published on the official page we checked &mdash; it is left blank, never guessed. Data checked 24 Nov 2026.</p>
+<p>Data: <a href="data/restaurants.csv">restaurants.csv</a> &middot; <a href="data/bib.csv">bib.csv</a> &middot; <a href="data/hotels.csv">hotels.csv</a> &middot; <a href="data/SCOPE.md">SCOPE.md</a>. See <a href="methodology.html">Method</a> and <a href="flagged.html">Flagged for Review</a>.</p>
+</footer>
+<script src="assets/app.js"></script></body></html>

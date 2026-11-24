@@ -1,21 +1,72 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Home — SF Bay Area Michelin 2026</title><link rel="stylesheet" href="assets/style.css"></head>
-<body><header class="top"><div class="wrap"><div class="brand">SF Bay Area Michelin<small>Guide California 2026 · Verified · Mobile-friendly</small></div><nav class="main">
-<a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a>
-</nav></div></header>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SF Bay Area Michelin 2026 — dashboard</title>
+<meta name="description" content="SF Bay Area MICHELIN Guide 2026 dashboard: starred vs listed, verified prices for two, clusters, and hotels ranked by Michelin density.">
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="wrap">
+<div class="brand">SF Bay Area Michelin<small>Guide California 2026 &middot; source-linked &middot; mobile-friendly</small></div>
+<nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav>
+</div></header>
 <main>
+
 <h1>SF Bay Area Michelin Guide &amp; Map</h1>
-<p>Clean dashboard of <b>41 Core starred</b> restaurants (7×3★, 7×2★, 27×1★) + 3 Extension, ~36 Bib Gourmand, and 14 hotels ranked by Michelin density. Every row links to an official source. Blank = Unverified (never guessed).</p>
+<p class="lead">One organised dashboard for the <b>MICHELIN Guide California 2026</b> in the Bay Area: which places hold a star and which are only <i>listed</i> (Bib Gourmand or Selected), where the stars cluster, what dinner for <b>two adults</b> costs, and which hotels sit in the densest Michelin neighbourhoods. Every row links to the official source it came from.</p>
+
 <div class="grid">
-<div class="stat"><b>41</b><span>Core starred (2026)</span></div>
-<div class="stat"><b>7</b><span>Three-star (incl. Californios + Enclos NEW)</span></div>
-<div class="stat"><b>~36</b><span>Bib Gourmand (value)</span></div>
-<div class="stat"><b>14</b><span>Hotels ranked</span></div>
+<div class="stat"><b>41</b><span>Core Bay Area starred</span><em>9-county definition</em></div>
+<div class="stat"><b>3</b><span>Extension starred</span><em>Carmel / Elk, flagged separately</em></div>
+<div class="stat"><b>7</b><span>three-star</span><em>Bay Area incl. extension</em></div>
+<div class="stat"><b>36</b><span>Bib Gourmand rows</span><em>value list, no star</em></div>
+<div class="stat"><b>14</b><span>hotels ranked</span><em>by Michelin density</em></div>
 </div>
-<div class="card"><h2>Start here</h2>
-<p><a class="btn" href="restaurants.html">Starred restaurants →</a> <a class="btn" href="hotels.html">Hotels ranked →</a> <a class="btn" href="executive-summary.html">Executive summary →</a></p>
-<p class="small">Edition: MICHELIN Guide California 2026 (24–26 June 2026). Scope: 9-county Core + flagged Extension. Checked 24 Nov 2026.</p></div>
-<div class="card"><h2>How to read prices</h2><p>Price for 2 = per-person × 2 + service charge (shown per row). Tax/beverages extra unless stated. <span class="badge ok">Verified</span> = on official site. <span class="badge warn">Unverified</span> = check official site/Tock before booking.</p></div>
+
+<div class="card">
+<h2>What the numbers actually say</h2>
+<ul class="tight">
+<li><b>41 starred in the Core Bay Area</b> (7&times;3&#9733;, 7&times;2&#9733;, 27&times;1&#9733;). Adding the two Extension clusters (3 restaurants in Carmel and Elk) gives 44 starred rows in this dataset.</li>
+<li><b>San Francisco city proper holds 25 starred restaurants</b> &mdash; 4&times;3&#9733;, 6&times;2&#9733;, 15&times;1&#9733; &mdash; roughly 61% of the Core list. Density is the story of this guide, not spread.</li>
+<li><b>Wine Country is the second cluster</b> with 8 starred restaurants, but it is a 60&ndash;90 minute drive from the city, so it behaves like a separate trip, not a suburb.</li>
+<li><b>Verified dinner for two ranges $151&ndash;$1,037</b> before tax and drinks across the 17 rows where an official price exists. Most of the cheap end is lunch or a short menu; the top end is a full tasting menu plus service charge.</li>
+<li><b>Honesty about gaps:</b> 37 of 44 starred rows have at least one value verified on an official site, 1 is partial and 6 are unverified. Nothing has been filled in to look complete.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Clusters at a glance</h2>
+<div class="tblwrap"><table>
+<thead><tr><th>Cluster</th><th>3&#9733;</th><th>2&#9733;</th><th>1&#9733;</th><th>Total starred</th><th>Hotels ranked</th></tr></thead>
+<tbody><tr><td><b>C1 SF Core</b><br><span class="small">San Francisco</span></td><td>4</td><td>6</td><td>15</td><td><b>25</b></td><td>8</td></tr><tr><td><b>C2 Peninsula</b><br><span class="small">Atherton, Palo Alto, San Mateo, Saratoga, Woodside</span></td><td>0</td><td>0</td><td>5</td><td><b>5</b></td><td>1</td></tr><tr><td><b>C3 East Bay</b><br><span class="small">Oakland</span></td><td>0</td><td>1</td><td>1</td><td><b>2</b></td><td>1</td></tr><tr><td><b>C4 Marin</b><br><span class="small">San Anselmo</span></td><td>0</td><td>0</td><td>1</td><td><b>1</b></td><td>1</td></tr><tr><td><b>C5 Wine Country</b><br><span class="small">Calistoga, Geyserville, Healdsburg, Rutherford, Saint Helena, Sonoma, Yountville</span></td><td>3</td><td>0</td><td>5</td><td><b>8</b></td><td>3</td></tr><tr><td><b>C6 Extension</b><br><span class="small">Carmel-by-the-Sea, Elk</span></td><td>0</td><td>2</td><td>1</td><td><b>3</b></td><td>0</td></tr></tbody></table></div>
+<p class="small">Counts computed from <a href="data/restaurants.csv">restaurants.csv</a> and <a href="data/hotels.csv">hotels.csv</a> at build time. C1&ndash;C5 are the 9-county Core (41 starred); C6 is an Extension area outside it (3 starred).</p>
+</div>
+
+<div class="card">
+<h2>Start here</h2>
+<p class="btnrow">
+<a class="btn" href="restaurants.html">Starred restaurants &rarr;</a>
+<a class="btn" href="listed.html">Bib &amp; listed-only &rarr;</a>
+<a class="btn" href="hotels.html">Ranked hotels &rarr;</a>
+<a class="btn" href="map.html">Map &amp; clusters &rarr;</a>
+</p>
+<p class="small">Short on time? Read the <a href="executive-summary.html">executive summary</a>, then the <a href="questions.html">open questions</a> and <a href="suggestions.html">suggestions</a> (proposed only &mdash; nothing is implemented without your approval).</p>
+</div>
+
+<div class="card">
+<h2>How to read a row</h2>
+<div class="tblwrap"><table><tbody>
+<tr><td><span class="badge star s3">3 Stars</span></td><td>Holds a star (3 = worth a special journey, 2 = worth a detour, 1 = worth a stop).</td></tr>
+<tr><td><span class="badge star bib">Bib Gourmand (no star)</span></td><td>In the Guide for value &mdash; <b>not</b> a star, and not the same honour.</td></tr>
+<tr><td><span class="badge star sel">Selected / Recommended</span></td><td>In the Guide, no star and no Bib. Shown by count and Michelin link, not enumerable from an official list yet.</td></tr>
+<tr><td><span class="badge ok">Verified</span></td><td>At least one value on the row was read off the venue's own site or its Michelin page, and the link is on the row.</td></tr>
+<tr><td><span class="badge warn">Unverified</span></td><td>Not published on the official page we checked. Left blank on purpose.</td></tr>
+<tr><td><b>$&nbsp;for&nbsp;2</b></td><td>Per-person menu price &times; 2, plus the service charge/surcharge the venue publishes. Tax and drinks excluded unless stated. The formula is printed in each row.</td></tr>
+</tbody></table></div>
+</div>
+
 </main>
-<footer>Sources: MICHELIN Guide California 2026 (guide.michelin.com) + restaurant official sites. Unverified = not on official site at check (24 Nov 2026). See <a href="methodology.html">Method</a> &amp; <a href="flagged.html">Flagged for Review</a>. Data: <a href="data/restaurants.csv">restaurants.csv</a> · <a href="data/bib.csv">bib.csv</a> · <a href="data/hotels.csv">hotels.csv</a></footer>
+<footer>
+<p><b>Sources:</b> MICHELIN Guide California 2026 (guide.michelin.com) and each venue's own website. Every row links to its source. <b>Unverified</b> means the value was not published on the official page we checked &mdash; it is left blank, never guessed. Data checked 24 Nov 2026.</p>
+<p>Data: <a href="data/restaurants.csv">restaurants.csv</a> &middot; <a href="data/bib.csv">bib.csv</a> &middot; <a href="data/hotels.csv">hotels.csv</a> &middot; <a href="data/SCOPE.md">SCOPE.md</a>. See <a href="methodology.html">Method</a> and <a href="flagged.html">Flagged for Review</a>.</p>
+</footer>
 <script src="assets/app.js"></script></body></html>

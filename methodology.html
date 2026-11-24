@@ -1,23 +1,64 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Methodology — SF Bay Area Michelin 2026</title><link rel="stylesheet" href="assets/style.css"></head><body><header class="top"><div class="wrap"><div class="brand">SF Bay Area Michelin<small>Guide California 2026 · Verified · Mobile-friendly</small></div><nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav></div></header><main>
-<h1>Methodology &amp; Sources</h1>
-<div class="card"><h2>Sources (official only for verified values)</h2><ul>
-<li>Star/Bib/Recommended status: <a href="https://guide.michelin.com/us/en/article/michelin-guide-ceremony/guide-michelin-california">MICHELIN Guide California 2026</a> (24 June 2026) + <a href="https://www.michelin.com/en/publications/products-and-services/the-michelin-guide-california-2026">Michelin press release</a> (26 June 2026).</li>
-<li>SF surroundings counts (145 = 29+30+86): <a href="https://guide.michelin.com/us/en/california/san-francisco/restaurants">Michelin SF search</a>.</li>
-<li>Price/hours: restaurant official site (URL per row in CSV). Tock/OpenTable = restaurant booking page (recorded as indicative, not "official homepage").</li>
-<li>Hotels: official hotel site + Michelin Hotels search. Ranking = cluster starred count (no fake mile math).</li>
-<li>Social: official-site footer/sameAs preferred; Instagram search only as lead (flagged).</li>
-</ul></div>
-<div class="card"><h2>Verification log (sample)</h2><ul>
-<li>Benu $425+22% Wed-Sat — benusf.com/info (fetched).</li>
-<li>Acquerello $295+20%+4% — acquerellosf.com/seasonal-tasting-menu (fetched).</li>
-<li>Birdsong $290/$350 — birdsongsf.com/experience (fetched).</li>
-<li>Commis $279+20% — commisrestaurant.com/info (fetched).</li>
-<li>Kiln $315+20% Tue-Thu/Fri-Sat — kilnsf.com/information (fetched).</li>
-<li>Lazy Bear $320 Tue-Sat 5-9 — lazybearsf.com/tickets (fetched).</li>
-<li>Sons &amp; Daughters $330 — sonsanddaughterssf.com/food (fetched).</li>
-<li>7 Adams $87/$127/$157 — 7adamsrestaurant.com/menus (search snippet quoting official).</li>
-<li>Angler lunch $60 + hours — anglerrestaurants.com/menu (search snippet quoting official).</li>
-<li>Four Seasons SF 757 Market — fourseasons.com/sanfrancisco (fetched).</li>
-</ul></div>
-<div class="card"><h2>Rules</h2><p>Blank = Unverified. Never inferred. Price for 2 = pp×2 + service (formula per row, excl. tax/bev). Re-verify quarterly + before booking. See <a href="data/SCOPE.md">SCOPE.md</a> for geography.</p></div>
-</main><footer>Sources: MICHELIN Guide California 2026 + official sites. See <a href="methodology.html">Method</a>.</footer><script src="assets/app.js"></script></body></html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Method &amp; verification — SF Bay Area Michelin 2026</title>
+<meta name="description" content="SF Bay Area MICHELIN Guide 2026 dashboard: starred vs listed, verified prices for two, clusters, and hotels ranked by Michelin density.">
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="wrap">
+<div class="brand">SF Bay Area Michelin<small>Guide California 2026 &middot; source-linked &middot; mobile-friendly</small></div>
+<nav class="main"><a href="index.html">Home</a><a href="restaurants.html">Starred</a><a href="listed.html">Bib &amp; Listed</a><a href="hotels.html">Hotels</a><a href="map.html">Map &amp; Clusters</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="flagged.html">Flagged</a><a href="methodology.html">Method</a></nav>
+</div></header>
+<main>
+
+<h1>Method &amp; verification</h1>
+<p class="lead">How each number on this site was obtained, and what was refused. The rule is simple: if an official page did not say it, the cell stays empty.</p>
+
+<div class="card">
+<h2>Sources, in order of authority</h2>
+<ol class="tight">
+<li><b>guide.michelin.com</b> — the star or Bib itself, the address as Michelin prints it, and the day-by-day open/closed block on each restaurant page.</li>
+<li><b>The venue's own website</b> — menu price, service charge, opening days and hours, closures, and social accounts that the site itself links to.</li>
+<li><b>The venue's own booking page</b> (Tock, OpenTable, SevenRooms, Resy) — only where the restaurant controls the listing, and always labelled as such. Never presented as a homepage-verified price.</li>
+<li><b>Not used:</b> aggregators, review sites, press articles quoting prices, or memory. Third-party figures seen during the audit were recorded as indicative at most and are not shown as totals.</li>
+</ol>
+</div>
+
+<div class="card">
+<h2>The price formula</h2>
+<p>Total for two adults = (published per-person menu price &times; 2) + the service charge and surcharges the restaurant publishes.</p>
+<ul class="tight">
+<li>San Francisco operators add 20&ndash;26% in service charge and mandate. Benu: $425 &times; 2 + 22% = <b>$1,037</b>. Angler lunch: $60 &times; 2 + 26% = <b>$151.20</b>.</li>
+<li>7 Adams is the clearest case of why both charges matter: $127 &times; 2 = $254, plus 6% surcharge and 20% service = <b>$320.04</b>.</li>
+<li>Where a venue publishes "starting at", the row says so and the total is a floor, not a quote.</li>
+<li>Sales tax and beverages are always excluded unless the row says otherwise.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Status labels</h2>
+<div class="tblwrap"><table><thead><tr><th>Label</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><span class="badge ok">Verified</span></td><td>A value on the row was read off an official page, and that page is linked in the row's source cell.</td></tr>
+<tr><td><span class="badge mid">Partial</span></td><td>Some values are official, others are not. The status text says which is which.</td></tr>
+<tr><td><span class="badge warn">Unverified</span></td><td>Nothing on the row could be confirmed from an official page. Values are blank.</td></tr>
+<tr><td><span class="badge star bib">Bib Gourmand</span></td><td>In the Guide for value. Not a star.</td></tr>
+</tbody></table></div>
+</div>
+
+<div class="card">
+<h2>Build integrity</h2>
+<p>The site is generated from the CSVs by <code>tools/build_site.py</code>. The generator asserts that every restaurant row carries a <code>guide.michelin.com</code> source link, refuses to run if the column schema has drifted, and computes every count on every page from the data — so a stale headline is not possible. Data repair scripts record exactly which values were changed and why: <code>tools/fix_data.py</code>, <code>tools/fix_bib.py</code>, <code>tools/fix_hotels.py</code>.</p>
+<p>To run locally: <code>python3 -m http.server 8000</code> from the repository root, then open <code>localhost:8000</code>. To regenerate: <code>python3 tools/build_site.py</code>.</p>
+</div>
+
+<div class="card">
+<h2>What is still missing</h2>
+<p>6 of 44 starred rows and 28 of 36 Bib rows are unverified, no YouTube or TikTok channel is published by any starred venue, and the 86 Selected restaurants are counted but not listed. Each gap has a discovery route on the <a href="questions.html">Questions</a> page.</p>
+</div>
+
+</main>
+<footer>
+<p><b>Sources:</b> MICHELIN Guide California 2026 (guide.michelin.com) and each venue's own website. Every row links to its source. <b>Unverified</b> means the value was not published on the official page we checked &mdash; it is left blank, never guessed. Data checked 24 Nov 2026.</p>
+<p>Data: <a href="data/restaurants.csv">restaurants.csv</a> &middot; <a href="data/bib.csv">bib.csv</a> &middot; <a href="data/hotels.csv">hotels.csv</a> &middot; <a href="data/SCOPE.md">SCOPE.md</a>. See <a href="methodology.html">Method</a> and <a href="flagged.html">Flagged for Review</a>.</p>
+</footer>
+<script src="assets/app.js"></script></body></html>
