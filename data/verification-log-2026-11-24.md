@@ -40,7 +40,7 @@ Prices for 2 (Benu, Acquerello, Birdsong, Commis, Kiln, Lazy Bear, Sons & Daught
 - Bardessono address: 6640 Washington St (French Laundry's) → 6526 Yount St (official). 
 - Hotel starred counts: SF 20 → 25; Wine Country 7 → 8 (recount from restaurants.csv).
 - Hotel ordering: prior order was not by the stated metric; now sorted by cluster count (ties noted).
-- Price for 2: Acquerello $708 → $731.60 (formula in row); Angler $156 → $151.20 (formula in row); Commis $669 → $669.60; Sorrel price for 2 set Unverified (season ambiguous).
+- Price for 2: Acquerello $708 → $731.60 (formula in row); Angler $156 → $151.20 (formula in row); Commis $669 → $669.60; Sorrel $409.50 for 2 (Fall 2026 menu, official menus page sorrelrestaurant.com/menus/, fetched 24 Nov 2026; matches PR #4).
 - Green Star: Atelier Crenn No → Yes (Michelin page shows Green Star block). Others confirmed or left.
 - Benu Instagram https://www.instagram.com/benu_sf/ removed (not confirmed on official site).
 - Restaurant hours updated from Michelin pages (14 rows); conflicts with prior official-page hours flagged (Quince, Kiln, Lazy Bear) — see flagged.md.

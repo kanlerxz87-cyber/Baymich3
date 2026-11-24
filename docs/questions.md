@@ -15,8 +15,8 @@ Each question shows: **Know** (verified) · **Don't know** · **How to find out*
 - **Owner:** You. **Blocks:** Hotel ranking and itinerary.
 
 ## Q3. What will dinner for 2 actually cost?
-- **Know:** 10 starred rows have a verified total for 2 (Benu $1,037; Acquerello $731.60; Kiln $756; Commis $669.60; Birdsong $700; Lazy Bear $640; Sons & Daughters $660; 7 Adams $254; Angler lunch $151.20; Madcap $360). Formulas are shown.
-- **Don't know:** 31 starred rows (no official price found this session). Sorrel changes price by season. Tax, wine and gratuity are excluded.
+- **Know:** 11 starred rows have a verified total for 2 (Benu $1,037; Acquerello $731.60; Kiln $756; Commis $669.60; Birdsong $700; Lazy Bear $640; Sons & Daughters $660; 7 Adams $254; Angler lunch $151.20; Madcap $360; Sorrel $409.50 Fall 2026). Formulas are shown.
+- **Don't know:** 30 starred rows (no official price found). Sorrel's price changes with its seasonal menu. Tax, wine and gratuity are excluded.
 - **How:** Open each restaurant's official reservation page (Tock/OpenTable link on Michelin page) and record the per-person tasting price and service charge with the date.
 - **Owner:** Research session. **Blocks:** Budget.
 
