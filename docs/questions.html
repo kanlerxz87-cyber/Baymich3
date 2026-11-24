@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Questions · SF Bay Area MICHELIN Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav"></div>
+<main>
+<h1>Questions, missing information and answers</h1>
+<p class="lede">Questions that must be answered before a decision can be made. Each has the answer we have (with source) or the missing information, and how to find it.</p>
+
+<h2>A. Answered from official sources</h2>
+<div class="tablewrap"><table class="stack">
+<thead><tr><th>Question</th><th>Answer</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td data-label="Question">How many restaurants are in the SF &amp; surroundings listing?</td><td data-label="Answer">145</td><td data-label="Source"><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurants" target="_blank" rel="noopener">Listing</a></td></tr>
+<tr><td data-label="Question">Which SF restaurants have three stars?</td><td data-label="Answer">Quince, Californios, Benu, Atelier Crenn</td><td data-label="Source"><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurants" target="_blank" rel="noopener">Listing</a></td></tr>
+<tr><td data-label="Question">Which SF restaurants gained a star in 2026?</td><td data-label="Answer">Californios (to 3 stars); Wolfsbane and Restaurant Naides (new 1 star)</td><td data-label="Source"><a href="https://www.michelin.com/en/publications/products-and-services/the-michelin-guide-california-2026" target="_blank" rel="noopener">2026 release</a>; detail pages</td></tr>
+<tr><td data-label="Question">Which 2026 Bay Area Bibs are new?</td><td data-label="Answer">Kitchen Istanbul (SF), Joodooboo (Oakland)</td><td data-label="Source"><a href="https://www.michelin.com/en/publications/products-and-services/the-michelin-guide-california-2026" target="_blank" rel="noopener">2026 release</a></td></tr>
+<tr><td data-label="Question">Does Michelin publish a price for two?</td><td data-label="Answer">No. Michelin publishes a $–$$$$ tier only, on the pages checked.</td><td data-label="Source"><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurant/quince" target="_blank" rel="noopener">Example detail page (Quince)</a></td></tr>
+</tbody></table></div>
+
+<h2>B. Missing information and how to find it</h2>
+<div class="tablewrap"><table class="stack">
+<thead><tr><th>Missing</th><th>Why it matters</th><th>How to find it (official first)</th></tr></thead>
+<tbody>
+<tr><td data-label="Missing">Remaining 88 of 145 listing entries, including 1 two-star and 3 one-star</td><td data-label="Why">Needed for a full star table</td><td data-label="How">Read listing pages 2–4 fully, then open each detail page</td></tr>
+<tr><td data-label="Missing">Hours for the other 50 restaurants</td><td data-label="Why">Days open and exceptions were requested</td><td data-label="How">Open each official detail page (Hours block)</td></tr>
+<tr><td data-label="Missing">Price for two (total)</td><td data-label="Why">Requested for budgeting</td><td data-label="How">Official restaurant menu or booking pages (linked from Michelin detail pages). Record only what they publish; otherwise leave blank.</td></tr>
+<tr><td data-label="Missing">Social accounts (YouTube, TikTok, Instagram)</td><td data-label="Why">Requested for every row</td><td data-label="How">Use the restaurant's official website footer or Michelin "Visit Website" link. Only record handles the official site links to.</td></tr>
+<tr><td data-label="Missing">Coordinates and distances for hotel ranking</td><td data-label="Why">Requested ranking by nearby Michelin restaurants</td><td data-label="How">Hotel address from each Michelin hotel page; restaurant addresses from detail pages; then compute distances in code and record the method.</td></tr>
+<tr><td data-label="Missing">Remaining 13 hotels on the index</td><td data-label="Why">The list is incomplete</td><td data-label="How">Read hotel index pages 4–9 (official)</td></tr>
+<tr><td data-label="Missing">Napa / Sonoma restaurants (other than Enclos and Bib rows)</td><td data-label="Why">Depends on the definition of "Bay Area" (see below)</td><td data-label="How">Michelin listing for Napa/Sonoma valleys and Sonoma</td></tr>
+<tr><td data-label="Missing">Green Star status in the Bay Area</td><td data-label="Why">Requested in the guide distinctions</td><td data-label="How">Official listing filter or press release (2026 Green Stars named are outside the Bay Area)</td></tr>
+</tbody></table></div>
+
+<h2>C. Decisions needed from you</h2>
+<ol class="clean">
+  <li><b>What is "Bay Area"?</b> Options: SF city only; SF listing ("San Francisco and surroundings"); 9-county Bay Area (adds Oakland, Berkeley, Sonoma, Napa, Marin, etc.). This changes the row count a lot.</li>
+  <li><b>Which rows must be fully verified first?</b> Options: all starred restaurants; all Bibs; the whole listing.</li>
+  <li><b>Price for two:</b> show only official prices (may be blank for most rows), or accept an estimate with a clear "estimate" label? The brief asks for no inferred values, so the default here is blank.</li>
+  <li><b>Social links:</b> accept search helpers (current), or require official-site-linked handles only (slower, fewer rows)?</li>
+  <li><b>Hotel ranking:</b> rank by walking distance, driving distance, or number of restaurants inside a radius? The radius needs to be set.</li>
+</ol>
+<p class="foot">Every value is from an official Michelin page or the official 2026 Michelin press release. Blank or "Unverified" = not confirmed from an official source, left blank on purpose.</p>
+</main>
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Restaurants · SF Bay Area MICHELIN Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav"></div>
+<main>
+<h1>Restaurants</h1>
+<p class="lede">Michelin status is from the official listing. Hours, address and website are only shown when the official detail page was opened. The 2-adult total price is not published on the pages checked, so it is left blank.</p>
+<div class="toolbar">
+  <button class="chip on" data-filter="all">All</button>
+  <button class="chip" data-filter="stars">Stars</button>
+  <button class="chip" data-filter="bib">Bib Gourmand</button>
+  <button class="chip" data-filter="sel">Listed only</button>
+  <input type="search" id="rest-q" placeholder="Search name, cuisine, status">
+  <span class="count" id="rest-count"></span>
+</div>
+<div class="tablewrap">
+<table class="stack">
+  <thead><tr>
+    <th>#</th><th>Restaurant</th><th>Michelin status</th><th>Cuisine</th><th>Price tier (official)</th><th>2-adult total</th><th>Address</th><th>Hours</th><th>Days closed</th><th>Links</th><th>Social</th><th>Verification</th>
+  </tr></thead>
+  <tbody id="rest-body"></tbody>
+</table>
+</div>
+<div class="note">Social links: no YouTube, TikTok or Instagram account was verified from an official source in this pass. The buttons are search helpers, not verified links.</div>
+<h2>How to read the status</h2>
+<ul class="clean">
+  <li><span class="tag t3">3 Stars</span> / <span class="tag t2">2 Stars</span> / <span class="tag t1">1 Star</span>: current Michelin star (from listing icons).</li>
+  <li><span class="tag tbib">Bib Gourmand</span>: good food at moderate price, not a star.</li>
+  <li><span class="tag tsel">Listed (Selected)</span>: in the guide with no star or Bib.</li>
+  <li><b>Price tier</b>: Michelin's $ to $$$$ scale (legend on the listing: $ on a budget, $$ moderate, $$$ special occasion, $$$$ spare no expense). It is not a price for two.</li>
+</ul>
+<p class="foot">Every value is from an official Michelin page or the official 2026 Michelin press release. Blank or "Unverified" = not confirmed from an official source, left blank on purpose. Data file: <code>docs/data/data.js</code>.</p>
+</main>
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

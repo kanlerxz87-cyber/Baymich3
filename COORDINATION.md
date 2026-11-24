@@ -18,7 +18,7 @@ checked (no `COORDINATION.md` claims overlap the tasks below).
 | T2 | Michelin restaurants — SF listing (official) + Bay Area Bib list + 2026 stars | needs review | bc5ad36e | `docs/data/data.js`, `docs/restaurants.html`, `docs/bib-gourmand.html` | 57 of 145 listing entries captured; 4 of 7 unlocated star/Bib entries flagged; hours verified for 7 only |
 | T3 | Hotels — Michelin Keys + guest score (official index) | needs review | bc5ad36e | `docs/hotels.html` | 18 of 31 hotels captured. Proximity-to-restaurants ranking NOT done (no verified coordinates) |
 | T4 | Social links (YouTube / TikTok / Instagram) | needs review | bc5ad36e | `docs/restaurants.html` (social column) | No verified social handles captured. Search helper links only, clearly labeled unverified |
-| T5 | Site build (landing, category pages, summary, questions, suggestions, verification, flagged) | in progress | bc5ad36e | `docs/*.html`, `docs/assets/*`, `docs/data/*` | Static site in `docs/` (GitHub Pages source folder) |
+| T5 | Site build (landing, category pages, summary, questions, suggestions, verification, flagged) | done | bc5ad36e | `docs/*.html`, `docs/assets/*`, `docs/data/*` | Static site in `docs/` (GitHub Pages source folder) |
 | T6 | Integration / final re-verification / publish | unclaimed | — | all shared outputs | Reserved for the final integration session |
 
 ## Status legend
@@ -51,7 +51,8 @@ See `docs/flagged.html`. Key items:
 5. The brief's "Bay Area" scope is ambiguous (Michelin's SF listing vs. the 9-county Bay Area). Both are shown, labeled.
 
 ## Handoff / takeover log
-- 2026-11-24 · bc5ad36e: Claimed T1–T6 on this branch. Built first-pass verified dataset and static site in `docs/`.
+- 2026-11-24 · bc5ad36e: Claimed T1–T6 on this branch. Built first-pass verified dataset and static site in `docs/` (9 pages, rendered and checked in a DOM emulator, no script errors).
+- 2026-11-24 · bc5ad36e: T5 done. Publishing is not done: GitHub Pages serves `main` root (`kanlerxz87-cyber.github.io/Baymich3`). Set Pages to this branch's `/docs` or merge at T6.
 
 ## Merge-conflict log
 - (none)

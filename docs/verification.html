@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verification · SF Bay Area MICHELIN Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav"></div>
+<main>
+<h1>Verification log</h1>
+<p class="lede">What was opened, what was checked, and the limits. Each source is an official page.</p>
+
+<h2>Sources opened</h2>
+<div class="tablewrap"><table class="stack">
+<thead><tr><th>Source</th><th>What was taken</th><th>Coverage</th><th>Link</th></tr></thead>
+<tbody>
+<tr><td data-label="Source">Michelin SF listing, page 1 (official)</td><td data-label="Taken">Name, city, price tier, cuisine, star/Bib/Selected icon, detail URL</td><td data-label="Coverage">48 entries (all read)</td><td data-label="Link"><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurants" target="_blank" rel="noopener">Open</a></td></tr>
+<tr><td data-label="Source">Michelin SF listing, page 2 (official)</td><td data-label="Taken">Same fields</td><td data-label="Coverage">9 entries (first ~2 of 9 chunks)</td><td data-label="Link"><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurants/page/2" target="_blank" rel="noopener">Open</a></td></tr>
+<tr><td data-label="Source">Michelin detail pages</td><td data-label="Taken">Address, cuisine, price tier, hours by day, website, phone</td><td data-label="Coverage">7 pages: Quince, Californios, Benu, Atelier Crenn, Acquerello, Wolfsbane, Restaurant Naides</td><td data-label="Link"><a href="https://guide.michelin.com/us/en/california/san-francisco/restaurant/quince" target="_blank" rel="noopener">Example (Quince)</a></td></tr>
+<tr><td data-label="Source">Michelin press release, MICHELIN Guide California 2026</td><td data-label="Taken">New stars, Bay Area Bib list (full table), Green Star names, statewide counts</td><td data-label="Coverage">Full Bib table; new-star inspector notes</td><td data-label="Link"><a href="https://www.michelin.com/en/publications/products-and-services/the-michelin-guide-california-2026" target="_blank" rel="noopener">Open</a></td></tr>
+<tr><td data-label="Source">Michelin hotels index, San Francisco &amp; surroundings</td><td data-label="Taken">Hotel names, Keys icon, guest score, neighborhood filter counts</td><td data-label="Coverage">18 of 31 hotels; 4 of 9 index chunks</td><td data-label="Link"><a href="https://guide.michelin.com/us/en/hotels-stays/san-francisco-bay-area" target="_blank" rel="noopener">Open</a></td></tr>
+</tbody></table></div>
+
+<h2>Checks performed</h2>
+<ul class="clean">
+  <li>Name, status and price tier for each row copied from the listing text (not from memory).</li>
+  <li>Bib rows copied from the 2026 press release table (address verbatim).</li>
+  <li>Star facet counts compared with the rows captured (3★ 4 of 4; 2★ 6 of 7; 1★ 15 of 18).</li>
+  <li>Hours rows copied from the day-by-day Michelin table on the 7 opened detail pages.</li>
+  <li>Hotel rank computed in code from Keys and guest score only.</li>
+  <li>Not done: link checking of each restaurant's website (not opened), social-account checks (none found in official sources), geocoding.</li>
+</ul>
+
+<h2>Limits</h2>
+<p>This is a partial verification. The table is not complete and is not ready to be treated as final. See <a href="flagged.html">Flagged for review</a>.</p>
+<p class="foot">Every value is from an official Michelin page or the official 2026 Michelin press release. Blank or "Unverified" = not confirmed from an official source, left blank on purpose.</p>
+</main>
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

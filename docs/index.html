@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard · SF Bay Area MICHELIN Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav"></div>
+<main>
+<h1>SF Bay Area MICHELIN Dashboard</h1>
+<p class="lede">Michelin restaurants and hotels from official sources, with what is verified and what is not. Updated 2026-11-24.</p>
+
+<div class="note"><b>Not decision-ready yet.</b> Only part of the data is captured and verified. Read <a href="questions.html">Questions</a> and <a href="flagged.html">Flagged</a> before using any ranking.</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="n" id="k-rest">–</div><div class="l">Restaurant rows captured</div></div>
+  <div class="kpi"><div class="n" id="k-total">–</div><div class="l">Listing total (SF &amp; surroundings)</div></div>
+  <div class="kpi"><div class="n" id="k-stars">–</div><div class="l">Starred rows captured (incl. 2026 Enclos)</div></div>
+  <div class="kpi"><div class="n" id="k-bib">–</div><div class="l">Bay Area Bib Gourmands (2026)</div></div>
+  <div class="kpi"><div class="n" id="k-det">–</div><div class="l">Rows with detail page checked</div></div>
+  <div class="kpi"><div class="n" id="k-hotels">–</div><div class="l">Hotels captured (of 31)</div></div>
+</div>
+
+<h2>Categories</h2>
+<div class="cards">
+  <a class="card" href="restaurants.html"><b>Restaurants</b><span class="big">Table</span><br>Stars, Bib, Selected. Hours, links, social search helpers.</a>
+  <a class="card" href="bib-gourmand.html"><b>Bib Gourmand</b><span class="big">Table</span><br>Bay Area 2026 Bib list with official addresses.</a>
+  <a class="card" href="hotels.html"><b>Hotels</b><span class="big">Table</span><br>MICHELIN Keys and guest scores. Proximity ranking still pending.</a>
+  <a class="card" href="summary.html"><b>Executive summary</b><span class="big">Read</span><br>Key facts, method, limits.</a>
+  <a class="card" href="questions.html"><b>Questions</b><span class="big">Read</span><br>What is answered, missing, and how to find it.</a>
+  <a class="card" href="suggestions.html"><b>Suggestions</b><span class="big">Review</span><br>Site improvements. Nothing changed until you choose.</a>
+  <a class="card" href="verification.html"><b>Verification</b><span class="big">Sources</span><br>What was opened, with links.</a>
+  <a class="card" href="flagged.html"><b>Flagged for review</b><span class="big">Review</span><br>Unverified values and irregularities.</a>
+</div>
+
+<h2>Scope</h2>
+<ul class="clean">
+  <li><b>Restaurants:</b> Michelin's "San Francisco and surroundings" listing (145 restaurants). 57 captured in this pass from listing pages 1–2, plus 1 Sonoma 3-star from the 2026 release.</li>
+  <li><b>Bib Gourmand:</b> all Bay Area (9-county) Bibs in the official 2026 press release (43).</li>
+  <li><b>Hotels:</b> 18 of 31 from Michelin's San Francisco &amp; surroundings hotel index.</li>
+</ul>
+<p class="foot">Every value is from an official Michelin page or the official 2026 Michelin press release. Blank or "Unverified" = not confirmed from an official source, left blank on purpose. Data file: <code>docs/data/data.js</code>.</p>
+</main>
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

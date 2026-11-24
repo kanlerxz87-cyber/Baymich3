@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hotels · SF Bay Area MICHELIN Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav"></div>
+<main>
+<h1>Hotels</h1>
+<p class="lede">18 of Michelin's 31 "San Francisco and surroundings" hotels, from the official index. Ranked by MICHELIN Keys, then guest score.</p>
+<div class="note"><b>Proximity ranking is not done.</b> The brief asks to rank hotels by nearby Michelin restaurants. That needs verified coordinates or distances for each hotel and restaurant, which are not captured yet. The ranking above is by Keys and guest score only.</div>
+<div class="tablewrap">
+<table class="stack">
+  <thead><tr><th>Rank</th><th>Hotel</th><th>MICHELIN Keys</th><th>Guest score</th><th>Restaurants nearby</th><th>Link</th></tr></thead>
+  <tbody id="hotel-body"></tbody>
+</table>
+</div>
+<h2>Michelin neighborhood counts (official filter)</h2>
+<p class="small">Count of hotels on the official index that match the "With MICHELIN Restaurants" neighborhood filter. These count hotels, not restaurants.</p>
+<div class="tablewrap">
+<table class="stack">
+  <thead><tr><th>Neighborhood</th><th>Hotels</th></tr></thead>
+  <tbody>
+    <tr><td data-label="Neighborhood">Union Square</td><td data-label="Hotels">11</td></tr>
+    <tr><td data-label="Neighborhood">Embarcadero</td><td data-label="Hotels">3</td></tr>
+    <tr><td data-label="Neighborhood">Nob Hill</td><td data-label="Hotels">2</td></tr>
+    <tr><td data-label="Neighborhood">Presidio</td><td data-label="Hotels">2</td></tr>
+    <tr><td data-label="Neighborhood">Sausalito</td><td data-label="Hotels">2</td></tr>
+    <tr><td data-label="Neighborhood">SoMa</td><td data-label="Hotels">2</td></tr>
+    <tr><td data-label="Neighborhood">Belvedere Tiburon, Berkeley, Fisherman's Wharf, Japantown, Mid-Market, Pacific Heights, Financial District</td><td data-label="Hotels">1 each</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="foot">Every value is from an official Michelin page or the official 2026 Michelin press release. Blank or "Unverified" = not confirmed from an official source, left blank on purpose. Data file: <code>docs/data/data.js</code>.</p>
+</main>
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suggestions · SF Bay Area MICHELIN Dashboard</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="nav"></div>
+<main>
+<h1>Site improvement suggestions</h1>
+<p class="lede">Review these and choose. <b>No change has been made to the site from this list.</b> Each option lists what it costs and what it changes.</p>
+
+<div class="optbox"><h3>1. Finish the full SF listing (145 rows)</h3>
+<p>Read listing pages 2–4 and open each detail page. Gives the complete star list and hours for every row.</p>
+<p class="small">Trade-off: many page reads. Makes the star table complete.</p></div>
+
+<div class="optbox"><h3>2. Add a per-row verification badge with a link to each claim</h3>
+<p>Each cell would link to the page it came from. Makes manual review faster.</p>
+<p class="small">Trade-off: a wider table. Mobile view uses stacked cards.</p></div>
+
+<div class="optbox"><h3>3. Decide the "Bay Area" definition and add a filter</h3>
+<p>Adds a county filter to the restaurant table (SF / East Bay / Peninsula / South Bay / North Bay).</p>
+<p class="small">Depends on answer C1 in Questions.</p></div>
+
+<div class="optbox"><h3>4. Compute hotel proximity (requires coordinates)</h3>
+<p>Collect hotel and restaurant addresses from official pages, geocode with a verified source, compute distances, and rank by count within a set radius.</p>
+<p class="small">Trade-off: needs a geocoding source that is allowed on the web (verify first).</p></div>
+
+<div class="optbox"><h3>5. Map page with clusters</h3>
+<p>Interactive map (Leaflet + OpenStreetMap tiles) with markers only for rows that have verified coordinates.</p>
+<p class="small">Trade-off: a map with few verified markers is misleading. Build after item 4.</p></div>
+
+<div class="optbox"><h3>6. Show data freshness and source date on every page</h3>
+<p>Adds "fetched on" and source URL to each table, so readers can see how current a row is.</p>
+<p class="small">Low effort. Recommended.</p></div>
+
+<div class="optbox"><h3>7. Publish from main after review</h3>
+<p>GitHub Pages currently serves the <code>main</code> branch root. To publish this site, set Pages to this branch's <code>docs/</code> folder, or merge after review. Changing repo settings is your decision.</p>
+<p class="small">Recommended: merge after review (integration step T6).</p></div>
+
+<h2>Recommended order (for your choice)</h2>
+<ol class="clean">
+  <li>Answer Questions C1–C5.</li>
+  <li>Choose 1 (complete the listing) and 6 (freshness labels).</li>
+  <li>Choose 4 (distances) only after 1 and a verified geocoding method.</li>
+  <li>Decide 7 (publishing) and run the final re-verification.</li>
+</ol>
+<p class="foot">Every value is from an official Michelin page or the official 2026 Michelin press release. Blank or "Unverified" = not confirmed from an official source, left blank on purpose.</p>
+</main>
+<script src="data/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
