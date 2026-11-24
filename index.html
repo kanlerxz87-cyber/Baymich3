@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bay Area Michelin Guide — Dashboard</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body>
+<header class="top"><div class="nav"><div class="brand">Bay<span>Michelin</span> — SF Bay Area Guide</div>
+<nav>
+<a class="active" href="index.html">Home</a><a href="restaurants.html">Restaurants</a><a href="bib-gourmand.html">Bib Gourmand</a><a href="green-star.html">Green Star</a><a href="hotels.html">Hotels</a><a href="map.html">Map</a><a href="executive-summary.html">Summary</a><a href="questions.html">Questions</a><a href="suggestions.html">Suggestions</a><a href="verification.html">Verification</a><a href="flagged.html">Flagged</a><a href="sources.html">Sources</a>
+</nav></div></header>
+<main class="wrap">
+<div class="hero">
+<h1>San Francisco Bay Area MICHELIN Guide — organized, verified, mobile-friendly</h1>
+<p>Entries are categorized as <strong>Starred (1–3★)</strong>, <strong>Bib Gourmand</strong>, <strong>Green Star</strong>, or <strong>Recommended (in Guide, no star)</strong> where present. Current inventory is partial and flagged; categories are never mixed. Prices show the official MICHELIN Guide tier (<code>$$$$</code>) plus an exact total for 2 adults <em>only</em> where the restaurant's own site publishes it. Anything unverified is left blank and flagged — never guessed.</p>
+<p class="small">Guide edition: <strong>MICHELIN Guide California 2026</strong> (revealed 24 June 2026). Bay Area scope defined on <a href="sources.html">Sources</a>. Last verified: 24 Nov 2026.</p>
+</div>
+
+<div class="kpis">
+<div class="kpi"><b>44</b><small>starred rows currently inventoried (7×3★ + 9×2★ + 28×1★); completeness under review</small></div>
+<div class="kpi"><b>32</b><small>Bib Gourmand rows inventoried; list is partial</small></div>
+<div class="kpi"><b>9</b><small>Green Star rows in current Bay Area subset</small></div>
+<div class="kpi"><b>5</b><small>Clusters (SF core is densest: 27 starred)</small></div>
+<div class="kpi"><b>12</b><small>Hotels ranked by Michelin proximity</small></div>
+</div>
+
+<div class="grid">
+<div class="card"><h3>⭐ Starred restaurants</h3><p>Full table with city, cuisine, cluster, Guide tier, exact price for 2 (verified only), days/hours link, official + MICHELIN links, and YouTube / Instagram / TikTok search links.</p><a class="btn" href="restaurants.html">Open table →</a></div>
+<div class="card"><h3>🍽 Bib Gourmand</h3><p>Good food at a good value — 32 Bay Area Bibs for 2026, with the same columns. Best starting point for value.</p><a class="btn" href="bib-gourmand.html">Open table →</a></div>
+<div class="card"><h3>🌿 Green Star</h3><p>Sustainability leaders. Note: MICHELIN is phasing out Green Star in 2026 — see Flagged page.</p><a class="btn" href="green-star.html">Open table →</a></div>
+<div class="card"><h3>🏨 Hotels ranked</h3><p>Ranked by weighted count of starred restaurants in the hotel's cluster. SF hotels rank top because the SF cluster holds 27 starred.</p><a class="btn" href="hotels.html">See ranking →</a></div>
+<div class="card"><h3>🗺 Cluster map</h3><p>Interactive Leaflet map (OpenStreetMap, no API key) with city-level cluster pins. Exact addresses on each MICHELIN listing.</p><a class="btn" href="map.html">Open map →</a></div>
+<div class="card"><h3>📋 Executive summary</h3><p>One-page brief: what to book, where to stay, what it costs, and what is still unknown.</p><a class="btn" href="executive-summary.html">Read summary →</a></div>
+</div>
+
+<div class="note"><strong>How to read this site (no hallucinations rule):</strong> <span class="badge star3">3★</span> <span class="badge star2">2★</span> <span class="badge star1">1★</span> = currently starred. <span class="badge bib">Bib</span> = Bib Gourmand (no star). <span class="badge green">Green</span> = Green Star (sustainability, can combine with a star). <span class="badge unverified">Unverified</span> = value could not be confirmed on an official source and is intentionally blank. Every row links to its official MICHELIN listing. See <a href="verification.html">Verification</a> and <a href="flagged.html">Flagged for Review</a>.</div>
+
+<div class="ok"><strong>Start here:</strong> If you want the best meal regardless of cost → SF 3★ cluster (Atelier Crenn, Benu, Californios, Quince). If you want value → Bib Gourmand table. If you want a trip → Hotels ranking + Map. If you need decisions → <a href="questions.html">Questions</a> and <a href="suggestions.html">Suggestions</a> (nothing there is implemented yet — review first).</div>
+</main>
+<footer>Bay Area Michelin Guide · Data: MICHELIN Guide California 2026 (official) · Prices/hours: official sites only · <a href="sources.html">Sources &amp; scope</a> · <a href="COORDINATION.md">Coordination board</a></footer>
+<script src="assets/app.js"></script>
+</body></html>

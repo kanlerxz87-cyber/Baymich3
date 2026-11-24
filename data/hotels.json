@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "method": "Hotels ranked by Michelin proximity score = weighted count of starred restaurants in the hotel's home cluster (3★=3, 2★=2, 1★=1) + 50% weight for adjacent clusters. Counts derived from data/restaurants.json (2026). Distances are cluster-level, not surveyed miles — see hotels.html methodology and Flagged page.",
+    "key_source": "https://guide.michelin.com/en/article/travel/all-the-key-hotels-united-states-michelin-guide-2024",
+    "checked": "2026-11-24"
+  },
+  "clusters": {
+    "San Francisco core": {"starred": 27, "breakdown": "4×3★ + 6×2★ + 17×1★"},
+    "North Bay wine country": {"starred": 9, "breakdown": "3×3★ (SingleThread, Enclos, French Laundry) + 6×1★"},
+    "East Bay": {"starred": 3, "breakdown": "1×2★ (Commis) + 2×1★ (Sun Moon Studio + Wakuriya is Peninsula; East Bay proper = Commis + Sun Moon = 2) — see note"},
+    "Peninsula / South Bay": {"starred": 5, "breakdown": "5×1★ (Selby's, Protégé, Wakuriya, Plumed Horse, Village Pub)"},
+    "Monterey / Carmel + Mendocino": {"starred": 4, "breakdown": "1×2★ Aubergine + 1×1★ Chez Noir + 1×2★ Harbor House + 1×1★ Madcap (Marin) — grouped for coastal ranking"}
+  },
+  "hotels": [
+    {"rank": 1, "name": "Four Seasons Hotel San Francisco at Embarcadero", "city": "San Francisco", "key": "2 Keys", "cluster": "San Francisco core", "why": "In the densest cluster (27 starred). Walkable to multiple 1★/2★; BART/Muni to all SF dining."},
+    {"rank": 2, "name": "The Battery", "city": "San Francisco", "key": "2 Keys", "cluster": "San Francisco core", "why": "Jackson Square — same cluster as Quince (3★) and minutes to FiDi/SoMa 2★/3★."},
+    {"rank": 3, "name": "Hotel Drisco", "city": "San Francisco", "key": "1 Key", "cluster": "San Francisco core", "why": "Pacific Heights — SF cluster; best for Marina/Cow Hollow (Atelier Crenn 3★) access."},
+    {"rank": 4, "name": "1 Hotel San Francisco", "city": "San Francisco", "key": "1 Key", "cluster": "San Francisco core", "why": "Embarcadero — SF cluster; Ferry Building / SoMa dining corridor."},
+    {"rank": 5, "name": "SingleThread Inn", "city": "Healdsburg", "key": "3 Keys", "cluster": "North Bay wine country", "why": "On-site 3★ restaurant; 9 starred in wine-country cluster (Sonoma/Healdsburg/Napa)."},
+    {"rank": 6, "name": "Auberge du Soleil", "city": "Rutherford", "key": "3 Keys", "cluster": "North Bay wine country", "why": "On-site 1★ (Auberge du Soleil); Napa cluster with French Laundry (3★) nearby."},
+    {"rank": 7, "name": "Meadowood Napa Valley", "city": "St. Helena", "key": "3 Keys", "cluster": "North Bay wine country", "why": "St. Helena — Press (1★) in town; Yountville/Rutherford 3★/1★ within cluster."},
+    {"rank": 8, "name": "North Block / Bardessono", "city": "Yountville", "key": "2 Keys", "cluster": "North Bay wine country", "why": "Yountville — home of The French Laundry (3★); Napa cluster hub."},
+    {"rank": 9, "name": "Canyon Ranch Woodside", "city": "Woodside", "key": "3 Keys", "cluster": "Peninsula / South Bay", "why": "Woodside — Village Pub (1★) in town; Peninsula cluster (5×1★) + SF day-trip access."},
+    {"rank": 10, "name": "Cavallo Point Lodge", "city": "Sausalito", "key": "2 Keys", "cluster": "Marin / North Bay", "why": "Golden Gate gateway to SF cluster (27 starred) + Marin (Madcap 1★)."},
+    {"rank": 11, "name": "Harbor House Inn", "city": "Elk", "key": "1 Key", "cluster": "Mendocino coast", "why": "On-site 2★ + Green Star; remote coastal cluster — best only for Harbor House itself."},
+    {"rank": 12, "name": "Bernardus Lodge & Spa", "city": "Carmel Valley", "key": "2 Keys", "cluster": "Monterey / Carmel", "why": "Carmel cluster: Aubergine (2★) + Chez Noir (1★) nearby; 2-hour drive to SF cluster."}
+  ]
+}

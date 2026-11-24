@@ -1,0 +1,58 @@
+:root{
+  --bg:#0f1115; --panel:#171b22; --panel2:#1e242e; --text:#e8ecf1; --muted:#9aa7b8;
+  --accent:#e63946; --accent2:#f1fa8c; --green:#2ec4b6; --gold:#f4d35e;
+  --border:#2a3240; --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:#7dd3fc}
+a:hover{color:#fff}
+header.top{position:sticky;top:0;z-index:50;background:rgba(15,17,21,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.brand{font-weight:800;letter-spacing:.02em;font-size:1.05rem}
+.brand span{color:var(--accent)}
+.nav nav{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.nav nav a{padding:7px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:.85rem;color:var(--text);background:var(--panel)}
+.nav nav a:hover,.nav nav a.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.wrap{max-width:1200px;margin:0 auto;padding:20px 16px 60px}
+.hero{background:linear-gradient(135deg,#1a2233,#2b1a2e);border:1px solid var(--border);border-radius:var(--radius);padding:28px 22px;margin:14px 0 20px}
+.hero h1{margin:.1em 0 .3em;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.15}
+.hero p{color:var(--muted);max-width:72ch}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:14px}
+.kpi b{font-size:1.7rem;display:block}
+.kpi small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.card h3{margin:.2em 0 .4em}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.75rem;font-weight:700;border:1px solid var(--border);background:var(--panel2)}
+.badge.star3{background:#3a0a12;border-color:#7f1d2d;color:#fecdd3}
+.badge.star2{background:#2e1a05;border-color:#92400e;color:#fde68a}
+.badge.star1{background:#0f2a1a;border-color:#166534;color:#bbf7d0}
+.badge.bib{background:#12263a;border-color:#1d4ed8;color:#bfdbfe}
+.badge.green{background:#0b2e1f;border-color:#059669;color:#a7f3d0}
+.badge.flag{background:#3b0764;border-color:#7c3aed;color:#e9d5ff}
+.badge.unverified{background:#292524;border-color:#57534e;color:#d6d3d1}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.toolbar input,.toolbar select{flex:1;min-width:180px;padding:11px 12px;border-radius:10px;border:1px solid var(--border);background:var(--panel);color:var(--text);font-size:1rem}
+.tablewrap{overflow:auto;border:1px solid var(--border);border-radius:var(--radius);background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:900px;font-size:.92rem}
+th,td{padding:10px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{position:sticky;top:0;background:var(--panel2);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);z-index:2}
+tr:hover td{background:rgba(255,255,255,.03)}
+.small{font-size:.82rem;color:var(--muted)}
+.note{background:#1c1917;border:1px solid #44403c;border-left:4px solid var(--gold);border-radius:10px;padding:12px 14px;margin:14px 0}
+.ok{background:#052e16;border:1px solid #166534;border-left:4px solid var(--green);border-radius:10px;padding:12px 14px;margin:14px 0}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+footer{border-top:1px solid var(--border);color:var(--muted);padding:22px 16px;text-align:center;font-size:.85rem}
+#map{height:520px;border-radius:var(--radius);border:1px solid var(--border)}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+details{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:700}
+@media(max-width:640px){
+  table{min-width:760px}
+  .nav nav{margin-left:0}
+  .hero{padding:20px 16px}
+}
