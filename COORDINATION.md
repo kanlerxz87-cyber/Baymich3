@@ -22,7 +22,7 @@ Last updated: 2026-11-24
 | T4 | Hotels ranked by Michelin density | in progress | 88da5baf | data/hotels.csv, data/hotels.md | Hotel official sites + Michelin map distances | — |
 | T5 | GitHub Pages site (landing + subpages, mobile-friendly) | in progress | 88da5baf | index.html, *.html, assets/*, _config.yml | Build check, link check | — |
 | T6 | Executive summary, Questions/Answers, Suggestions | in progress | 88da5baf | docs/executive-summary.md, docs/questions.md, docs/suggestions.md | Cross-ref T1–T4 | — |
-| T7 | Final integration: re-verify line-by-line, link check, publish | unclaimed | — | all | — | — |
+| T7 | Final integration: re-verify line-by-line, link check, publish | in progress | 6270f56e | validation only; COORDINATION.md | Official sources referenced in each data row; automated HTML/CSV checks | GitHub Pages publishing status needs verification; do not modify T1–T6-owned content without review |
 
 ## Log
 - 2026-11-24: Repo was empty (only README). Session 88da5baf claimed T1–T6 on branch arena/88da5baf-baymich3. T7 left for final integration pass in same session after T1–T6 done.
