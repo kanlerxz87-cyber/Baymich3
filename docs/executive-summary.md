@@ -1,38 +1,47 @@
 # Executive Summary — SF Bay Area Michelin Guide & Map (2026)
 
-**Edition:** MICHELIN Guide California 2026 (revealed 24–26 June 2026). **Scope:** 9-county Core Bay Area + flagged Extension. **Checked:** 24 Nov 2026.
+**Edition:** MICHELIN Guide California 2026, revealed 24 June 2026 (official Michelin article). **Checked:** 24 Nov 2026.
+**Scope:** 9-county Bay Area ("Core") + flagged Extension outside it (Carmel, Elk). Sacramento excluded.
 
-## Headline numbers (verified)
-- **California 2026:** 83 starred (10×3★, 13×2★, 60×1★), 117 Bib Gourmand, 323 Recommended = 523 total. Source: Michelin Guide California 2026 article + Michelin press release.
-- **Core Bay Area starred: 41** (7×3★, 7×2★, 27×1★). **Extension: 3** (Aubergine 2★, Harbor House 2★, Chez Noir 1★). Sacramento (2×1★) excluded as separate metro.
-- **SF city proper:** 4×3★ (Atelier Crenn, Benu, Californios NEW, Quince), 6×2★ (Acquerello, Birdsong, Kiln, Lazy Bear, Saison, Sons & Daughters), 15×1★. Michelin "SF and surroundings" = 145 (29 starred + 30 Bib + 86 Selected).
-- **Bib Gourmand Bay Area:** ~36 listed in data/bib.csv (Michelin SF Bib page = 30 in surroundings; balance in Peninsula/East Bay/Wine Country). **Recommended:** 86 in SF surroundings (Michelin count) — full names via Michelin search; this project lists Bib fully and Recommended by count + link (see Questions Q7).
+## 1. What is verified
+- **Starred restaurants (Core): 41** — 7 × 3★, 7 × 2★, 27 × 1★ (Michelin 2026 article). Matches the Michelin list line by line.
+- **Statewide 2026:** 83 starred (10 × 3★, 13 × 2★, 60 × 1★). Confirmed on the same article.
+- **Hours + price level from Michelin's own restaurant pages:** 14 of 41 starred rows (Quince, Californios, Benu, Atelier Crenn, SingleThread*, French Laundry*, Enclos, Acquerello, Birdsong*, Commis*, Kiln, Lazy Bear, Saison*, Sons & Daughters). *Partial where Michelin's page was cut off.
+- **Price for 2 adults (total, from official pages):** 11 rows verified — see table below. The other 30 starred rows are **Unverified** and left blank.
+- **Hotels:** 14 ranked by Core starred count in their cluster. Bardessono's address was corrected to the official one (6526 Yount St).
 
-## What changed in 2026 (decision-relevant)
-- **Californios (SF) → 3★** — world's first 3-star Mexican restaurant. **Enclos (Sonoma) → 3★** (2★→3★ in one year). Both NEW 3★.
-- **New 1★ in Bay Area:** Naides (SF, Filipino), Wolfsbane (SF), Troubadour (Healdsburg). Sun Moon Studio (Oakland) retained 1★ (new 2025).
-- **Dropped from 2025 starred list (verify before booking):** Le Comptoir at Bar Crenn, O' by Claude Le Tohic, The Shota (was temporarily closed), Osito/Aphotic (closed), Chez TJ (now Recommended). See Flagged page.
+## 2. Price for 2 adults (verified rows only, total)
+| Restaurant | Total for 2 | Basis |
+|---|---|---|
+| Benu (3★) | $1,037 | $425 pp × 2 + 22% service |
+| Acquerello (2★) | $731.60 | $295 pp × 2 + 24% (20% + 4% surcharge) |
+| Kiln (2★) | $756 | $315 pp × 2 + 20% |
+| Commis (2★) | $669.60 | $279 pp × 2 + 20% |
+| Birdsong (2★) | $700 | $350 pp × 2 (Journey tasting) |
+| Lazy Bear (2★) | $640 | $320 pp × 2 |
+| Sons & Daughters (2★) | $660 | $330 pp × 2 |
+| 7 Adams (1★) | $254 | $127 pp × 2 (7 at 7) |
+| Angler (1★, lunch) | $151.20 | $60 pp × 2 + 26% |
+| Madcap (1★) | $360 | $180 pp × 2 (11-course) |
+| Sorrel (1★) | $409.50 | $195 pp × 2 (Fall 2026 8-course) + 5% SF Mandate |
 
-## Clusters (where the stars are)
-- **C1 SF Core:** 25 starred in city (densest). SoMa/Mission/Hayes Valley/Pacific Heights. Best for walkable multi-restaurant trips.
-- **C2 Peninsula/South Bay:** 5 starred (Selby's, Protégé, Plumed Horse, Village Pub, Wakuriya). Best for Palo Alto/Stanford base.
-- **C3 East Bay:** 2 starred (Commis 2★, Sun Moon 1★) + 10+ Bib (Oakland/Berkeley). Best for Piedmont/Berkeley base.
-- **C4 Marin:** 1 starred (Madcap) + 3 Bib. Gateway, not a destination cluster.
-- **C5 Wine Country (Napa/Sonoma):** 7 starred (French Laundry 3★, SingleThread 3★, Enclos 3★, Auberge, Auro, Cyrus, Troubadour, Press — 8 names; 7 in core count excluding Troubadour? See data). Best for restaurant-first itineraries (stay where you eat).
-- **C6 Extension:** Carmel/Elk — trip add-ons, not base.
+Excludes tax, beverages and gratuity unless the official page includes them. Sorrel's total is for the Fall 2026 menu (official menus page, 24 Nov 2026); it changes with the seasonal menu.
 
-## Cost snapshot (verified official prices, 2 adults, excl. tax/bev unless noted)
-- **3★:** Benu $1,037 (425×2 +22%). Others: Atelier Crenn $365–465pp (Tock), Quince/Californios/SingleThread/French Laundry/Enclos — official price not published on fetched homepage (Unverified; indicative $295–450pp from secondary — do not budget from secondary).
-- **2★:** Acquerello $731.60 (295×2 +24% service+surcharge), Birdsong $700 (350×2), Commis $670 (279×2 +20%), Kiln $756 (315×2 +20%), Lazy Bear $640 (320×2), Sons & Daughters $660 (330×2). Saison Unverified.
-- **1★ value picks (verified):** 7 Adams $254 (127×2), Angler lunch $151 (60×2 +26%), Madcap $360 (180×2), Sorrel $409.50 (195×2 +5% SF Mandate, Fall 2026). Most 1★ prices Unverified — see table.
-- **Rule:** Budget only from "Verified" rows. "Unverified" = check official site/Tock before booking. Service charges 20–26% are the swing factor.
+## 3. Key findings and irregularities (details on the Flagged page)
+1. **Hours conflicts (3 rows):** Quince, Kiln and Lazy Bear show different closing times on Michelin vs. the official pages. Both are shown; confirm before booking.
+2. **Sons & Daughters address:** Michelin says 2875 18th St; the earlier record said 708 Bush St. Not resolved.
+3. **Earlier errors fixed (this session and PR #4):** the Bardessono address and the hotel star counts (SF 20 → 25; Wine Country 7 → 8).
+4. **Geography:** Michelin's own "San Francisco and surroundings" (145 restaurants; 4/7/18 starred) does not match our 9-county Core. Both are shown; our hotel ranking uses the 9-county version.
+5. **Hotel ranking is tied within each cluster.** Ranks follow the cluster count; no distance has been calculated yet.
+6. **Social links are sparse:** 2 Instagram verified (Atelier Crenn, Lazy Bear); YouTube and TikTok are unverified for all rows.
 
-## Hotels (ranked by Michelin density — see hotels page for method)
-1. Four Seasons SF (757 Market) — SF Core, walkable to SoMa cluster. 2. Fairmont SF (Nob Hill). 3–8 SF Core alternates (St. Regis, Palace, Ritz, Taj, Kabuki, 1 Hotel). 9 Rosewood Sand Hill (Peninsula). 10 Claremont Berkeley (East Bay). 11 Cavallo Point (Marin). 12 Auberge du Soleil (1★ on site). 13 SingleThread Inn (3★ + inn). 14 Bardessono (French Laundry steps).
-- **Recommendation:** First-time visitors → SF Core (Four Seasons/Fairmont). Wine Country → Auberge or SingleThread Inn (eat where you sleep). East Bay food trip → Claremont.
+## 4. What the site does not yet provide
+- Verified prices for the remaining 30 starred restaurants.
+- Verified hours for about 27 starred rows (Michelin page not re-checked this session).
+- Nightly hotel rates (dynamic; no static official source).
+- Full verification of Bib Gourmand and Recommended lists (carried from prior session).
 
-## Risks & unknowns (see Questions page)
-- Prices/hours change seasonally; 20+ rows still Unverified (official site check pending). Social links: only 3 verified (Atelier, Benu, Lazy Bear Instagram) — YouTube/TikTok largely uncollected. Hotel nightly rates not collected (dynamic pricing). Recommended (86) names not yet enumerated. Drive times not measured. Allergies/dietary, cancellation, dress code vary — check per restaurant.
-
-## How to use this site
-- **Restaurants page:** filter by stars/cluster/price; every row links to Michelin + official site. **Listed page:** Bib (value) vs Recommended. **Hotels page:** ranked table. **Map page:** cluster guide + Michelin map links. **Flagged page:** irregularities + dropped stars. **Methodology:** sources + verification log.
+## 5. Next steps (see Suggestions and Questions for options)
+- Complete Michelin-page checks for the remaining 27 starred rows (about 9k tokens each; queued).
+- Collect official-site price pages for the 30 unpriced rows.
+- Decide: distance-based hotel ranking (needs coordinates), social-link policy, and whether to show indicative (non-official) prices at all.

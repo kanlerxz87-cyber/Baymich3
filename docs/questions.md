@@ -1,75 +1,87 @@
 # Questions, Information & Answers — What Must Be Resolved Before Deciding
 
-Each question states: **What we know (verified) / What we don't know / How to discover it / Owner**. No decision should be made on Unverified rows.
+Each question shows: **Know** (verified) · **Don't know** · **How to find out** · **Owner**. Do not decide on Unverified rows.
 
 ## Q1. Which Michelin edition should we trust?
-- **Know:** 2026 is latest (June 2026). 2025 list is superseded. Californios/Enclos are 3★ in 2026 (were 2★ in 2025).
-- **Don't know:** Will 2027 change stars? (Unknowable; check June 2027 ceremony.)
-- **Discover:** Re-check guide.michelin.com California 2026 article each quarter; subscribe to Michelin newsletter.
-- **Owner:** Site maintainer. **Blocks:** All star claims.
+- **Know:** 2026 (revealed 24 Jun 2026) is the latest. The 2026 article lists 83 starred restaurants in California. Californios and Enclos are new 3★ in 2026 (article).
+- **Don't know:** Stars for 2027 (not yet announced).
+- **How:** Re-check the Michelin article each year; subscribe to Michelin's newsletter.
+- **Owner:** Maintainer. **Blocks:** Every star claim.
 
 ## Q2. What counts as "Bay Area"?
-- **Know:** This project uses 9-county Core + flagged Extension (Carmel/Elk) + excluded Sacramento. Michelin "SF and surroundings" (145) blends them.
-- **Don't know:** User's travel radius (e.g., will they drive to Elk/Carmel?).
-- **Discover:** Ask user for max drive time / base city; re-cut hotel ranking accordingly.
-- **Owner:** User. **Blocks:** Hotel ranking, itinerary.
+- **Know:** This project uses 9 counties (Core) + Extension (Carmel, Elk). Michelin's own "San Francisco and surroundings" (145 restaurants, 4/7/18 starred) is a different area.
+- **Don't know:** Your travel radius. Would you drive to Carmel or Elk?
+- **How:** Ask you. Re-cut the hotel ranking if the radius changes.
+- **Owner:** You. **Blocks:** Hotel ranking and itinerary.
 
 ## Q3. What will dinner for 2 actually cost?
-- **Know:** 11 rows with verified prices (Benu, Acquerello, Birdsong, Commis, Kiln, Lazy Bear, Sons & Daughters, 7 Adams, Angler lunch, Madcap, Sorrel). Auberge (Tock) is Partial. Formula shown per row.
-- **Don't know:** 29 rows Unverified (official price not on fetched page). Service % missing on 4 verified rows. Tax, wine, supplements extra.
-- **Discover:** Visit each official site's Reservations/Tock page (prices live there, not homepage); screenshot + date-stamp; update CSV. For Quince/Californios/SingleThread/French Laundry/Enclos/Saison, check Tock/OpenTable booking page (restaurant-controlled).
-- **Owner:** Research session. **Blocks:** Budgeting.
+- **Know:** 11 starred rows have a verified total for 2 (Benu $1,037; Acquerello $731.60; Kiln $756; Commis $669.60; Birdsong $700; Lazy Bear $640; Sons & Daughters $660; 7 Adams $254; Angler lunch $151.20; Madcap $360; Sorrel $409.50 Fall 2026). Formulas are shown.
+- **Don't know:** 30 starred rows (no official price found). Sorrel's price changes with its seasonal menu. Tax, wine and gratuity are excluded.
+- **How:** Open each restaurant's official reservation page (Tock/OpenTable link on Michelin page) and record the per-person tasting price and service charge with the date.
+- **Owner:** Research session. **Blocks:** Budget.
 
-## Q4. When is each restaurant open? Any closures/exceptions?
-- **Know:** 10 rows verified (Benu Wed-Sat, Quince Tue-Sat + Nov26/Dec25-26 closed, Birdsong Tue-Sat, Kiln Tue-Thu/Fri-Sat split, Lazy Bear Tue-Sat 5-9, Angler Daily lunch/dinner, Mister Jiu's Tue-Sat, Nari 7 nights, Nisei Wed-Sun, Madcap Tue-Sat).
-- **Don't know:** 34 rows Unverified. Holiday/seasonal exceptions mostly unknown.
-- **Discover:** Fetch each official site's Hours/Visit page + Michelin individual page (Days open filter). Check Instagram for pop-up closures.
-- **Owner:** Research session. **Blocks:** Booking dates.
+## Q4. When is each restaurant open? Any exceptions?
+- **Know:** Michelin hours verified for 14 starred rows. Quince closes Nov 26 and Dec 25–26 (official homepage, prior session).
+- **Don't know:** 3 hour conflicts (Quince, Kiln, Lazy Bear — flagged F1–F3). About 27 starred rows not yet re-checked on Michelin.
+- **How:** Check the Michelin restaurant page and the official reservation page for each; keep the one that matches the booking page.
+- **Owner:** Research session. **Blocks:** Dates.
 
-## Q5. Where are the YouTube/TikTok/Instagram links?
-- **Know:** 3 Instagram verified (Atelier @atelier.crenn via official sameAs, Benu @benu_sf via search, Lazy Bear @lazybearsf via official dinner page). YouTube/TikTok: 0 verified.
-- **Don't know:** 41 rows social Unverified. Restaurant-owned vs fan accounts unclear.
-- **Discover:** (1) Fetch official site footer for social icons (authoritative). (2) Search Instagram/YouTube/TikTok for exact restaurant name + city; only link if handle matches official site or Michelin page. (3) Record handle + URL + date checked.
-- **Owner:** Research session. **Blocks:** Social proof / marketing.
+## Q5. Where are the YouTube, TikTok and Instagram links?
+- **Know:** 2 Instagram handles verified via the restaurant's own site (Atelier Crenn, Lazy Bear). Benu's handle was removed (not confirmed).
+- **Don't know:** YouTube and TikTok for all rows. Fan accounts vs. official accounts.
+- **How:** Read each official site's footer social icons first. Only link a handle that the official site or Michelin page points to.
+- **Owner:** Research session. **Blocks:** Social links.
 
 ## Q6. Which hotel should we book? What does it cost per night?
-- **Know:** 14 hotels ranked by cluster density (method on hotels page). 2 addresses verified (Four Seasons, Fairmont partial). No nightly rates collected.
-- **Don't know:** Nightly rates (dynamic), Michelin Keys status, parking/valet, cancellation, pet policy, accessibility.
-- **Discover:** Check Michelin Guide Hotels (Keys) + official hotel site Rates page for sample dates; record date + occupancy. Do not use third-party rate blogs.
-- **Owner:** User (dates/budget) + research session. **Blocks:** Booking.
+- **Know:** 14 hotels ranked by cluster count (SF 25, Wine Country 8, Peninsula 5, East Bay 2, Marin 1). Bardessono address corrected from the official contact page.
+- **Don't know:** Nightly rates (none collected). Distances within a cluster (ties). Michelin Keys. Most hotel addresses (only Four Seasons, Bardessono and a few others confirmed).
+- **How:** Check the official hotel site for the dates you want; compute distances from verified coordinates.
+- **Owner:** You (dates/budget) + research session. **Blocks:** Booking.
 
-## Q7. What about Bib Gourmand and Recommended (non-starred) restaurants?
-- **Know:** Bib Bay Area ~36 names (data/bib.csv) verified via Michelin Bib page + OpenTable 2026 list. Recommended SF surroundings = 86 (Michelin count).
-- **Don't know:** Full Recommended names list (86) not yet enumerated; Bib prices/hours/social Unverified.
-- **Discover:** Paginate Michelin SF restaurants search (145 = 29+30+86) and transcribe names + Michelin URLs; then verify Bib prices/hours for top picks.
+## Q7. Bib Gourmand and Recommended (non-starred) restaurants?
+- **Know:** Michelin's SF & surroundings list has 30 Bib Gourmand and 86 Selected restaurants.
+- **Don't know:** The Bib list in data/bib.csv was not re-verified this session. The Selected list (86) is not enumerated.
+- **How:** Paginate Michelin's SF list and transcribe names and URLs; verify each against its Michelin page.
 - **Owner:** Research session. **Blocks:** Value itinerary.
 
-## Q8. Which 2025 stars disappeared in 2026 — are they closed or demoted?
-- **Know:** Le Comptoir, O' by Claude Le Tohic, The Shota absent from 2026 starred list. Osito/Aphotic closed (Chronicle 2025). Chez TJ → Recommended (Chronicle 2025).
-- **Don't know:** Current status of Le Comptoir/O'/Shota (closed? renamed? Recommended?).
-- **Discover:** Check Michelin individual pages + official sites for each; update Flagged page.
-- **Owner:** Research session. **Blocks:** Avoid booking closed venues.
+## Q8. Did the 2025 stars drop out — are those restaurants closed or demoted?
+- **Know:** Le Comptoir, O' by Claude Le Tohic and The Shota are not in the 2026 California starred list (article). The article does not say why.
+- **Don't know:** Whether they closed, moved, or are now Bib/Selected. Michelin's own pages were not checked for them.
+- **How:** Check each Michelin page and the official site.
+- **Owner:** Research session. **Blocks:** Avoid booking a closed venue.
 
-## Q9. How do we get there? Drive time, transit, parking?
-- **Know:** Addresses for 20 rows (official/secondary). Kiln parking/transit detail (official). Most parking Unverified.
-- **Don't know:** Drive times from each hotel, BART/Muni routes, valet cost (Benu $30 verified; others unknown).
-- **Discover:** Use Google Maps directions from chosen hotel (record date/time); check official site Parking page.
-- **Owner:** User + research. **Blocks:** Itinerary feasibility.
+## Q9. How do we get there? Parking and transit?
+- **Know:** Benu valet $30 (official info page). Auberge Rutherford is a resort with an on-site restaurant.
+- **Don't know:** Drive times, BART/Muni routes, parking for most rows.
+- **How:** Use a map from the chosen hotel on the travel date; check each official site's parking/visit page.
+- **Owner:** You + research. **Blocks:** Itinerary.
 
-## Q10. Dietary, allergies, dress code, cancellation, minimum age?
-- **Know:** Kiln (no modifications), Commis (vegetarian/pescatarian only, no vegan), Sons & Daughters (pescatarian/vegetarian 48h), Lazy Bear (no butter exclusion). Others unknown.
-- **Don't know:** 40 rows dietary/cancellation unknown.
-- **Discover:** Fetch each official site's FAQ/Policies page; do not assume.
+## Q10. Dietary needs, cancellation, dress code, minimum age?
+- **Know:** Commis (vegetarian/pescatarian only, no vegan) and Sons & Daughters (pescatarian/vegetarian with 48h notice) per prior session's official notes. Kiln does not modify menus (prior).
+- **Don't know:** Most rows.
+- **How:** Read each official site's FAQ or policy page; do not assume.
 - **Owner:** Research session. **Blocks:** Suitability.
 
-## Q11. How fresh is this data? When to re-verify?
-- **Know:** Checked 24 Nov 2026. Michelin 2026 (June 2026). Prices seasonal (Sorrel Fall 2026: 8-course $195 / 5-course $125 per official menus page, checked 24 Nov 2026).
-- **Don't know:** Next Michelin update date; seasonal menu change dates.
-- **Discover:** Re-verify quarterly + before any booking; date-stamp every price/hours cell.
-- **Owner:** Maintainer. **Blocks:** All decisions (staleness risk).
+## Q11. How fresh is this data? When should it be re-checked?
+- **Know:** Checked 24 Nov 2026. Michelin edition June 2026. Seasonal menus change (Sorrel).
+- **Don't know:** Next Michelin update; the dates on which menus change.
+- **How:** Re-check quarterly and before any booking. Each row has a "checked" date.
+- **Owner:** Maintainer. **Blocks:** Every decision (staleness).
 
-## Q12. What is the decision this site supports?
-- **Know:** Site supports: pick cluster → pick hotel → pick restaurants → budget for 2.
-- **Don't know:** User's dates, party size (2 assumed), budget cap, cuisine preferences, mobility needs.
-- **Discover:** Ask user (or default to 2 adults, no cap, all cuisines — current assumption, flagged).
-- **Owner:** User. **Blocks:** Personalization.
+## Q12. What decision does the site support?
+- **Know:** The flow is: choose a cluster → choose a hotel → shortlist restaurants → budget for two.
+- **Don't know:** Dates, party size (2 assumed), budget cap, cuisine preference, mobility needs.
+- **How:** Ask you. Until then, the site assumes 2 adults, no cap, all cuisines.
+- **Owner:** You. **Blocks:** Personal recommendations.
+
+## Q13. Which Sons & Daughters address is correct?
+- **Know:** Michelin page says 2875 18th St SF 94110. Earlier record said 708 Bush St.
+- **Don't know:** Which is current.
+- **How:** Check the official site contact page and a booking confirmation.
+- **Owner:** Research session. **Blocks:** Directions for that booking.
+
+## Q14. Hotel distances — how far is each hotel from the restaurants?
+- **Know:** Cluster counts only.
+- **Don't know:** Straight-line and drive distances.
+- **How:** Verify coordinates from each official address, then compute distance to each starred restaurant (5/10/25 mi).
+- **Owner:** Research session. **Blocks:** Ranking within a cluster.
