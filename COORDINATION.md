@@ -23,7 +23,7 @@ This session works on its single assigned branch, as its instructions require. T
 | T5 | Real verified pricing for two adults (restaurant's own official menu/prices) | unclaimed | — | `docs/data/starred-sf.json` (cost fields only) | Official Michelin pages show a price tier only, not menu prices. |
 | T6 | YouTube / TikTok / Instagram links per restaurant or activity | unclaimed | — | new `docs/data/social-*.json` | Not started. |
 | T7 | Activities list (things to do) with official links and hours | unclaimed | — | new `docs/data/activities*.json` | Not started. |
-| T8 | Site build: landing page, category subpages, flagged-for-review page, GitHub Pages publish | in progress | 15830ac4 | `docs/**` | Shell and SF data built in this session. Final integration step pending. |
+| T8 | Site build: landing page, category subpages, flagged-for-review page, GitHub Pages publish | released | — (15830ac4 released its claim) | `docs/**` | Released 2026-11-24 after finding the same task claimed on other branches (see "Cross-branch overlap"). Not built on this branch. |
 | T9 | Final integration: merge branches, re-verify combined data, check links, publish Pages | unclaimed | — | `docs/**`, `COORDINATION.md` | Reserved for a final integration session once T2–T7 are done. |
 
 Scope notes: `docs/**` is shared output. Only the integration session (T9) may change the site index and navigation after other tasks finish. This session is currently making the initial version of it because it owns T8.
@@ -55,5 +55,17 @@ Scope notes: `docs/**` is shared output. Only the integration session (T9) may c
   6. Removed from SF 1★ in 2026 per press (not yet verified officially): Le Comptoir at Bar Crenn, O' by Claude Le Tohic, Shota.
 - Verification: 25/25 SF rows have an official Michelin page link. Cost for two is left blank because official pages do not show menu prices.
 
-### Claims
-- 2026-11-24 · 15830ac4 claims **T8** (site shell) and **T1** (done). T2–T7 are unclaimed and open for other sessions.
+### 2026-11-24 · Cross-branch overlap · session 15830ac4
+- Reading the other `arena/*` branches on origin showed at least seven sessions with overlapping claims on this same repo: `arena/0cfb07d3`, `arena/26f06e9a`, `arena/401d224f`, `arena/612cf61c`, `arena/8bc23e0f`, `arena/db94882d`, plus `arena/08e177e6`, `arena/230df0ee`, `arena/35713f68`, `arena/3c9252ca`, `arena/401d224f`.
+- Overlap by task:
+  - **Repo review (T0):** claimed or done on `26f06e9a`, `401d224f`, `8bc23e0f`, `db94882d`.
+  - **Michelin SF / Bay Area dataset (T1–T2):** claimed on `8bc23e0f`, `26f06e9a`, `401d224f`, `612cf61c`, `db94882d`.
+  - **Site shell (T8):** `26f06e9a` reports done; `8bc23e0f`, `612cf61c`, `db94882d`, `401d224f` in progress.
+  - **Hotels (T4 here):** `0cfb07d3` partial (31-hotel roster); others unclaimed.
+  - **Social links / activities:** `401d224f` and `0cfb07d3` (released) and others.
+- Action taken by 15830ac4: the site-shell claim (T8) was released. The verified San Francisco dataset (T1) is kept. T2–T7 were not started here.
+- Recommendation to the user and integration session: pick one branch as the integration owner. Merge the verified rows from each branch, and resolve any conflicts on `docs/data/` vs `data/` paths. Re-verify every row against the official URL before publishing.
+- Path note: this session's data lives at `docs/data/starred-sf.json`. Other branches use `data/` or `docs/data/` with different schemas. The integration session should choose one schema.
+
+### Claims (current)
+- 2026-11-24 · 15830ac4: **T1 done** (SF starred, 25 rows verified). **T8 released.** T2–T7 unclaimed on this branch.
